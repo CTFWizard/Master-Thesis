@@ -1,0 +1,258 @@
+2024-04-25 10:49:44,476 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-04-25 10:49:44,476 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-04-25 10:55:28,892 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 1.22) | prompt: I have a HTB machine called "PC", and its a linux machine. The target IP is 10.10.11.214 | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 10:56:53,759 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 4] (Score: 0.70) | prompt: 1. Nmap version: 7.94SVN
+2. Scan date: 2024-04-25 12:56 CEST
+3. Target IP: 10.10.11.214
+4. Host status: up, latency: 0.0010s
+5. Number of scanned ports: 1000
+6. Ports in ignored states: all 1000 ports
+7. Number of filtered tcp ports: 1000 (no-response)
+8. Scan duration: 11.47 seconds | rag-data:  10000 -Pn -p 80
+### FULL-SCAN:
+    ports=$(nmap -Pn -p- --min-rate=1000 -T4 10.10.11.214 | grep '^[0-9]' | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//)
+    nmap -p$ports -Pn -sC -sV 10.10.11.214
+
+2024-04-25 12:34:11,253 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 4] (Score: 0.64) | prompt: 1. Nmap command: nmap -Pn -p- --min-rate=1000 -T4 10.10.11.214
+2. Target IP: 10.10.11.214
+3. Host status: up, latency: 0.027s
+4. Number of filtered tcp ports: 65533 (no-response)
+5. Open ports: 22/tcp and 50051/tcp
+6. Service on port 22/tcp: ssh
+7. SSH version: OpenSSH 8.2p1 Ubuntu 4ubuntu0.7
+8. SSH protocol: 2.0
+9. Service on port 50051/tcp: unknown
+10. Scan duration: not mentioned
+ | rag-data:  10000 -Pn -p 80
+### FULL-SCAN:
+    ports=$(nmap -Pn -p- --min-rate=1000 -T4 10.10.11.214 | grep '^[0-9]' | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//)
+    nmap -p$ports -Pn -sC -sV 10.10.11.214
+
+2024-04-25 12:37:31,466 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 2] (Score: 1.05) | prompt: The tester provides the following thoughts for your consideration. Please give your comments, and update the tasks if necessary.I have discovered that service running on port 50051 is gRPC. Maybe we should focus on this service? | rag-data: ' (milliseconds),
+  's' (seconds), 'm' (minutes), or 'h' (hours) to the value (e.g. 30m).
+  -T<0-5>: Set timing template (higher is faster)
+  --min-hostgroup/max-hostgroup <size>: Parallel host scan group sizes
+  --min-parallelism/max-parallelism <numprobes>: Probe parallelization
+  --min-rtt-timeout/max-rtt-timeout/initial-rtt-timeout <time>: Specifies
+      probe round trip time.
+  --max-retries <tries>: Caps number of port scan probe retransmissions.
+  --host-timeout <time>: Give up on target after this long
+  --scan-delay/--max-scan-delay <time>: Adjust delay between probes
+  --min-rate <number>: Send packets no slower than <number> per second
+  --max-rate <number>: Send packets no faster than <number> per second
+## FIREWALL/IDS EVASION AND SPOOFING:
+  -f; --mtu <val>: fragment packets (optionally w/given MTU)
+  -D <decoy1,decoy2[,ME],...>: Cloak a scan with decoys
+  -S <IP_Address>: Spoof source address
+  -e <iface>: Use specified interface
+  -g/--source-port <portnum>: Use given port number
+  --proxies <url1,[url2],...>: Relay connections through HTTP/SOCKS4 proxies
+  --data <hex string>: Append a custom payload to sent packets
+  --data-string <string>: Append a custom ASCII string to sent packets
+  --data-length <num>: Append random data to sent packets
+  --ip-options <options>: Send packets with specified ip options
+  --ttl <val>: Set IP time-to-live field
+  --spoof-mac <mac address/prefix/vendor name>: Spoof your MAC address
+  --badsum: Send packets with a bogus TCP/
+2024-04-25 12:46:27,003 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.52) | prompt: 1. Tool used: grpcurl
+2. Target IP: 10.10.11.214
+3. Port: 50051
+4. Service: SimpleApp
+5. Service type: grpc.reflection.v1alpha.ServerReflection
+6. Methods exposed by the service: not mentioned
+7. Fields or data types: not mentioned
+8. Scan duration: not mentioned | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Usage:
+	grpcurl [flags] [address] [list|describe] [symbol]
+
+The 'address' is only optional when used with 'list' or 'describe' and a
+protoset or proto flag is provided.
+
+If 'list' is indicated, the symbol (if present) should be a fully-qualified
+service name. If present, all methods of that service are listed. If not
+present, all exposed services are listed, or all services defined in protosets.
+
+If 'describe' is indicated, the descriptor for the given symbol is shown. The
+symbol should be a fully-qualified service, enum, or message name. If no symbol
+is given then the descriptors for all exposed or known services are shown.
+
+If neither verb is present, the symbol must be a fully-qualified method name in
+'service/method' or 'service.method' format. In this case, the request body will
+be used to invoke the named method. If no body is given but one is required
+(i.e. the method is unary or server-streaming), an empty instance of the
+method's request type will be sent.
+
+The address will typically be in the form "host:port" where host can be an IP
+address or a hostname and port is a numeric port or service name. If an IPv6
+address is given, it must be surrounded by brackets, like "[2001:db8::1]". For
+Unix variants, if a -unix=true flag is present, then the address must be the
+path to the domain socket.
+
+## Example
+2024-04-25 12:50:33,087 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.71) | prompt: 1. Tool used: grpcurl
+2. Target IP: 10.10.11.214
+3. Port: 50051
+4. Service: SimpleApp
+5. Service type: grpc.reflection.v1alpha.ServerReflection
+6. Methods exposed by the service: LoginUser, RegisterUser, getInfo
+7. Fields or data types of the LoginUserRequest message: username (string), password (string)
+8. Scan duration: not mentioned
+
+Note: The provided input is missing the description of the RegisterUserRequest, getInfoRequest, LoginUserResponse, RegisterUserResponse, and getInfoResponse messages. | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Usage:
+	grpcurl [flags] [address] [list|describe] [symbol]
+
+The 'address' is only optional when used with 'list' or 'describe' and a
+protoset or proto flag is provided.
+
+If 'list' is indicated, the symbol (if present) should be a fully-qualified
+service name. If present, all methods of that service are listed. If not
+present, all exposed services are listed, or all services defined in protosets.
+
+If 'describe' is indicated, the descriptor for the given symbol is shown. The
+symbol should be a fully-qualified service, enum, or message name. If no symbol
+is given then the descriptors for all exposed or known services are shown.
+
+If neither verb is present, the symbol must be a fully-qualified method name in
+'service/method' or 'service.method' format. In this case, the request body will
+be used to invoke the named method. If no body is given but one is required
+(i.e. the method is unary or server-streaming), an empty instance of the
+method's request type will be sent.
+
+The address will typically be in the form "host:port" where host can be an IP
+address or a hostname and port is a numeric port or service name. If an IPv6
+address is given, it must be surrounded by brackets, like "[2001:db8::1]". For
+Unix variants, if a -unix=true flag is present, then the address must be the
+path to the domain socket.
+
+## Example

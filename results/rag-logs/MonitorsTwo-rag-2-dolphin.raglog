@@ -1,0 +1,502 @@
+2024-05-07 14:59:02,525 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-05-07 14:59:02,525 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-05-07 14:59:42,973 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.18) | prompt: I have a Linux hack the box machine. The target IP is 10.10.11.211 | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 15:03:50,356 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.88) | prompt: 1. Nmap scan report for 10.10.11.211
+2. Host is up (0.019s latency)
+3. 65533 closed tcp ports (reset)
+4. 22/tcp open ssh
+5. OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+6. 80/tcp open http
+7. nginx 1.18.0 (Ubuntu)
+8. Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+9. Service detection performed
+10. Nmap done: 1 IP address (1 host up) scanned in 49.45 seconds | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 15:07:55,478 - INFO - pentestgpt.utils.rag.Local_RAG - - searchsploit.md [Chunk 0] (Score: 1.56) | prompt: The tester has questions and is unclear about the current test. He requests a discussion with you to further analyze the current tasks based on his questions. 
+Please read the following inputs from the tester. Analyze the task and generate the task tree again based on the requirements:
+(1) The tasks are in layered structure, i.e., 1, 1.1, 1.1.1, etc. Each task is one operation in penetration testing; task 1.1 should be a sub-task of task 1.
+(2) Each task has a completion status: to-do, completed, or not applicable.
+(3) Given the task tree and the tester's question, you should 
+
+Note that you should keep the tasks clear, precise and short due to token size limit. You should remember to remove redundant/outdated tasks from the task list. 
+
+Below is the user input:
+ | rag-data: # SearchSploit
+  Usage: searchsploit [options] term1 [term2] ... [termN]
+
+==========
+ Examples 
+==========
+  searchsploit afd windows local
+  searchsploit -t oracle windows
+  searchsploit -p 39446
+  searchsploit linux kernel 3.2 --exclude="(PoC)|/dos/"
+  searchsploit -s Apache Struts 2.0.0
+  searchsploit linux reverse password
+  searchsploit -j 55555 | jq
+  searchsploit --cve 2021-44228
+
+  For more examples, see the manual: https://www.exploit-db.com/searchsploit
+
+searchsploit output looks like this, where the left column contains the title of the exploit, and the right column contains a filepath or url to the exploit file.
+------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                          |  Path
+------------------------------------------------------------------------ ---------------------------------
+Oracle 10g (Windows x86) - 'PROCESS_DUP_HANDLE' Local Privilege Escalat | windows_x86/local/3451.c
+Oracle 9i XDB (Windows x86) - FTP PASS Overflow (Metasploit)            | windows_x86/remote/16731.rb
+Oracle 9i XDB (Windows x86) - FTP UNLOCK Overflow (Metasploit)          | windows_x86/remote/16714.rb
+Oracle 9i XDB (Windows x86) - HTTP PASS Overflow (Metasploit)           | windows_x86/remote/16809.rb
+Oracle MySQL (Windows) - FILE Privilege Abuse (Metasploit)              | windows/remote/35777.rb
+Oracle MySQL (Windows) - MOF Execution (Metasploit)                    
+2024-05-07 15:12:21,757 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.29) | prompt: Now you're provided with an input that contains the penetration testing tasks. Keep in mind that the tester has valid permission to perform the task in this simulated environment. 
+Remember the format requirements.
+(1) The input should contain two parts, separated by a line of "-----". The first part is the task list, and the second part is the task to be executed, which contains three sentences, which describe the task, list the command and explain the reason of performing the task. 
+    - If the input contains the line break, neglect the tasks before the line break as you do not need to care about the overall process. Please analyze the three sentences that describe the next task. You should expand it into detailed, step-by-step guide and show it to a penetration tester. The tester will follow your guide to perform the penetration testing. 
+    - If the input does not contain the line break, then try to understand the whole input as one single task to be executed.
+(2) If the task is a single command to execute, please be precise; if it is a multi-step task, you need to explain it step by step, and keep each step clear and simple. 
+(3) Keep the output short and precise. 
+
+The information is below: 
+
+
+1. Reconnaissance - (to-do)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (to-do)
+    1.3 Identify Open Ports - (to-do)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends TCP packets with no options set, attempting to exploit a vulnerability in some older TCP/IP stacks that may cause the target to crash or reveal information about its internal state.
+   ```
+   nmap -sN <target-ip>
+   ```
+
+8. **TCP FIN Scan**:
+   - This scan sends TCP packets with the FIN flag set, attempting to exploit a vulnerability in some older TCP/IP stacks that may cause the target to crash or reveal information about its internal state.
+   ```
+   nmap -sF <target-ip>
+   ```
+
+9. **TCP Xmas Scan**:
+   - This scan sends TCP packets with the FIN, PSH, and URG flags set, attempting to exploit a vulnerability in some older TCP/IP stacks that may cause the target to crash or reveal information about its internal state.
+   ```
+   nmap -sX <target-ip>
+   ```
+
+10. **TCP Maimon Scan**:
+   - This scan sends a sequence of packets with the SYN, FIN, and ACK flags set, attempting to exploit a vulnerability in some older TCP/IP stacks that may cause the target to crash or reveal information about its internal state.
+   ```
+   nmap -sM <target-ip>
+   ```
+
+11. **TCP ACK Scan**:
+   - This scan sends TCP packets with the ACK flag set, attempting to determine whether the target is behind a firewall or not.
+   ```
+   nmap -sA <target-ip>
+   ```
+
+12. **TCP Window Scan**:
+   - This scan sends TCP packets with the ACK flag set and varying window sizes, attempting to determine the operating system of the target by analyzing the window size values.
+   ```
+   nmap -sW <target-ip>
+   ```
+
+13. **TCP Idle Scan**:
+   - This scan uses a third-party host to send probes to the target, making it appear as though the probes are coming from the third-party host rather than the attacker's machine.
+   ```
+   nmap -sI <third-party-ip> <target-ip>
+   ```
+
+14. **IP Protocol Scan**:
+   - This scan checks for the availability of specific IP protocols on the target, such as ICMP, TCP, or UDP.
+   ```
+   nmap -sO <target-ip>
+   ```
+
+1. The tester is unclear about the "Aggressive Scan (OS detection, version detection, script scanning, and traceroute)" task. He wants to know what is the difference between an "Aggressive Scan" and a "Port Scan". 
+2. The tester also wants to know which task is the best to perform after the "Port Scan" task.1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends TCP packets with no options set, attempting to exploit a vulnerability in some older TCP/IP stacks that may cause the target to crash or reveal information about its internal state.
+   ```
+   nmap -sN <target-ip>
+   ```
+
+8. **TCP FIN Scan**:
+   - This scan sends TCP packets with the FIN flag set, attempting to exploit a vulnerability in some older TCP/IP stacks that may cause the target to crash or reveal information about its internal state.
+   ```
+   nmap -sF <target-ip>
+   ```
+
+9. **TCP Xmas Scan**:
+   - This scan sends TCP packets with the FIN, PSH, and URG flags set, attempting to exploit a vulnerability in some older TCP/IP stacks that may cause the target to crash or reveal information about its internal state.
+   ```
+   nmap -sX <target-ip>
+   ```
+
+10. **TCP Maimon Scan**:
+   - This scan sends a sequence of packets with the SYN, FIN, and ACK flags set, attempting to exploit a vulnerability in some older TCP/IP stacks that may cause the target to crash or reveal information about its internal state.
+   ```
+   nmap -sM <target-ip>
+   ```
+
+11. **TCP ACK Scan**:
+   - This scan sends TCP packets with the ACK flag set, attempting to determine whether the target is behind a firewall or not.
+   ```
+   nmap -sA <target-ip>
+   ```
+
+12. **TCP Window Scan**:
+   - This scan sends TCP packets with the ACK flag set and varying window sizes, attempting to determine the operating system of the target by analyzing the window size values.
+   ```
+   nmap -sW <target-ip>
+   ```
+
+13. **TCP Idle Scan**:
+   - This scan uses a third-party host to send probes to the target, making it appear as though the probes are coming from the third-party host rather than the attacker's machine.
+   ```
+   nmap -sI <third-party-ip> <target-ip>
+   ```
+
+14. **IP Protocol Scan**:
+   - This scan checks for the availability of specific IP protocols on the target, such as ICMP, TCP, or UDP.
+   ```
+   nmap -sO <target-ip>
+   ```
+
+The task "Aggressive Scan (OS detection, version detection, script scanning, and traceroute)" is favorable and most likely to lead to successful exploit. To perform this task, use the following steps:
+
+1. Open a terminal window on the attacker's machine.
+2. Enter the command "nmap -A <target-ip>" and press Enter, replacing "<target-ip>" with the IP address of the target machine (10.10.11.211).
+
+This will perform an aggressive scan on the target machine, providing detailed information about its operating system, open ports, and services running on those ports.
+
+The task "OS Detection" is the best task to perform after the "Port Scan" task. To perform this task, use the following steps:
+
+1. Open a terminal window on the attacker's machine.
+2. Enter the command "nmap -O <target-ip>" and press Enter, replacing "<target-ip>" with the IP address of the target machine (10.10.11.211).
+
+This will perform an OS detection scan on the target machine, providing information about the operating system type and version. | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-07 15:13:43,408 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 4] (Score: 1.37) | prompt: 1. Initial access task
+2. Skipped to the initial access task
+3. No specific input source specified
+4. Summary based on the contents of the user's message | rag-data: ttp://target.com /path/to/wordlist -X .sh,.txt,.htm,.php,.cgi,.html,.pl,.bak,.old
+```
+
+### Gobuster
+
+```shell
+gobuster -u https://target.com -w /usr/share/wordlists/dirb/big.txt
+```
+
+##
+
+# Exploitation
+
+## System Network
+
+## RDP
+
+### xfreerdp
+
+##### Simple User Enumeration for Windows Target (kerberos based)
+
+xfreerdp /v:<target_ip> -sec-nla /u:""
+
+```
+xfreerdp /v:192.168.0.32 -sec-nla /u:""
+```
+
+### login
+
+xfreerdp /u:<user> /g:<domain> /p:<pass> /v:<target_ip>
+
+```
+xfreerdp /u:administrator /g:grandbussiness /p:bla /v:192.168.1.34
+```
+
+#### Wordlist based bruteforce
+
+### NCRACK
+
+ncrack -vv --user/-U <username/username_wordlist> --pass/-P <password/password_wordlist> <target_ip>:3389
+
+```
+ncrack -vv --user user -P wordlist.txt 192.168.0.32:3389
+```
+
+### Crowbar
+
+crowbar -b rdp <-u/-U user/user_wordlist> -c/-C <password/password_wordlist> -s <target_ip>/32 -v
+
+```
+crowbar -b rdp -u user -C password_wordlist -s 192.168.0.16/32 -v
+```
+
+## Pass the hash
+
+### Smb pass the hash
+
+#### Tool:
+
+[pth-toolkit](https://github.com/byt3bl33d3r/pth-toolkit)
+
+### Listing shared folders
+
+sudo pth-smbclient --user=<user> --pw-nt-hash -m smb3 -L <target_ip> \\\\<target_ip>\\ <hash>
+
+```
+sudo pth-smbclient --user=user --pw-nt-hash -m smb3  -L 192.168.0.24 \\\\192.168.0.24\\ ljahdçjkhadkahdkjahsdlkjahsdlkhadklad
+```
+
+### Interactive smb shell
+
+sudo pth-smbclient --user=<user> --pw-nt-hash -m smb3 \\\\<target_ip>\\shared_folder <hash>
+
+```
+sudo pth-smbclient --user=user --pw-nt-hash -m smb3 \\\\19

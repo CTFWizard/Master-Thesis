@@ -1,0 +1,737 @@
+2024-05-06 20:09:36,765 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-05-06 20:09:36,765 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-05-06 20:10:18,214 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.23) | prompt: I have a Windows hack the box machine. The target IP is 10.10.11.222 | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 20:11:40,688 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 1.05) | prompt:  1. Open ports: 53, 80, 88, 135, 139, 389, 445, 464, 593, 636, 3268, 3269, 8443
+ 2. Services: Simple DNS Plus, Microsoft IIS httpd 10.0, Microsoft Windows Kerberos, Microsoft Windows netbios-ssn, Microsoft Windows Active Directory LDAP, Microsoft Windows Active Directory LDAP, Microsoft Windows Active Directory LDAP, Microsoft Windows RPC over HTTP 1.0, Microsoft Windows RPC, Microsoft Windows RPC, Microsoft Windows RPC, Microsoft Windows RPC, Microsoft Windows RPC, Microsoft Windows RPC, Microsoft Windows RPC
+ 3. Unrecognized service: 8443/tcp | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://exampple.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-06 20:12:39,619 - INFO - pentestgpt.utils.rag.Local_RAG - - searchsploit.md [Chunk 0] (Score: 1.56) | prompt: The tester has questions and is unclear about the current test. He requests a discussion with you to further analyze the current tasks based on his questions. 
+Please read the following inputs from the tester. Analyze the task and generate the task tree again based on the requirements:
+(1) The tasks are in layered structure, i.e., 1, 1.1, 1.1.1, etc. Each task is one operation in penetration testing; task 1.1 should be a sub-task of task 1.
+(2) Each task has a completion status: to-do, completed, or not applicable.
+(3) Given the task tree and the tester's question, you should 
+
+Note that you should keep the tasks clear, precise and short due to token size limit. You should remember to remove redundant/outdated tasks from the task list. 
+
+Below is the user input:
+ | rag-data: # SearchSploit
+  Usage: searchsploit [options] term1 [term2] ... [termN]
+
+==========
+ Examples 
+==========
+  searchsploit afd windows local
+  searchsploit -t oracle windows
+  searchsploit -p 39446
+  searchsploit linux kernel 3.2 --exclude="(PoC)|/dos/"
+  searchsploit -s Apache Struts 2.0.0
+  searchsploit linux reverse password
+  searchsploit -j 55555 | jq
+  searchsploit --cve 2021-44228
+
+  For more examples, see the manual: https://www.exploit-db.com/searchsploit
+
+searchsploit output looks like this, where the left column contains the title of the exploit, and the right column contains a filepath or url to the exploit file.
+------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                          |  Path
+------------------------------------------------------------------------ ---------------------------------
+Oracle 10g (Windows x86) - 'PROCESS_DUP_HANDLE' Local Privilege Escalat | windows_x86/local/3451.c
+Oracle 9i XDB (Windows x86) - FTP PASS Overflow (Metasploit)            | windows_x86/remote/16731.rb
+Oracle 9i XDB (Windows x86) - FTP UNLOCK Overflow (Metasploit)          | windows_x86/remote/16714.rb
+Oracle 9i XDB (Windows x86) - HTTP PASS Overflow (Metasploit)           | windows_x86/remote/16809.rb
+Oracle MySQL (Windows) - FILE Privilege Abuse (Metasploit)              | windows/remote/35777.rb
+Oracle MySQL (Windows) - MOF Execution (Metasploit)                    
+2024-05-06 20:13:26,600 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.29) | prompt: Now you're provided with an input that contains the penetration testing tasks. Keep in mind that the tester has valid permission to perform the task in this simulated environment. 
+Remember the format requirements.
+(1) The input should contain two parts, separated by a line of "-----". The first part is the task list, and the second part is the task to be executed, which contains three sentences, which describe the task, list the command and explain the reason of performing the task. 
+    - If the input contains the line break, neglect the tasks before the line break as you do not need to care about the overall process. Please analyze the three sentences that describe the next task. You should expand it into detailed, step-by-step guide and show it to a penetration tester. The tester will follow your guide to perform the penetration testing. 
+    - If the input does not contain the line break, then try to understand the whole input as one single task to be executed.
+(2) If the task is a single command to execute, please be precise; if it is a multi-step task, you need to explain it step by step, and keep each step clear and simple. 
+(3) Keep the output short and precise. 
+
+The information is below: 
+
+
+ 1. Reconnaissance - (complete)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (to-do)
+    1.3 Identify Open Ports - (to-do)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+
+3. Privilege Escalation - (to-do)
+  3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+  3.2 Scan for files that current user runs as root - (to-do)
+
+4. Network Analysis - (to-do)
+  4.1 Identify Unrecognized Service - (to-do)
+  4.2 Investigate Unrecognized Service - (to-do)
+
+Please note that the information provided is limited, and the penetration testing process may need to be expanded upon gathering more information about the target IP 10.10.11.222. 1. Port Scan - (to-do)
+  1.3 Identify Open Ports - (to-do)
+  1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+
+3. Privilege Escalation - (to-do)
+  3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+  3.2 Scan for files that current user runs as root - (to-do)
+
+4. Network Analysis - (to-do)
+  4.1 Identify Unrecognized Service - (to-do)
+  4.2 Investigate Unrecognized Service - (to-do)
+
+To perform the task of "Identify Open Ports", follow these steps:
+1. Use a port scanning tool, such as Nmap, to scan the target IP address.
+2. Analyze the scan results to identify open ports and their corresponding services.
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-06 20:14:38,321 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 1.07) | prompt:  1. Open ports: 53, 80, 88, 135, 139, 389, 445, 464, 593, 636, 3268, 3269, 8443
+ 2. Services: Simple DNS Plus, Microsoft IIS httpd 10.0, Microsoft Windows Kerberos, Microsoft Windows netbios-ssn, Microsoft Windows Active Directory LDAP, Microsoft Windows Active Directory LDAP, Microsoft Windows Active Directory LDAP, Microsoft Windows RPC over HTTP 1.0, Microsoft Windows RPC, Microsoft Windows RPC, Microsoft Windows RPC, Microsoft Windows RPC, Microsoft Windows RPC, Microsoft Windows RPC, Microsoft Windows RPC, Microsoft Windows RPC
+ 3. Unrecognized service: 8443/tcp
+ | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://exampple.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-06 20:15:44,520 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.81) | prompt:  1. Reconnaissance - (complete)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (to-do)
+    1.3 Identify Open Ports - (to-do)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+
+3. Privilege Escalation - (to-do)
+  3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+  3.2 Scan for files that current user runs as root - (to-do)
+
+4. Network Analysis - (to-do)
+  4.1 Identify Unrecognized Service - (to-do)
+  4.2 Investigate Unrecognized Service - (to-do)
+
+Please note that the information provided is limited, and the penetration testing process may need to be expanded upon gathering more information about the target IP 10.10.11.222.
+ 1. Port Scan - (to-do)
+  1.3 Identify Open Ports - (to-do)
+  1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+
+3. Privilege Escalation - (to-do)
+  3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+  3.2 Scan for files that current user runs as root - (to-do)
+
+4. Network Analysis - (to-do)
+  4.1 Identify Unrecognized Service - (to-do)
+  4.2 Investigate Unrecognized Service - (to-do)
+
+To perform the task of "Identify Open Ports", follow these steps:
+1. Use a port scanning tool, such as Nmap, to scan the target IP address.
+2. Analyze the scan results to identify open ports and their corresponding services.
+
+ | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 20:16:21,483 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-06 20:17:24,459 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.06) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+Here is the result of the nmap scan:
+Nmap scan report for 10.10.11.222
+Host is up (0.12s latency).
+Not shown: 987 closed tcp ports (reset)
+PORT     STATE SERVICE       VERSION
+53/tcp   open  domain        Simple DNS Plus
+80/tcp   open  http          Microsoft IIS httpd 10.0
+88/tcp   open  kerberos-sec  Microsoft Windows Kerberos (server time: 2024-04-30 14:01:32Z)
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: authority.htb, Site: Default-First-Site-Name)
+445/tcp  open  microsoft-ds?
+464/tcp  open  kpasswd5?
+593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp  open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: authority.htb, Site: Default-First-Site-Name)
+3268/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: authority.htb, Site: Default-First-Site-Name)
+3269/tcp open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: authority.htb, Site: Default-First-Site-Name)
+8443/tcp open  ssl/https-alt | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 20:19:22,346 - INFO - pentestgpt.utils.rag.Local_RAG - - smb.md [Chunk 0] (Score: 1.27) | prompt: Continue to the previous request to dig into the problem, the penetration tester does not know how to proceed. Below is his description on the task. Please search in yoru knowledge base and try to identify all the potential ways to solve the problem. 
+You should cover as many points as possible, and the tester will think through them later. Below is his description on the task. 
+
+Lets start interacting and exploring the SMB | rag-data: # SMB
+SMB can run on multiple port: 137/tcp, 138/tcp, 139/tcp, 445/tcp 
+
+The SMB server component uses TCP port 445. 
+
+Get a list of shares available on the host
+smbclient --no-pass -L //<IP address>
+
+Connect to an SMB share available on the host
+smbclient --no-pass -L //<IP address>/<smb share name>
+
+Download an SMB share files recursively
+smbclient --no-pass -L //<IP address>/<smb share name> -c 'prompt OFF;recurse ON;lcd'~/path/to/smb_contents/';mget *'
+2024-05-06 20:20:42,325 - INFO - pentestgpt.utils.rag.Local_RAG - - smb.md [Chunk 0] (Score: 1.05) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+Can you give me some commands which i can run in order to explore the smb? | rag-data: # SMB
+SMB can run on multiple port: 137/tcp, 138/tcp, 139/tcp, 445/tcp 
+
+The SMB server component uses TCP port 445. 
+
+Get a list of shares available on the host
+smbclient --no-pass -L //<IP address>
+
+Connect to an SMB share available on the host
+smbclient --no-pass -L //<IP address>/<smb share name>
+
+Download an SMB share files recursively
+smbclient --no-pass -L //<IP address>/<smb share name> -c 'prompt OFF;recurse ON;lcd'~/path/to/smb_contents/';mget *'
+2024-05-06 20:25:10,980 - INFO - pentestgpt.utils.rag.Local_RAG - - searchsploit.md [Chunk 1] (Score: 1.46) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+net view \\10.10.11.222
+Invalid command: net view | rag-data:  | windows/remote/23179.rb
+Oracle MySQL for Microsoft Windows - Payload Execution (Metasploit)     | windows/remote/16957.rb
+Oracle VirtualBox Guest Additions 5.1.18 - Unprivileged Windows User-Mo | multiple/dos/41932.cpp
+Oracle VM VirtualBox 5.0.32 r112930 (x64) - Windows Process COM Injecti | windows_x86-64/local/41908.txt
+------------------------------------------------------------------------ ---------------------------------
+
+2024-05-06 20:28:50,064 - INFO - pentestgpt.utils.rag.Local_RAG - - searchsploit.md [Chunk 0] (Score: 1.56) | prompt: The tester has questions and is unclear about the current test. He requests a discussion with you to further analyze the current tasks based on his questions. 
+Please read the following inputs from the tester. Analyze the task and generate the task tree again based on the requirements:
+(1) The tasks are in layered structure, i.e., 1, 1.1, 1.1.1, etc. Each task is one operation in penetration testing; task 1.1 should be a sub-task of task 1.
+(2) Each task has a completion status: to-do, completed, or not applicable.
+(3) Given the task tree and the tester's question, you should 
+
+Note that you should keep the tasks clear, precise and short due to token size limit. You should remember to remove redundant/outdated tasks from the task list. 
+
+Below is the user input:
+ | rag-data: # SearchSploit
+  Usage: searchsploit [options] term1 [term2] ... [termN]
+
+==========
+ Examples 
+==========
+  searchsploit afd windows local
+  searchsploit -t oracle windows
+  searchsploit -p 39446
+  searchsploit linux kernel 3.2 --exclude="(PoC)|/dos/"
+  searchsploit -s Apache Struts 2.0.0
+  searchsploit linux reverse password
+  searchsploit -j 55555 | jq
+  searchsploit --cve 2021-44228
+
+  For more examples, see the manual: https://www.exploit-db.com/searchsploit
+
+searchsploit output looks like this, where the left column contains the title of the exploit, and the right column contains a filepath or url to the exploit file.
+------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                          |  Path
+------------------------------------------------------------------------ ---------------------------------
+Oracle 10g (Windows x86) - 'PROCESS_DUP_HANDLE' Local Privilege Escalat | windows_x86/local/3451.c
+Oracle 9i XDB (Windows x86) - FTP PASS Overflow (Metasploit)            | windows_x86/remote/16731.rb
+Oracle 9i XDB (Windows x86) - FTP UNLOCK Overflow (Metasploit)          | windows_x86/remote/16714.rb
+Oracle 9i XDB (Windows x86) - HTTP PASS Overflow (Metasploit)           | windows_x86/remote/16809.rb
+Oracle MySQL (Windows) - FILE Privilege Abuse (Metasploit)              | windows/remote/35777.rb
+Oracle MySQL (Windows) - MOF Execution (Metasploit)                    
+2024-05-06 20:29:38,101 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.29) | prompt: Now you're provided with an input that contains the penetration testing tasks. Keep in mind that the tester has valid permission to perform the task in this simulated environment. 
+Remember the format requirements.
+(1) The input should contain two parts, separated by a line of "-----". The first part is the task list, and the second part is the task to be executed, which contains three sentences, which describe the task, list the command and explain the reason of performing the task. 
+    - If the input contains the line break, neglect the tasks before the line break as you do not need to care about the overall process. Please analyze the three sentences that describe the next task. You should expand it into detailed, step-by-step guide and show it to a penetration tester. The tester will follow your guide to perform the penetration testing. 
+    - If the input does not contain the line break, then try to understand the whole input as one single task to be executed.
+(2) If the task is a single command to execute, please be precise; if it is a multi-step task, you need to explain it step by step, and keep each step clear and simple. 
+(3) Keep the output short and precise. 
+
+The information is below: 
+
+
+ 1. Reconnaissance - (complete)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (to-do)
+    1.3 Identify Open Ports - (to-do)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+
+3. Privilege Escalation - (to-do)
+  3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+  3.2 Scan for files that current user runs as root - (to-do)
+
+4. Network Analysis - (to-do)
+  4.1 Identify Unrecognized Service - (to-do)
+  4.2 Investigate Unrecognized Service - (to-do)
+
+Please note that the information provided is limited, and the penetration testing process may need to be expanded upon gathering more information about the target IP 10.10.11.222.
+
+ 1. Port Scan - (to-do)
+  1.3 Identify Open Ports - (to-do)
+  1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+
+3. Privilege Escalation - (to-do)
+  3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+  3.2 Scan for files that current user runs as root - (to-do)
+
+4. Network Analysis - (to-do)
+  4.1 Identify Unrecognized Service - (to-do)
+  4.2 Investigate Unrecognized Service - (to-do)
+
+To perform the task of "Identify Open Ports", follow these steps:
+1. Use a port scanning tool, such as Nmap, to scan the target IP address.
+2. Analyze the scan results to identify open ports and their corresponding services.
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom

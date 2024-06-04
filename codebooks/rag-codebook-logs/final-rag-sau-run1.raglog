@@ -1,0 +1,569 @@
+2024-04-25 16:42:37,604 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-04-25 16:42:37,604 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-04-25 16:43:29,413 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 1.06) | prompt: I have a hack the box machine called "sau". This is a Linux machine. The target ip is 10.10.11.224 | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 16:50:55,668 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 0.74) | prompt: 1. The input content is from a security testing tool, specifically an Nmap scan.
+2. The scan was performed on the IP address 10.10.11.214.
+3. The output indicates that the host seems down, and Nmap suggests using -Pn if the host is truly up but blocking ping probes.
+4. The total scan time was 3.18 seconds.
+5. No open ports or services were discovered during the scan. | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 16:54:18,557 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 0.87) | prompt: 1. The input content is from a security testing tool, specifically an Nmap scan.
+2. The scan was performed on the IP address 10.10.11.224.
+3. The host is up with a latency of 0.033 seconds.
+4. There are 997 closed TCP ports and one open port.
+5. Port 22/tcp is open and identified as SSH, running OpenSSH 8.2p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0).
+6. Port 80/tcp is filtered, indicating that the HTTP service is not accessible.
+7. Port 55555/tcp is open and unrecognized, prompting the tester to investigate further.
+8. The scan detected one unrecognized service despite returning data.
+9. The total scan time was 98.11 seconds.
+10. The operating system is identified as Linux, with a CPE of cpe:/o:linux:linux_kernel.
+11. Service detection was performed, and any incorrect results should be reported at https://nmap.org/submit/.
+12. Nmap is done scanning one IP address (1 host up) in 98.11 seconds. | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 16:58:44,241 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 0.96) | prompt: 1. The input content is from a security testing tool, specifically an Nmap scan.
+2. The scan was performed on the IP address 10.10.11.224.
+3. The host is up with a latency of 0.035 seconds.
+4. There are 997 closed TCP ports, 1 filtered TCP port, and 1 open port.
+5. Port 22/tcp is open and identified as SSH, running OpenSSH 8.2p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0).
+6. Nmap detected several vulnerabilities associated with the OpenSSH service, including CVE-2012-1577, CVE-2020-15778, CVE-2020-15778, CVE-2020-12062, CVE-2021-28041, CVE-2021-41617, CVE-2020-14145, CVE-2016-20012, CVE-2023-51767, and CVE-2021-36368.
+7. Port 55555/tcp is open and unrecognized, prompting the tester to investigate further.
+8. The scan detected one unrecognized service despite returning data.
+9. The total scan time was 102.59 seconds.
+10. The operating system is identified as Linux, with a CPE of cpe:/o:linux:linux_kernel.
+11. Service detection was performed, and any incorrect results should be reported at https://nmap.org/submit/.
+12. Nmap is done scanning one IP address (1 host up) in 102.59 seconds.
+ | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 17:07:23,360 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 2] (Score: 1.00) | prompt: 1. The input content is from a security testing tool, specifically a Nikto scan.
+2. The scan was performed on the IP address 10.10.11.224.
+3. The target port is 55555, and the scan started at 2024-04-25 19:02:40 (GMT2).
+4. The server does not return a banner.
+5. The anti-clickjacking X-Frame-Options header is not present, and the X-Content-Type-Options header is not set.
+6. The root page / redirects to /web.
+7. No CGI directories were found, and the OPTIONS method is allowed.
+8. The scan made 8075 requests, with 3 items reported on the remote host.
+9. The scan took 244 seconds to complete.
+10. The scan tested 1 host.
+
+
+
+
+ | rag-data: ' (milliseconds),
+  's' (seconds), 'm' (minutes), or 'h' (hours) to the value (e.g. 30m).
+  -T<0-5>: Set timing template (higher is faster)
+  --min-hostgroup/max-hostgroup <size>: Parallel host scan group sizes
+  --min-parallelism/max-parallelism <numprobes>: Probe parallelization
+  --min-rtt-timeout/max-rtt-timeout/initial-rtt-timeout <time>: Specifies
+      probe round trip time.
+  --max-retries <tries>: Caps number of port scan probe retransmissions.
+  --host-timeout <time>: Give up on target after this long
+  --scan-delay/--max-scan-delay <time>: Adjust delay between probes
+  --min-rate <number>: Send packets no slower than <number> per second
+  --max-rate <number>: Send packets no faster than <number> per second
+## FIREWALL/IDS EVASION AND SPOOFING:
+  -f; --mtu <val>: fragment packets (optionally w/given MTU)
+  -D <decoy1,decoy2[,ME],...>: Cloak a scan with decoys
+  -S <IP_Address>: Spoof source address
+  -e <iface>: Use specified interface
+  -g/--source-port <portnum>: Use given port number
+  --proxies <url1,[url2],...>: Relay connections through HTTP/SOCKS4 proxies
+  --data <hex string>: Append a custom payload to sent packets
+  --data-string <string>: Append a custom ASCII string to sent packets
+  --data-length <num>: Append random data to sent packets
+  --ip-options <options>: Send packets with specified ip options
+  --ttl <val>: Set IP time-to-live field
+  --spoof-mac <mac address/prefix/vendor name>: Spoof your MAC address
+  --badsum: Send packets with a bogus TCP/

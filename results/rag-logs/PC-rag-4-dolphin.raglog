@@ -1,0 +1,208 @@
+2024-05-06 17:13:05,641 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-05-06 17:13:05,641 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-05-06 17:13:27,546 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.20) | prompt: I have a Linux hack the box machine. The target IP is 10.129.205.116 | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 17:16:08,383 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.64) | prompt: Summary:
+
+1. Nmap scan for 10.129.205.116
+2. Host is up with latency of 0.027s
+3. 65533 filtered tcp ports (no-response)
+4. Port 22/tcp is open, service is SSH
+5. Port 50051/tcp is open, service is unknown
+
+Nmap scan report for 10.129.205.116:
+
+* Host is up (0.027s latency)
+* 65533 filtered tcp ports (no-response)
+* Port 22/tcp is open (SSH)
+* Port 50051/tcp is open (unknown service)
+
+Nmap done: 1 IP address (1 host up) scanned in 207.78 seconds. | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 17:26:51,743 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.69) | prompt: Summary:
+
+1. Nmap scan for 10.129.205.116
+2. Host is up with latency of 0.026s
+3. 65533 filtered tcp ports (no-response)
+4. Port 22/tcp is open, service is SSH (OpenSSH 8.2p1 Ubuntu 4ubuntu0.7)
+5. Port 50051/tcp is open, service is unknown
+
+Nmap scan report for 10.129.205.116:
+
+* Host is up (0.026s latency)
+* 65533 filtered tcp ports (no-response)
+* Port 22/tcp is open (SSH, OpenSSH 8.2p1 Ubuntu 4ubuntu0.7)
+* Port 50051/tcp is open (unknown service)
+
+Nmap done: 1 IP address (1 host up) scanned in 112.03 seconds.
+
+Device type: general purpose|specialized
+Running (JUST GUESSING): Linux 5.X|4.X|2.6.X (95%), Crestron 2-Series (86%)
+OS CPE: cpe:/o:linux:linux_kernel:5.0, cpe:/o:linux:linux_kernel:4, cpe:/o:linux:linux_kernel:2.6.32, cpe:/o:crestron:2_series
+Aggressive OS guesses: Linux 5.0 (95%), Linux 4.15 - 5.8 (90%), Linux 5.0 - 5.4 (90%), Linux 5.3 - 5.4 (89%), Linux 2.6.32 (89%), Linux 5.0 - 5.5 (88%), Crestron XPanel control system (86%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 2 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+
+TRACEROUTE (using port 22/tcp)
+HOP RTT      ADDRESS
+1   27.56 ms 10.10.14.1
+2   27.15 ms 10.129.205.116
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+
+Nmap done: 1 IP address (1 host up) scanned in 112.03 seconds. | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 17:48:45,585 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.90) | prompt: Summary:
+
+1. Mark task 1.2 and 1.3 as complete
+2. Researching the internet reveals that port 50051 is often used for gRPC
+3. Generate a task 1.4 to confirm this
+
+Task 1.2 and 1.3 are marked as complete.
+
+Port 50051 is often used for gRPC, as found during internet research.
+
+Task 1.4: Confirm that port 50051 is used for gRPC. | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Example commands:
+### grpcurl -plaintext -vv <ip:port> list
+	Use this for initial scan of the gRPC API.
+	Outputs a list of available services at the given address:port.
+	-plaintext flag says to not use TLS when connecting.
+
+### grpcurl -plaintext -vv <ip:port> list <Service>
+	Use this to gather information about a service provided by the gRPC API.
+	Outputs a list of available methods for the given service.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv <ip:port> describe <Service>
+	Outputs the available methods for the given service with each methods input parameters and expected output.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+	Submits data to the given service.method endpoint.
+	-plaintext flag says to not use TSL when connecting.
+	-format text flag tells the given input data is in a text format.
+	-d '<input string>' flag tells what data to submit.

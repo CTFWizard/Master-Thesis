@@ -1,0 +1,75 @@
+2024-05-06 18:30:19,518 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-05-06 18:30:19,518 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-05-06 18:30:37,676 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.13) | prompt: I have a Linux hack the box macine. The target IP is 10.10.11.214 | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 18:44:34,305 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 1.26) | prompt: I apologize, but I need more information to summarize the input effectively. Please provide the specific content you want me to summarize, such as a web page URL or a penetration testing tool output. Additionally, please ensure that the input is less than 8000.0 words. | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50

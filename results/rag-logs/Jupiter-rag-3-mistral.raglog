@@ -1,0 +1,1152 @@
+2024-05-07 12:39:26,686 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-05-07 12:39:26,686 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-05-07 12:41:12,399 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.17) | prompt: I have a Linux hack the box machine. The target IP is 10.10.11.216 | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 12:46:23,892 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 1.11) | prompt:  1. IP: 10.10.11.216
+2. Host is up.
+3. Open ports:
+   - 22/tcp: ssh (OpenSSH 8.9p1 Ubuntu 3ubuntu0.1)
+   - 80/tcp: http (nginx 1.18.0)
+4. Service detection performed.
+5. Scanned in 7.56 seconds.
+ | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 12:49:26,930 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 0.94) | prompt:  1. Port 80 is used for web services.
+2. nginx is a web server.
+3. Accessing host on port 80 redirects to http://jupiter.htb.
+
+ | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 12:52:04,836 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 0.71) | prompt:  1. Reconnaissance - (complete)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (complete)
+    1.3 Identify Open Ports - (complete)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (complete)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+Please note that this is the initial PTT and will be expanded as the penetration testing process progresses.
+
+New Information:
+
+1. Port 80 is used for web services.
+2. nginx is a web server.
+3. Accessing host on port 80 redirects to http://jupiter.htb.
+
+# HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser. 1. Reconnaissance - (complete)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (complete)
+    1.3 Identify Open Ports - (complete)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (complete)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+Please note that this is the initial PTT and will be expanded as the penetration testing process progresses.
+
+New Information:
+
+1. Port 80 is used for web services.
+2. nginx is a web server.
+3. Accessing host on port 80 redirects to http://jupiter.htb.
+
+# HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser. | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 12:52:37,171 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-07 12:55:59,097 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 1.37) | prompt: The tester provides the following thoughts for your consideration. Please give your comments, and update the tasks if necessary.The http://jupiter.htb main page does not contain anything of intereset, what can I do to investigate the website further? | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50
+2024-05-07 13:27:57,638 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 1.11) | prompt:  1. Gobuster fuzzing was performed.
+2. Found: [Status=200] [Length=34390] [Word=kiosk]
+3. Subdomain discovered: kiosk.jupiter.htb
+
+ | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50
+2024-05-07 13:30:48,043 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 1.11) | prompt:  1. Gobuster fuzzing was performed.
+2. Found: [Status=200] [Length=34390] [Word=kiosk]
+3. Subdomain discovered: kiosk.jupiter.htb
+
+
+ | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50
+2024-05-07 13:33:12,906 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 0.71) | prompt:  1. Reconnaissance - (complete)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (complete)
+    1.3 Identify Open Ports - (complete)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (complete)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+Please note that this is the initial PTT and will be expanded as the penetration testing process progresses.
+
+New Information:
+
+1. Port 80 is used for web services.
+2. nginx is a web server.
+3. Accessing host on port 80 redirects to http://jupiter.htb.
+
+# HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+
+ 1. Reconnaissance - (complete)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (complete)
+    1.3 Identify Open Ports - (complete)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (complete)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+Please note that this is the initial PTT and will be expanded as the penetration testing process progresses.
+
+New Information:
+
+1. Port 80 is used for web services.
+2. nginx is a web server.
+3. Accessing host on port 80 redirects to http://jupiter.htb.
+
+# HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+
+
+ | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 13:33:52,416 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-07 13:38:07,374 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 0.96) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+We know the service on port 80 is the website http://jupiter.htb
+How should we go about investigating and find ways to gain access the the web server? | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 13:39:51,255 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 1.08) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+How can I go about using gobuster to fuzz http://jupiter.htb for sum-domains and sub-directories? Can you generate the commands? | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50
+2024-05-07 13:45:56,286 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 0.83) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+fuzzing for sub-domains using the gobuster fuzz option we got:
+gobuster fuzz -q -u http://FUZZ.jupiter.htb -w /usr/share/wordlists/subdomains-top1million-110000.txt
+Found: [Status=200] [Length=34390] [Word=kiosk] http://kiosk.jupiter.htb | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50
+2024-05-07 13:49:08,736 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 0.72) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+we don't need to use ffuf as we have gobuster, analyze the result:
+gobuster fuzz -q -u http://FUZZ.jupiter.htb -w /usr/share/wordlists/subdomains-top1million-110000.txt
+Found: [Status=200] [Length=34390] [Word=kiosk] http://kiosk.jupiter.htb | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50
+2024-05-07 13:50:11,152 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 1.11) | prompt:  1. Gobuster fuzzing was performed.
+2. Found: [Status=200] [Length=34390] [Word=kiosk]
+3. Subdomain discovered: kiosk.jupiter.htb
+
+
+
+ | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50
+2024-05-07 13:56:36,572 - INFO - pentestgpt.utils.rag.Local_RAG - - requests_baskets.md [Chunk 0] (Score: 1.27) | prompt:  1. Accessing http://kiosk.jupiter.htb reveals a webpage about the moon and planets.
+2. Service is using Grafana v9.5.2 to handle retrieve data.
+
+
+ | rag-data: # request baskets
+Request Baskets is a web service to collect arbitrary HTTP requests and inspect them via RESTful API or simple web UI.
+
+It is strongly inspired by ideas and application design of the RequestHub project and reproduces functionality offered by RequestBin service.
+
+
+## Features
+*   RESTful API to manage and configure baskets, see Request Baskets API documentation in interactive mode
+*   All baskets are protected by unique tokens from unauthorized access; end-points to collect requests do not require authorization though
+* Individually configurable capacity for every basket
+* Pagination support to retrieve collections: basket names, collected requests
+* Configurable responses for every HTTP method
+* Alternative storage types for configured baskets and collected requests:
+    * In-memory - ultra fast, but limited to available RAM and collected data is lost after service restart
+    * Bolt DB - fast persistent storage for collected data based on embedded bbolt database (maintained fork of Bolt), service can be restarted without data loss and storage is not limited by available RAM
+    * SQL database - classical data storage, multiple instances of service can run simultaneously and collect data in shared data storage, which makes the solution more robust and scaleable (PostgreSQL and MySQL are only supported at the moment)
+    * Can be extended by custom implementations of storage interface
+
+## Usage
+Open http://localhost:55555 in your browser. The main page will d
+2024-05-07 14:00:23,934 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 0.71) | prompt:  1. Reconnaissance - (complete)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (complete)
+    1.3 Identify Open Ports - (complete)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (complete)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+Please note that this is the initial PTT and will be expanded as the penetration testing process progresses.
+
+New Information:
+
+1. Port 80 is used for web services.
+2. nginx is a web server.
+3. Accessing host on port 80 redirects to http://jupiter.htb.
+
+# HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+
+
+
+ 1. Reconnaissance - (complete)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (complete)
+    1.3 Identify Open Ports - (complete)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (complete)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+Please note that this is the initial PTT and will be expanded as the penetration testing process progresses.
+
+New Information:
+
+1. Port 80 is used for web services.
+2. nginx is a web server.
+3. Accessing host on port 80 redirects to http://jupiter.htb.
+
+# HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+
+
+
+
+ | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 14:00:54,060 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-07 14:05:59,276 - INFO - pentestgpt.utils.rag.Local_RAG - - requests_baskets.md [Chunk 0] (Score: 1.03) | prompt:  1. POST request made to http://kiosk.jupiter.htb/api/ds/query.
+2. Request contains x-plugin-id, x-grafana-org-id, x-panel-id, User-Agent, content-type, and other headers.
+3. Request body is a JSON object containing queries, range, and other information.
+4. Queries are related to retrieving data from the 'moons' table in a 'postgres' datasource.
+5. Data is requested for a specific time range.
+
+
+
+ | rag-data: # request baskets
+Request Baskets is a web service to collect arbitrary HTTP requests and inspect them via RESTful API or simple web UI.
+
+It is strongly inspired by ideas and application design of the RequestHub project and reproduces functionality offered by RequestBin service.
+
+
+## Features
+*   RESTful API to manage and configure baskets, see Request Baskets API documentation in interactive mode
+*   All baskets are protected by unique tokens from unauthorized access; end-points to collect requests do not require authorization though
+* Individually configurable capacity for every basket
+* Pagination support to retrieve collections: basket names, collected requests
+* Configurable responses for every HTTP method
+* Alternative storage types for configured baskets and collected requests:
+    * In-memory - ultra fast, but limited to available RAM and collected data is lost after service restart
+    * Bolt DB - fast persistent storage for collected data based on embedded bbolt database (maintained fork of Bolt), service can be restarted without data loss and storage is not limited by available RAM
+    * SQL database - classical data storage, multiple instances of service can run simultaneously and collect data in shared data storage, which makes the solution more robust and scaleable (PostgreSQL and MySQL are only supported at the moment)
+    * Can be extended by custom implementations of storage interface
+
+## Usage
+Open http://localhost:55555 in your browser. The main page will d

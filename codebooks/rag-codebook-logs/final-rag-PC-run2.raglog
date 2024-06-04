@@ -1,0 +1,639 @@
+2024-04-25 13:15:02,668 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-04-25 13:15:02,669 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-04-25 13:15:58,570 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 1.13) | prompt: I have a hack the box machine called "PC". It is a Linux machine. The target IP is 10.10.11.214 | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 13:18:10,574 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 0.72) | prompt: 1. Nmap scan report for 10.10.11.214
+2. Host is up (0.025s latency)
+3. 999 filtered tcp ports (no-response)
+4. 22/tcp open ssh
+5. OpenSSH 8.2p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0)
+6. ssh-hostkey:
+	- 3072 91:bf:44:ed:ea:1e:32:24:30:1f:53:2c:ea:71:e5:ef (RSA)
+	- 256 84:86:a6:e2:04:ab:df:f7:1d:45:6c:cf:39:58:09:de (ECDSA)
+	- 256 1a:a8:95:72:51:5e:8e:3c:f1:80:f5:42:fd:0a:28:1c (ED25519)
+7. Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+8. Service detection performed
+9. Please report any incorrect results at https://nmap.org/submit/
+10. Nmap done: 1 IP address (1 host up) scanned in 17.49 seconds
+
+Summary:
+- Host 10.10.11.214 is up with 0.025s latency.
+- SSH service is open on port 22, using OpenSSH 8.2p1 Ubuntu 4ubuntu0.7.
+- SSH host key information is provided for RSA, ECDSA, and ED25519.
+- Service detection performed by Nmap.
+- Nmap scan completed in 17.49 seconds.
+
+Interesting points:
+- Open SSH service on port 22.
+- SSH host key information available.
+- Service detection performed. | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 13:20:32,317 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 0.77) | prompt: 1. Nmap scan report for 10.10.11.214
+2. Host is up (0.027s latency)
+3. 65533 filtered tcp ports (no-response)
+4. 22/tcp open ssh
+5. OpenSSH 8.2p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0)
+6. 50051/tcp open unknown
+7. 1 service unrecognized despite returning data.
+8. Service detection performed.
+9. Please report any incorrect results at https://nmap.org/submit/
+10. Nmap done: 1 IP address (1 host up) scanned in 139.35 seconds
+
+Summary:
+- Host 10.10.11.214 is up with 0.027s latency.
+- SSH service is open on port 22, using OpenSSH 8.2p1 Ubuntu 4ubuntu0.7.
+- Unknown service is open on port 50051.
+- Service detection performed by Nmap.
+- Nmap scan completed in 139.35 seconds.
+
+Interesting points:
+- Open SSH service on port 22.
+- Unknown service open on port 50051.
+- Service detection performed.
+- Nmap scan took 139.35 seconds to complete. | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 13:22:56,559 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 0.96) | prompt: 1. nc -nvz 10.10.11.214 50051
+2. (UNKNOWN)
+3. [10.10.11.214]
+4. 50051 (?)
+5. open
+
+Summary:
+- nc -nvz command used to connect to 10.10.11.214 on port 50051.
+- Connection established with status (UNKNOWN).
+- IP address is [10.10.11.214].
+- Port 50051 is open.
+
+Interesting points:
+- Connection established to an unknown service on port 50051.
+- IP address is 10.10.11.214.
+- Port 50051 is open. | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 13:25:59,913 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 1.04) | prompt: The tester provides the following thoughts for your consideration. Please give your comments, and update the tasks if necessary.I have discovered that the service running on port 50051 is gRPC | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Usage:
+	grpcurl [flags] [address] [list|describe] [symbol]
+
+The 'address' is only optional when used with 'list' or 'describe' and a
+protoset or proto flag is provided.
+
+If 'list' is indicated, the symbol (if present) should be a fully-qualified
+service name. If present, all methods of that service are listed. If not
+present, all exposed services are listed, or all services defined in protosets.
+
+If 'describe' is indicated, the descriptor for the given symbol is shown. The
+symbol should be a fully-qualified service, enum, or message name. If no symbol
+is given then the descriptors for all exposed or known services are shown.
+
+If neither verb is present, the symbol must be a fully-qualified method name in
+'service/method' or 'service.method' format. In this case, the request body will
+be used to invoke the named method. If no body is given but one is required
+(i.e. the method is unary or server-streaming), an empty instance of the
+method's request type will be sent.
+
+The address will typically be in the form "host:port" where host can be an IP
+address or a hostname and port is a numeric port or service name. If an IPv6
+address is given, it must be surrounded by brackets, like "[2001:db8::1]". For
+Unix variants, if a -unix=true flag is present, then the address must be the
+path to the domain socket.
+
+## Example
+2024-04-25 13:29:02,313 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.57) | prompt: 1. grpcurl -plaintext 10.10.11.214:50051
+2. list
+3. SimpleApp
+4. grpc.reflection.v1alpha.ServerReflection
+
+Summary:
+- grpcurl command used to connect to 10.10.11.214 on port 50051.
+- List command used to display available services.
+- SimpleApp service is listed.
+- grpc.reflection.v1alpha.ServerReflection service is listed.
+
+Interesting points:
+- Connection established to 10.10.11.214 on port 50051 using grpcurl.
+- SimpleApp and grpc.reflection.v1alpha.ServerReflection services are listed.
+ | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Usage:
+	grpcurl [flags] [address] [list|describe] [symbol]
+
+The 'address' is only optional when used with 'list' or 'describe' and a
+protoset or proto flag is provided.
+
+If 'list' is indicated, the symbol (if present) should be a fully-qualified
+service name. If present, all methods of that service are listed. If not
+present, all exposed services are listed, or all services defined in protosets.
+
+If 'describe' is indicated, the descriptor for the given symbol is shown. The
+symbol should be a fully-qualified service, enum, or message name. If no symbol
+is given then the descriptors for all exposed or known services are shown.
+
+If neither verb is present, the symbol must be a fully-qualified method name in
+'service/method' or 'service.method' format. In this case, the request body will
+be used to invoke the named method. If no body is given but one is required
+(i.e. the method is unary or server-streaming), an empty instance of the
+method's request type will be sent.
+
+The address will typically be in the form "host:port" where host can be an IP
+address or a hostname and port is a numeric port or service name. If an IPv6
+address is given, it must be surrounded by brackets, like "[2001:db8::1]". For
+Unix variants, if a -unix=true flag is present, then the address must be the
+path to the domain socket.
+
+## Example

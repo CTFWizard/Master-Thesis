@@ -1,0 +1,341 @@
+2024-04-25 17:20:12,717 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-04-25 17:20:12,717 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-04-25 17:20:22,123 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 1.06) | prompt: I have a hack the box machine called "sau". This is a Linux machine. The target ip is 10.10.11.224 | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 17:24:46,178 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 1.05) | prompt: 1. Port 22/tcp is open and running OpenSSH 8.2p1 Ubuntu 4ubuntu0.7.
+2. Port 55555/tcp is open, but the service is unrecognized. The tool reports a 400 Bad Request error.
+3. The tool has identified 1 service unrecognized despite returning data.
+4. The operating system is likely Linux, as detected by the tool.
+5. The scan took approximately 100.73 seconds to complete.
+
+Based on the input, there are two open ports of interest: 22/tcp (SSH) and 55555/tcp (unknown service). Further investigation into the unknown service on port 55555/tcp might be necessary. | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 17:45:01,923 - INFO - pentestgpt.utils.rag.Local_RAG - - ports_and_service.md [Chunk 52] (Score: 0.89) | prompt: 1. Port 68/udp is open and potentially running dhcpc (Dynamic Host Configuration Protocol Client).
+2. Port 626/udp is open and potentially running serialnumberd (Serial Number Daemon).
+3. Port 1013/udp is open and potentially running an unknown service.
+4. Ports 16449/udp, 17006/udp, 17468/udp, 18004/udp, 24594/udp, 36458/udp, 40708/udp, 41370/udp, 44253/udp, 49215/udp, 49216/udp, and 49396/udp are open and potentially running unknown services.
+5. The tool has identified 13 open ports with potentially running unknown services.
+6. The scan took approximately 1085.92 seconds to complete.
+
+Based on the input, there are several open ports of interest, most of which are potentially running unknown services. Further investigation into these ports and their associated services might be necessary. | rag-data:  to connect
+13000–13050 		Unofficial 			Second Life, used for server UDP in-bound[395]
+13008 	Unofficial 			Crossfire, a multiplayer online First Person Shooter[citation needed]
+13075 	Yes 				Default[396] for BMC Software Control-M/Enterprise Manager Corba communication, though often changed during installation
+13400 	Yes 			ISO 13400 Road vehicles — Diagnostic communication over Internet Protocol (DoIP)
+13720 	Yes 			Symantec NetBackup—bprd (formerly VERITAS)
+13721 	Yes 			Symantec NetBackup—bpdbm (formerly VERITAS)
+13724 	Yes 			Symantec Network Utility—vnetd (formerly VERITAS)
+13782 	Yes 			Symantec NetBackup—bpcd (formerly VERITAS)
+13783 	Yes 			Symantec VOPIED protocol (formerly VERITAS)
+13785 	Yes 			Symantec NetBackup Database—nbdb (formerly VERITAS)
+13786 	Yes 			Symantec nomdb (formerly VERITAS)
+14550 		Unofficial 			MAVLink Ground Station Port
+14567 		Unofficial 			Battlefield 1942 and mods
+14652 	Unofficial 				Repgen DoxBox reporting tool
+14800 	Unofficial 				Age of Wonders III p2p port[397]
+15000 	Unofficial 				psyBNC
+Unofficial 				Wesnoth
+Unofficial 				Kaspersky Network Agent[398]
+	Unofficial 			Teltonika networks remote management system (RMS)
+15009 	Unofficial 			Teltonika networks remote management system (RMS)
+15010 	Unofficial 			Teltonika networks remote management system (RMS)
+15441 	Unofficial 			ZeroNet fileserver[citation needed]
+15567 		Unofficial 			Battlefield Vietnam and mods
+15345 	Yes 			XPilot Contact
+15672 	Unofficial 	No 			RabbitMQ manag
+2024-04-25 17:46:15,718 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 2] (Score: 0.91) | prompt: The tester provides the following thoughts for your consideration. Please give your comments, and update the tasks if necessary.Based on the nmap scans we have done. Which is the highest open TCP port on the target machine? | rag-data: ' (milliseconds),
+  's' (seconds), 'm' (minutes), or 'h' (hours) to the value (e.g. 30m).
+  -T<0-5>: Set timing template (higher is faster)
+  --min-hostgroup/max-hostgroup <size>: Parallel host scan group sizes
+  --min-parallelism/max-parallelism <numprobes>: Probe parallelization
+  --min-rtt-timeout/max-rtt-timeout/initial-rtt-timeout <time>: Specifies
+      probe round trip time.
+  --max-retries <tries>: Caps number of port scan probe retransmissions.
+  --host-timeout <time>: Give up on target after this long
+  --scan-delay/--max-scan-delay <time>: Adjust delay between probes
+  --min-rate <number>: Send packets no slower than <number> per second
+  --max-rate <number>: Send packets no faster than <number> per second
+## FIREWALL/IDS EVASION AND SPOOFING:
+  -f; --mtu <val>: fragment packets (optionally w/given MTU)
+  -D <decoy1,decoy2[,ME],...>: Cloak a scan with decoys
+  -S <IP_Address>: Spoof source address
+  -e <iface>: Use specified interface
+  -g/--source-port <portnum>: Use given port number
+  --proxies <url1,[url2],...>: Relay connections through HTTP/SOCKS4 proxies
+  --data <hex string>: Append a custom payload to sent packets
+  --data-string <string>: Append a custom ASCII string to sent packets
+  --data-length <num>: Append random data to sent packets
+  --ip-options <options>: Send packets with specified ip options
+  --ttl <val>: Set IP time-to-live field
+  --spoof-mac <mac address/prefix/vendor name>: Spoof your MAC address
+  --badsum: Send packets with a bogus TCP/
+2024-04-25 17:48:03,583 - INFO - pentestgpt.utils.rag.Local_RAG - - ports_and_service.md [Chunk 61] (Score: 1.07) | prompt: The tester provides the following thoughts for your consideration. Please give your comments, and update the tasks if necessary.is not port 55555/tcp open? | rag-data: n –Zippin Store[452]
+42590-42595 	Yes 			Glue – MakePro X[453]
+42999 	Yes 				Curiosity [454]
+43110 	Unofficial 				ZeroNet web UI default port [455]
+43594–43595 	Unofficial 			RuneScape[456]
+44123 	Assigned 	Unofficial 			Z-Wave Secure Tunnel[457]
+44405 	Unofficial 				Mu Online Connect Server[citation needed]
+44818 	Yes 			EtherNet/IP explicit messaging
+47808–47823 	Yes 			BACnet Building Automation and Control Networks (4780810 = BAC016 to 4782310 = BACF16)
+48556 	Yes 			drive.web AC/DC Drive Automation and Control Networks [458]
+48656 	Unofficial 				Brainy LAB[459] Control Server
+48657 		Unofficial 			Brainy LAB[459] Control Server
+49151 	Reserved 			"IANA Reserved"[2]
+Dynamic, private or ephemeral ports
+See also: Ephemeral port
+
+The range 49152–65535 (215 + 214 to 216 − 1), 16 384 ports, contains dynamic or private ports that cannot be registered with IANA.[460] This range is used for private or customized services, for temporary purposes, and for automatic allocation of ephemeral ports.
+Dynamic, private or ephemeral ports
+Port 	TCP 	UDP 	SCTP 	DCCP 	Description
+49152–65535 	Unofficial 	No 			Certificate Management over CMS[461]
+49160 	Unofficial 				Palo Alto Networks' Panorama.[210]
+51820 	No 	Unofficial 			WireGuard protocol[462]
+55555 	No 				Used by mac OS 11 Big Sur and later.[463]
+60000–61000 	No 	Unofficial 			Range from which Mosh – a remote-terminal application similar to SSH – typically assigns ports for ongoing sessions between Mosh servers and Mosh clients.

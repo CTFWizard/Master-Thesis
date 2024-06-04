@@ -1,0 +1,698 @@
+2024-04-25 13:48:05,245 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-04-25 13:48:05,245 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-04-25 13:48:23,519 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 1.13) | prompt: I have a hack the box machine called "PC". It is a Linux machine. The target IP is 10.10.11.214 | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 13:49:08,247 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 0.79) | prompt: 1. The host 10.10.11.214 is up with a latency of 0.027s.
+2. Nmap found 65533 filtered TCP ports (no-response).
+3. Port 22/tcp is open with SSH service version OpenSSH 8.2p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0).
+4. Port 50051/tcp is open with an unknown service.
+5. Service detection was performed, and results can be submitted for verification at https://nmap.org/submit/.
+6. The scan was completed in 139.35 seconds for 1 IP address (1 host up). | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 13:49:44,542 - INFO - pentestgpt.utils.rag.Local_RAG - - privilege_escalation_git.md [Chunk 0] (Score: 1.45) | prompt: The tester has questions and is unclear about the current test. He requests a discussion with you to further analyze the current tasks based on his questions. 
+Please read the following inputs from the tester. Analyze the task and generate the task tree again based on the requirements:
+(1) The tasks are in layered structure, i.e., 1, 1.1, 1.1.1, etc. Each task is one operation in penetration testing; task 1.1 should be a sub-task of task 1.
+(2) Each task has a completion status: to-do, completed, or not applicable.
+(3) Given the task tree and the tester's question, you should 
+
+Note that you should keep the tasks clear, precise and short due to token size limit. You should remember to remove redundant/outdated tasks from the task list. 
+
+Below is the user input:
+ | rag-data: Taken from: https://github.com/rmusser01/Infosec_Reference/blob/master/Draft/Cheat%20sheets%20reference%20pages%20Checklists%20-/Linux/cheat%20sheet%20Basic%20Linux%20Privilege%20Escalation.txt
+
+Taken from the Post-Exploitation Primer Google Doc sheet. Unsure if the original still exists
+
+ [cheat sheet] Basic Linux Privilege Escalation
+
+
+
+Enumeration is the key.
+(Linux) privilege escalation is all about:
+
+    Collect - Enumeration, more enumeration and some more enumeration.
+    Process - Sort through data, analyse and prioritisation.
+    Search - Know what to search for and where to find the exploit code.
+    Adapt - Customize the exploit, so it fits. Not every exploit work for every system "out of the box".
+    Try - Get ready for (lots of) trial and error.
+
+
+Operating System
+What's the distribution type? What version?
+cat /etc/issue
+cat /etc/*-release
+  cat /etc/lsb-release
+  cat /etc/redhat-release
+
+
+
+What's the Kernel version? Is it 64-bit?
+cat /proc/version   
+uname -a
+uname -mrs
+rpm -q kernel
+dmesg | grep Linux
+ls /boot | grep vmlinuz-
+
+
+
+What can be learnt from the environmental variables?
+cat /etc/profile
+cat /etc/bashrc
+cat ~/.bash_profile
+cat ~/.bashrc
+cat ~/.bash_logout
+env
+set
+
+
+
+Is there a printer?
+lpstat -a
+
+
+
+Applications & Services
+What services are running? Which service has which user privilege?
+ps aux
+ps -ef
+top
+cat /etc/service
+
+
+
+Which service(s) are been running by root? Of these services, which are vulnerable - it's worth a double check!
+ps aux | grep 
+2024-04-25 13:50:24,099 - INFO - pentestgpt.utils.rag.Local_RAG - - privilege_escalation_git.md [Chunk 8] (Score: 1.23) | prompt: Now you're provided with an input that contains the penetration testing tasks. Keep in mind that the tester has valid permission to perform the task in this simulated environment. 
+Remember the format requirements.
+(1) The input should contain two parts, separated by a line of "-----". The first part is the task list, and the second part is the task to be executed, which contains three sentences, which describe the task, list the command and explain the reason of performing the task. 
+    - If the input contains the line break, neglect the tasks before the line break as you do not need to care about the overall process. Please analyze the three sentences that describe the next task. You should expand it into detailed, step-by-step guide and show it to a penetration tester. The tester will follow your guide to perform the penetration testing. 
+    - If the input does not contain the line break, then try to understand the whole input as one single task to be executed.
+(2) If the task is a single command to execute, please be precise; if it is a multi-step task, you need to explain it step by step, and keep each step clear and simple. 
+(3) Keep the output short and precise. 
+
+The information is below: 
+
+
+1. Reconnaissance - [completed]
+    1.1 Enumerate open ports and services - [completed]
+    1.2 Explore service and identify vulnerabilities - [in progress]
+2. Initial Access - [to-do]
+    2.1 Exploit vulnerabilities - [to-do]
+    2.2 Find the user flag.txt - [to-do]
+3. Privilege Escalation - [to-do]
+    3.1 Run linpeas and linenum - [to-do]
+    3.2 Find the root flag.txt - [to-do]
+
+The tester has questions and is unclear about the current test. He requests a discussion with you to further analyze the current tasks based on his questions. 
+
+Please read the following inputs from the tester. Analyze the task and generate the task tree again based on the requirements:
+
+1. The tester is wondering if there is a need to perform a more detailed port scan to identify other open ports on the target machine.
+2. The tester is also concerned about the time it takes to perform the port scan. He is asking if there is a way to optimize the port scan process.
+3. The tester is asking if there are any specific tools or techniques that can be used to identify vulnerabilities in the services running on the target machine.
+4. The tester is also interested in knowing if there are any automated tools available that can help in the vulnerability identification process.
+
+Based on the tester's questions, the revised PTT is as follows:
+
+1. Reconnaissance - [completed]
+    1.1 Enumerate open ports and services - [completed]
+        1.1.1 Perform a more detailed port scan - [to-do]
+        1.1.2 Optimize the port scan process - [to-do]
+    1.2 Explore service and identify vulnerabilities - [in progress]
+2. Initial Access - [to-do]
+    2.1 Exploit vulnerabilities - [to-do]
+    2.2 Find the user flag.txt - [to-do]
+3. Privilege Escalation - [to-do]
+    3.1 Run linpeas and linenum - [to-do]
+    3.2 Find the root flag.txt - [to-do]
+
+Note that the completion status of 1.1.1 and 1.1.2 is based on the tester's questions. The completion status of other tasks will be updated as more information becomes available.1. Reconnaissance - [completed]
+    1.1 Enumerate open ports and services - [completed]
+        1.1.1 Perform a more detailed port scan - [to-do]
+        1.1.2 Optimize the port scan process - [to-do]
+    1.2 Explore service and identify vulnerabilities - [in progress]
+2. Initial Access - [to-do]
+    2.1 Exploit vulnerabilities - [to-do]
+    2.2 Find the user flag.txt - [to-do]
+3. Privilege Escalation - [to-do]
+    3.1 Run linpeas and linenum - [to-do]
+    3.2 Find the root flag.txt - [to-do]
+
+Favorable sub-task: 1.1.1 Perform a more detailed port scan
+
+To perform the task:
+
+1. Use a more detailed port scan tool like nmap to scan the target machine for all ports.
+2. Analyze the results to identify any additional open ports or services on the target machine.
+
+Note: The usage of automated scanners such as Nexus, Nessus and OpenVAS is NOT allowed.
+ | rag-data: ides & Links
+Enumeration
+http://www.0daysecurity.com/penetration-testing/enumeration.html
+http://www.microloft.co.uk/hacking/hacking3.htm
+
+Misc
+http://jon.oberheide.org/files/stackjacking-infiltrate11.pdf
+http://pentest.cryptocity.net/files/clientsides/post_exploitation_fall09.pdf
+http://insidetrust.blogspot.com/2011/04/quick-guide-to-linux-privilege.html
+2024-04-25 13:51:33,671 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.82) | prompt: 1. The user discovered that the service running on port 50051 is gRPC.
+2. The user's findings can be useful for further penetration testing and potentially exploiting vulnerabilities in the gRPC service. | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Usage:
+	grpcurl [flags] [address] [list|describe] [symbol]
+
+The 'address' is only optional when used with 'list' or 'describe' and a
+protoset or proto flag is provided.
+
+If 'list' is indicated, the symbol (if present) should be a fully-qualified
+service name. If present, all methods of that service are listed. If not
+present, all exposed services are listed, or all services defined in protosets.
+
+If 'describe' is indicated, the descriptor for the given symbol is shown. The
+symbol should be a fully-qualified service, enum, or message name. If no symbol
+is given then the descriptors for all exposed or known services are shown.
+
+If neither verb is present, the symbol must be a fully-qualified method name in
+'service/method' or 'service.method' format. In this case, the request body will
+be used to invoke the named method. If no body is given but one is required
+(i.e. the method is unary or server-streaming), an empty instance of the
+method's request type will be sent.
+
+The address will typically be in the form "host:port" where host can be an IP
+address or a hostname and port is a numeric port or service name. If an IPv6
+address is given, it must be surrounded by brackets, like "[2001:db8::1]". For
+Unix variants, if a -unix=true flag is present, then the address must be the
+path to the domain socket.
+
+## Example
+2024-04-25 13:54:08,047 - INFO - pentestgpt.utils.rag.Local_RAG - - privilege_escalation_git.md [Chunk 0] (Score: 1.11) | prompt: 1. The user could not find any suitable exploits online for the discovered services.
+2. The user's findings may not be immediately actionable, but they could serve as a starting point for further research or potential custom exploit development. | rag-data: Taken from: https://github.com/rmusser01/Infosec_Reference/blob/master/Draft/Cheat%20sheets%20reference%20pages%20Checklists%20-/Linux/cheat%20sheet%20Basic%20Linux%20Privilege%20Escalation.txt
+
+Taken from the Post-Exploitation Primer Google Doc sheet. Unsure if the original still exists
+
+ [cheat sheet] Basic Linux Privilege Escalation
+
+
+
+Enumeration is the key.
+(Linux) privilege escalation is all about:
+
+    Collect - Enumeration, more enumeration and some more enumeration.
+    Process - Sort through data, analyse and prioritisation.
+    Search - Know what to search for and where to find the exploit code.
+    Adapt - Customize the exploit, so it fits. Not every exploit work for every system "out of the box".
+    Try - Get ready for (lots of) trial and error.
+
+
+Operating System
+What's the distribution type? What version?
+cat /etc/issue
+cat /etc/*-release
+  cat /etc/lsb-release
+  cat /etc/redhat-release
+
+
+
+What's the Kernel version? Is it 64-bit?
+cat /proc/version   
+uname -a
+uname -mrs
+rpm -q kernel
+dmesg | grep Linux
+ls /boot | grep vmlinuz-
+
+
+
+What can be learnt from the environmental variables?
+cat /etc/profile
+cat /etc/bashrc
+cat ~/.bash_profile
+cat ~/.bashrc
+cat ~/.bash_logout
+env
+set
+
+
+
+Is there a printer?
+lpstat -a
+
+
+
+Applications & Services
+What services are running? Which service has which user privilege?
+ps aux
+ps -ef
+top
+cat /etc/service
+
+
+
+Which service(s) are been running by root? Of these services, which are vulnerable - it's worth a double check!
+ps aux | grep 
+2024-04-25 13:56:38,009 - INFO - pentestgpt.utils.rag.Local_RAG - - privilege_escalation_git.md [Chunk 8] (Score: 1.40) | prompt: The tester provides the following thoughts for your consideration. Please give your comments, and update the tasks if necessary.Maybe we should interact with it first? | rag-data: ides & Links
+Enumeration
+http://www.0daysecurity.com/penetration-testing/enumeration.html
+http://www.microloft.co.uk/hacking/hacking3.htm
+
+Misc
+http://jon.oberheide.org/files/stackjacking-infiltrate11.pdf
+http://pentest.cryptocity.net/files/clientsides/post_exploitation_fall09.pdf
+http://insidetrust.blogspot.com/2011/04/quick-guide-to-linux-privilege.html
+2024-04-25 13:59:42,938 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.64) | prompt: 1. The user executed a grpc command to list services on the target host (10.10.11.214) on port 50051.
+2. The output of the command indicates that the service SimpleApp is available on the target host.
+3. The user's findings can be useful for further penetration testing and potentially exploiting vulnerabilities in the SimpleApp service.
+4. The user may need to explore the SimpleApp service further to identify potential weaknesses or vulnerabilities. | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Usage:
+	grpcurl [flags] [address] [list|describe] [symbol]
+
+The 'address' is only optional when used with 'list' or 'describe' and a
+protoset or proto flag is provided.
+
+If 'list' is indicated, the symbol (if present) should be a fully-qualified
+service name. If present, all methods of that service are listed. If not
+present, all exposed services are listed, or all services defined in protosets.
+
+If 'describe' is indicated, the descriptor for the given symbol is shown. The
+symbol should be a fully-qualified service, enum, or message name. If no symbol
+is given then the descriptors for all exposed or known services are shown.
+
+If neither verb is present, the symbol must be a fully-qualified method name in
+'service/method' or 'service.method' format. In this case, the request body will
+be used to invoke the named method. If no body is given but one is required
+(i.e. the method is unary or server-streaming), an empty instance of the
+method's request type will be sent.
+
+The address will typically be in the form "host:port" where host can be an IP
+address or a hostname and port is a numeric port or service name. If an IPv6
+address is given, it must be surrounded by brackets, like "[2001:db8::1]". For
+Unix variants, if a -unix=true flag is present, then the address must be the
+path to the domain socket.
+
+## Example
+2024-04-25 14:02:34,792 - INFO - pentestgpt.utils.rag.Local_RAG - - privilege_escalation_git.md [Chunk 0] (Score: 1.45) | prompt: The tester has questions and is unclear about the current test. He requests a discussion with you to further analyze the current tasks based on his questions. 
+Please read the following inputs from the tester. Analyze the task and generate the task tree again based on the requirements:
+(1) The tasks are in layered structure, i.e., 1, 1.1, 1.1.1, etc. Each task is one operation in penetration testing; task 1.1 should be a sub-task of task 1.
+(2) Each task has a completion status: to-do, completed, or not applicable.
+(3) Given the task tree and the tester's question, you should 
+
+Note that you should keep the tasks clear, precise and short due to token size limit. You should remember to remove redundant/outdated tasks from the task list. 
+
+Below is the user input:
+ | rag-data: Taken from: https://github.com/rmusser01/Infosec_Reference/blob/master/Draft/Cheat%20sheets%20reference%20pages%20Checklists%20-/Linux/cheat%20sheet%20Basic%20Linux%20Privilege%20Escalation.txt
+
+Taken from the Post-Exploitation Primer Google Doc sheet. Unsure if the original still exists
+
+ [cheat sheet] Basic Linux Privilege Escalation
+
+
+
+Enumeration is the key.
+(Linux) privilege escalation is all about:
+
+    Collect - Enumeration, more enumeration and some more enumeration.
+    Process - Sort through data, analyse and prioritisation.
+    Search - Know what to search for and where to find the exploit code.
+    Adapt - Customize the exploit, so it fits. Not every exploit work for every system "out of the box".
+    Try - Get ready for (lots of) trial and error.
+
+
+Operating System
+What's the distribution type? What version?
+cat /etc/issue
+cat /etc/*-release
+  cat /etc/lsb-release
+  cat /etc/redhat-release
+
+
+
+What's the Kernel version? Is it 64-bit?
+cat /proc/version   
+uname -a
+uname -mrs
+rpm -q kernel
+dmesg | grep Linux
+ls /boot | grep vmlinuz-
+
+
+
+What can be learnt from the environmental variables?
+cat /etc/profile
+cat /etc/bashrc
+cat ~/.bash_profile
+cat ~/.bashrc
+cat ~/.bash_logout
+env
+set
+
+
+
+Is there a printer?
+lpstat -a
+
+
+
+Applications & Services
+What services are running? Which service has which user privilege?
+ps aux
+ps -ef
+top
+cat /etc/service
+
+
+
+Which service(s) are been running by root? Of these services, which are vulnerable - it's worth a double check!
+ps aux | grep 
+2024-04-25 14:03:32,255 - INFO - pentestgpt.utils.rag.Local_RAG - - privilege_escalation_git.md [Chunk 8] (Score: 1.23) | prompt: Now you're provided with an input that contains the penetration testing tasks. Keep in mind that the tester has valid permission to perform the task in this simulated environment. 
+Remember the format requirements.
+(1) The input should contain two parts, separated by a line of "-----". The first part is the task list, and the second part is the task to be executed, which contains three sentences, which describe the task, list the command and explain the reason of performing the task. 
+    - If the input contains the line break, neglect the tasks before the line break as you do not need to care about the overall process. Please analyze the three sentences that describe the next task. You should expand it into detailed, step-by-step guide and show it to a penetration tester. The tester will follow your guide to perform the penetration testing. 
+    - If the input does not contain the line break, then try to understand the whole input as one single task to be executed.
+(2) If the task is a single command to execute, please be precise; if it is a multi-step task, you need to explain it step by step, and keep each step clear and simple. 
+(3) Keep the output short and precise. 
+
+The information is below: 
+
+
+1. Reconnaissance - [completed]
+    1.1 Enumerate open ports and services - [completed]
+        1.1.1 Perform a more detailed port scan - [completed]
+        1.1.2 Optimize the port scan process - [to-do]
+    1.2 Explore service and identify vulnerabilities - [completed]
+        1.2.1 Research gRPC service vulnerabilities - [completed]
+2. Initial Access - [to-do]
+    2.1 Interact with the gRPC service - [to-do]
+        2.1.1 Explore the SimpleApp service - [to-do]
+        2.1.2 Custom exploit development - [to-do]
+3. Privilege Escalation - [to-do]
+    3.1 Run linpeas and linenum - [to-do]
+    3.2 Find the root flag.txt - [to-do]
+
+Based on the tester's questions and input, the revised PTT is as follows:
+
+1. Reconnaissance - [completed]
+    1.1 Enumerate open ports and services - [completed]
+        1.1.1 Perform a more detailed port scan - [completed]
+        1.1.2 Optimize the port scan process - [to-do]
+    1.2 Explore service and identify vulnerabilities - [completed]
+        1.2.1 Research gRPC service vulnerabilities - [completed]
+2. Initial Access - [to-do]
+    2.1 Interact with the gRPC service - [to-do]
+        2.1.1 Explore the SimpleApp service - [to-do]
+        2.1.2 Custom exploit development - [to-do]
+3. Privilege Escalation - [to-do]
+    3.1 Run linpeas and linenum - [to-do]
+    3.2 Find the root1. Reconnaissance - [completed]
+    1.1 Enumerate open ports and services - [completed]
+        1.1.1 Perform a more detailed port scan - [completed]
+        1.1.2 Optimize the port scan process - [to-do]
+    1.2 Explore service and identify vulnerabilities - [completed]
+        1.2.1 Research gRPC service vulnerabilities - [completed]
+2. Initial Access - [to-do]
+    2.1 Interact with the gRPC service - [to-do]
+        2.1.1 Explore the SimpleApp service - [to-do]
+        2.1.2 Custom exploit development - [to-do]
+3. Privilege Escalation - [to-do]
+    3.1 Run linpeas and linenum - [to-do]
+    3.2 Find the root flag.txt - [to-do]
+
+Favorable sub-task: 2.1.1 Explore the SimpleApp service
+
+To perform the task:
+
+1. Use a tool like grpcurl to interact with the SimpleApp service running on the target machine.
+2. Experiment with different commands and parameters to understand the functionality of the service and identify any potential vulnerabilities.
+
+Note: The usage of automated scanners such as Nexus, Nessus and OpenVAS is NOT allowed.
+
+
+
+
+
+
+
+
+
+
+
+
+ | rag-data: ides & Links
+Enumeration
+http://www.0daysecurity.com/penetration-testing/enumeration.html
+http://www.microloft.co.uk/hacking/hacking3.htm
+
+Misc
+http://jon.oberheide.org/files/stackjacking-infiltrate11.pdf
+http://pentest.cryptocity.net/files/clientsides/post_exploitation_fall09.pdf
+http://insidetrust.blogspot.com/2011/04/quick-guide-to-linux-privilege.html

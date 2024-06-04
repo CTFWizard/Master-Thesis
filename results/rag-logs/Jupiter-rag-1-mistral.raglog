@@ -1,0 +1,659 @@
+2024-05-07 10:29:22,792 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-05-07 10:29:22,792 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-05-07 10:30:21,306 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.17) | prompt: I have a Linux hack the box machine. The target IP is 10.10.11.216 | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 10:31:41,394 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.06) | prompt:  1. Host: kiosk.jupiter.htb (10.10.11.216)
+2. Ports:
+   - 22/tcp: open, ssh, OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+   - 80/tcp: open, http, nginx 1.18.0 (Ubuntu)
+3. Service detection: Linux, CPE: cpe:/o:linux:linux_kernel
+ | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 10:32:30,457 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.87) | prompt:  1. Reconnaissance - (complete)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (complete)
+    1.3 Identify Open Ports - (complete)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (complete)
+  2. Initial Access - (to-do)
+    2.1 Investigate the service - (to-do)
+  3. Privilege Escalation - (to-do)
+    3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+    3.2 Scan for files that current user runs as root - (to-do)
+
+
+1. Host: kiosk.jupiter.htb (10.10.11.216)
+2. Ports:
+   - 22/tcp: open, ssh, OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+   - 80/tcp: open, http, nginx 1.18.0 (Ubuntu)
+3. Service detection: Linux, CPE: cpe:/o:linux:linux_kernel
+
+ Possible todo tasks:
+1. Investigate the service
+2. Look for ports on the local network 127.0.0.1
+3. Scan for files that current user runs as root
+
+Favorable sub-task: Investigate the service
+
+Performing the task:
+1. Use tools such as Netcat (nc) or Telnet to connect to the open ports (22 and 80)
+2. Analyze the responses and gather information about the services running on these ports
+
+ | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 10:32:55,488 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-07 10:33:50,248 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 0.93) | prompt: Continue to the previous request to dig into the problem, the penetration tester does not know how to proceed. Below is his description on the task. Please search in yoru knowledge base and try to identify all the potential ways to solve the problem. 
+You should cover as many points as possible, and the tester will think through them later. Below is his description on the task. 
+
+How can i go about investigating the http service on port 80? | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://exampple.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 10:38:29,171 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 1.05) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+It redirected me to jupiter.htb, which i added to my /etc/hosts file. The web page seems to be static and there is nothing of interest here. What can i do now to further explore the web application? | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://exampple.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 10:41:20,279 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 1] (Score: 1.31) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+I have discovered a subdomain at: kiosk.jupiter.htb. It is a grafana instance, what should i do now? | rag-data: ain.com -r
+```
+
+#### DNSRecon DNS Brute Force
+
+```bash
+dnsrecon -d TARGET -D /usr/share/wordlists/dnsmap.txt -t std --xml ouput.xml
+```
+
+#### Fierce.pl
+
+```
+fierce -dns targetdomain.com
+```
+
+#### HostMap
+
+```
+hostmap.rb -only-passive -t <IP>
+```
+
+We can use -with-zonetransfer or -bruteforce-level
+
+##
+
+## SPF Recon
+
+### Dig SPF txt
+
+```bash
+dig txt target.com
+```
+
+#### Dmarc
+
+```bash
+dig TXT _dmarc.example.org
+```
+
+#### Online Tools
+
+- https://dnsdumpster.com/
+- https://network-tools.com/nslook/
+- https://www.dnsqueries.com/en/
+- https://mxtoolbox.com/
+
+##
+
+## Nmap
+
+Set the ip address as a varible
+
+`export ip=192.168.1.100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+#
+2024-05-07 10:49:46,770 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 1.33) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+The dashboard does multiple post requests to kiosk.jupiter.htb/api/ds/query:
+POST /api/ds/query HTTP/1.1
+Host: kiosk.jupiter.htb
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101 Firefox/102.0
+Accept: application/json, text/plain, */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://kiosk.jupiter.htb/d/jMgFGfA4z/moons?orgId=1&refresh=1d
+content-type: application/json
+x-dashboard-uid: jMgFGfA4z
+x-datasource-uid: YItSLg-Vz
+x-grafana-org-id: 1
+x-panel-id: 28
+x-plugin-id: postgres
+Origin: http://kiosk.jupiter.htb
+Content-Length: 484
+DNT: 1
+Connection: keep-alive
+Sec-GPC: 1 | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50
+2024-05-07 10:53:36,922 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 7] (Score: 1.23) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+ sqlmap -u http://kiosk.jupiter.htb/api/ds/query
+        ___
+       __H__
+ ___ ___[']_____ ___ ___  {1.6.12#stable}
+|_ -| . [.]     | .'| . |
+|___|_  [']_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 11:51:15 /2024-05-07/
+
+[11:51:15] [WARNING] you've provided target URL without any GET parameters (e.g. 'http://www.site.com/article.php?id=1') and without providing any POST parameters through option '--data'
+do you want to try URI injections in the target URL itself? [Y/n/q] 
+[11:51:16] [INFO] testing connection to the target URL
+[11:51:16] [CRITICAL] page not found (404)
+it is not recommended to continue in this kind of cases. Do you want to quit and make sure that everything is set up properly? [Y/n] 
+[11:51:17] [WARNING] HTTP error codes detected during run:
+404 (Not Found) - 1 times
+[11:51:17] [WARNING] your sqlmap version is outdated
+
+[*] ending @ 11:51:17 /2024-05-07/
+
+
+Can you add some post parameter to the sqlmap command? | rag-data: /?id=1 -D database_name -T table_name --columns
+```
+
+#### Dump all
+
+```bash
+./sqlmap.py -u http://localhost/Less-1/?id=1 -D database_name -T table_name --dump-all
+```
+
+#### Set Cookie
+
+```bash
+./sqlmap.py -u http://target/ovidentia/index.php\?tg\=delegat\&idx\=mem\&id\=1 --cookie "Cookie: OV1364928461=6kb5jvu7f6lg93qlo3vl9111f8" --random-agent --risk 3 --level 5 --dbms=mysql -p id --dbs
+```
+
+#### Checking Privileges
+
+```bash
+./sqlmap.py -u http://localhost/Less-1/?id=1 --privileges | grep FILE
+```
+
+#### Reading file
+
+```bash
+./sqlmap.py -u <URL> --file-read=<file to read>
+```
+
+```bash
+./sqlmap.py -u http://localhost/Less-1/?id=1 --file-read=/etc/passwd
+```
+
+#### Writing file
+
+```
+./sqlmap.py -u <url> --file-write=<file> --file-dest=<path>
+```
+
+```
+./sqlmap.py -u http://localhost/Less-1/?id=1 --file-write=shell.php --file-dest=/var/www/html/shell-php.php
+```
+
+#### POST
+
+```bash
+./sqlmap.py -u <POST-URL> --data="<POST-paramters> "
+```
+
+```bash
+./sqlmap.py -u http://localhost/Less-11/ --data "uname=teste&passwd=&submit=Submit" -p uname
+```
+
+You can also use a file like with the post request:
+
+```bash
+./sqlmap.py -r post-request.txt -p uname
+```
+
+### Bare Hands
+
+#### GET
+
+#### Error-Based
+
+#### Simple test
+
+`Adding a simpe quote '`
+
+Example:
+
+```
+http://192.168.1.104/Less-1/?id=5'
+```
+
+#### Fuzzing
+
+Sorting columns to find maximum column
+
+`http://192.168.1.104/Less-1/?id=-1 order by 1`
+
+`http://192.168.1.104/Less-1/?id=-1 order by 2`
+
+`http://192.168.1.104/Less-1/?id=-1 order by 
+2024-05-07 10:56:10,900 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 1.26) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+Here is a legitimate post request:
+
+POST /api/ds/query HTTP/1.1
+Host: kiosk.jupiter.htb
+Content-Length: 484
+x-plugin-id: postgres
+x-grafana-org-id: 1
+x-panel-id: 24
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.5249.62 Safari/537.36
+content-type: application/json
+accept: application/json, text/plain, */*
+x-dashboard-uid: jMgFGfA4z
+x-datasource-uid: YItSLg-Vz
+Origin: http://kiosk.jupiter.htb
+Referer: http://kiosk.jupiter.htb/d/jMgFGfA4z/moons?orgId=1&refresh=1d
+Accept-Encoding: gzip, deflate
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Connection: close
+
+{"queries":[{"refId":"A","datasource":{"type":"postgres","uid":"YItSLg-Vz"},"rawSql":"select \n  name as \"Name\", \n  parent as \"Parent Planet\", \n  meaning as \"Name Meaning\" \nfrom \n  moons \nwhere \n  parent = 'Saturn' \norder by \n  name desc;","format":"table","datasourceId":1,"intervalMs":60000,"maxDataPoints":453}],"range":{"from":"2024-05-07T04:55:31.619Z","to":"2024-05-07T10:55:31.619Z","raw":{"from":"now-6h","to":"now"}},"from":"1715057731619","to":"1715079331619"} | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50

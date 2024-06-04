@@ -1,0 +1,49 @@
+2024-04-25 10:10:25,257 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-04-25 10:10:25,257 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-04-25 10:11:09,060 - INFO - pentestgpt.utils.rag.Local_RAG - - privilege_escalation_git.md [Chunk 8] (Score: 0.97) | prompt: The penetration testing task is a linux machine hosted at the IP address 10.129.81.246 | rag-data: ides & Links
+Enumeration
+http://www.0daysecurity.com/penetration-testing/enumeration.html
+http://www.microloft.co.uk/hacking/hacking3.htm
+
+Misc
+http://jon.oberheide.org/files/stackjacking-infiltrate11.pdf
+http://pentest.cryptocity.net/files/clientsides/post_exploitation_fall09.pdf
+http://insidetrust.blogspot.com/2011/04/quick-guide-to-linux-privilege.html
+2024-04-25 10:12:47,046 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.74) | prompt: 1. Nmap version: 7.94SVN
+2. Host: Down or blocking ping probes
+3. Suggestion: Use -Pn option to bypass ping probes
+4. Number of IP addresses scanned: 1
+5. Time taken for scanning: 3.05 seconds | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+## Usage: nmap [Scan Type(s)] [Options] {target specification}
+## TARGET SPECIFICATION:
+  Can pass hostnames, IP addresses, networks, etc.
+  Ex: scanme.nmap.org, microsoft.com/24, 192.168.0.1; 10.0.0-255.1-254
+  -iL <inputfilename>: Input from list of hosts/networks
+  -iR <num hosts>: Choose random targets
+  --exclude <host1[,host2][,host3],...>: Exclude hosts/networks
+  --excludefile <exclude_file>: Exclude list from file
+## HOST DISCOVERY:
+  -sL: List Scan - simply list targets to scan
+  -sn: Ping Scan - disable port scan
+  -Pn: Treat all hosts as online -- skip host discovery
+  -PS/PA/PU/PY[portlist]: TCP SYN/ACK, UDP or SCTP discovery to given ports
+  -PE/PP/PM: ICMP echo, timestamp, and netmask request discovery probes
+  -PO[protocol list]: IP Protocol Ping
+  -n/-R: Never do DNS resolution/Always resolve [default: sometimes]
+  --dns-servers <serv1[,serv2],...>: Specify custom DNS servers
+  --system-dns: Use OS's DNS resolver
+  --traceroute: Trace hop path to each host
+## SCAN TECHNIQUES:
+  -sS/sT/sA/sW/sM: TCP SYN/Connect()/ACK/Window/Maimon scans
+  -sU: UDP Scan
+  -sN/sF/sX: TCP Null, FIN, and Xmas scans
+  --scanflags <flags>: Customize TCP scan flags
+  -sI <zombie host[:probeport]>: Idle scan
+  -sY/sZ: SCTP INIT/COOKIE-ECHO scans
+  -sO: IP protocol scan
+  -b <FTP relay host>: FTP bounce scan
+## PORT SPECIFICATION AND SCAN ORDER:
+  -p <port ranges>: Only scan specified ports
+    

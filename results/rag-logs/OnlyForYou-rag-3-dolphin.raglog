@@ -1,0 +1,1089 @@
+2024-05-07 15:51:36,554 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-05-07 15:51:36,554 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-05-07 15:52:32,904 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 1.17) | prompt: I have a Linux hack the box machine. The target IP is 10.129.207.88 | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 15:55:08,945 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.87) | prompt: 1. Nmap scan for 10.129.207.88
+2. Host is up with 0.064s latency
+3. 65533 closed TCP ports (conn-refused)
+4. Port 22 is open, running OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+5. Port 80 is open, running nginx 1.18.0 (Ubuntu)
+6. Service detection performed
+7. OS: Linux, CPE: cpe:/o:linux:linux_kernel
+8. Nmap scan completed in 105.82 seconds | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 16:13:59,719 - INFO - pentestgpt.utils.rag.Local_RAG - - http.md [Chunk 0] (Score: 0.89) | prompt: The tester provides the following thoughts for your consideration. Please give your comments, and update the tasks if necessary.Accessing the host on port 80 leads to a static web page with the url http://only4you.htb
+What are common methods for gathering intelligence about static web pages? | rag-data: # HTTP
+
+
+## Service validation
+Tell user to use browser manually to check ports responding with HTTP, nginx, apache, lighttp, IIS, django
+
+## Redirect
+If attempting to access the host through a web browser causes a redirect, it might be required to add the host to /etc/hosts
+sudo echo "<IP address> <hostname>" >> /etc/hosts
+
+## Port 80
+Port 80 is reserved for web services with HTTP
+Port 8080 is commonly used as an alternative to port 80
+
+## Port 443
+Port 443 is reserved for HTTPS
+Port 8443 is commonly used as an alternative port
+
+## Fuzzing
+URL fuzzing:
+UI Tool: OWASP DirBuster - give target url (eg http://<hostname>:<port>/), provide a wordlist (eg megabeast.txt, subdomains-top1million-110000.txt)
+
+Fuzzing for sub-directories
+gobuster dir -u <url> -w <wordlist>
+gobuster dir -u <http://example.com> -w /usr/share/wordlists/dirb/common.txt
+
+Fuzzing for sub-domains
+gobuster dns -d <domain> -w <wordlist>
+gobuster dns -d exampledomain.com -w /usr/share/wordlists/subdomains-top1million-110000.txt
+
+## Intercept network traffic
+Burpsuite CE can be used for manual vulnerability scanning for HTTP connections by intercepting the network traffic between the host and a client browser.
+2024-05-07 16:22:13,210 - INFO - pentestgpt.utils.rag.Local_RAG - - nmap.md [Chunk 0] (Score: 0.75) | prompt: 1. Reconnaissance - (completed)
+  1.1 Passive Information Gathering - (completed)
+  1.2 Port Scan - (completed)
+    1.3 Identify Open Ports - (completed)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (to-do)
+2. Initial Access - (to-do)
+  2.1 Investigate the service - (to-do)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+1. Nmap scan for 10.129.207.88 - (completed)
+2. Host is up with 0.064s latency - (completed)
+3. 65533 closed TCP ports (conn-refused) - (completed)
+4. Port 22 is open, running OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0) - (completed)
+5. Port 80 is open, running nginx 1.18.0 (Ubuntu) - (completed)
+6. Service detection performed - (completed)
+7. OS: Linux, CPE: cpe:/o:linux:linux_kernel - (completed)
+8. Nmap scan completed in 105.82 seconds - (completed)
+
+1. Aggressive Scan (OS detection, version detection, script scanning, and traceroute) - (to-do)
+2. OS Detection - (to-do)
+3. Skip Host Discovery - (to-do)
+4. TCP SYN Scan - (to-do)
+5. TCP Connect Scan - (to-do)
+6. UDP Scan - (to-do)
+7. TCP NULL Scan - (to-do)
+8. TCP FIN Scan - (to-do)
+9. TCP XMAS Scan - (to-do)
+10. TCP ACK Scan - (to-do)
+11. TCP Window Scan - (to-do)
+12. TCP Maimon Scan - (to-do)
+13. TCP Null Scan - (to-do)
+14. TCP FIN Scan - (to-do)
+15. TCP XMAS Scan - (to-do)
+16. TCP ACK Scan - (to-do)
+17. TCP Maimon Scan - (to-do)
+18. TCP Null Scan - (to-do)
+19. TCP FIN Scan - (to-do)
+20. TCP XMAS Scan - (to-do)
+21. TCP ACK Scan - (to-do)
+22. TCP Maimon Scan - (to-do)
+23. TCP Null Scan - (to-do)
+24. TCP FIN Scan - (to-do)
+25. TCP XMAS Scan - (to-do)
+26. TCP ACK Scan - (to-do)
+27. TCP Maimon Scan - (to-do)
+28. TCP Null Scan - (to-do)
+29. TCP FIN Scan - (to-do)
+30. TCP XMAS Scan - (to-do)
+31. TCP ACK Scan - (to-do)
+32. TCP Maimon Scan - (to-do)
+33. TCP Null Scan - (to-do)
+34. TCP FIN Scan - (to-do)
+35. TCP XMAS Scan - (to-do)
+36. TCP ACK Scan - (to-do)
+37. TCP Maimon Scan - (to-do)
+38. TCP Null Scan - (to-do)
+39. TCP FIN Scan - (to-do)
+40. TCP XMAS Scan - (to-do)
+41. TCP ACK Scan - (to-do)
+42. TCP Maimon Scan - (to-do)
+43. TCP Null Scan - (to-do)
+44. TCP FIN Scan - (to-do)
+45. TCP XMAS Scan - (to-do)
+46. TCP ACK Scan - (to-do)
+47. TCP Maimon Scan - (to-do)
+48. TCP Null Scan - (to-do)
+49. TCP FIN Scan - (to-do)
+50. TCP XMAS Scan - (to-do)
+51. TCP ACK Scan - (to-do)
+52. TCP Maimon Scan - (to-do)
+53. TCP Null Scan - (to-do)
+54. TCP FIN Scan - (to-do)
+55. TCP XMAS Scan - (to-do)
+56. TCP ACK Scan - (to-do)
+57. TCP Maimon Scan - (to-do)
+58. TCP Null Scan - (to-do)
+59. TCP FIN Scan - (to-do)
+60. TCP XMAS Scan - (to-do)
+61. TCP ACK Scan - (to-do)
+62. TCP Maimon Scan - (to-do)
+63. TCP Null Scan - (to-do)
+64. TCP FIN Scan - (to-do)
+65. TCP XMAS Scan - (to-do)
+66. TCP ACK Scan - (to-do)
+67. TCP Maimon Scan - (to-do)
+68. TCP Null Scan - (to-do)
+69. TCP FIN Scan - (to-do)
+70. TCP XMAS Scan - (to-do)
+71. TCP ACK Scan - (to-do)
+72. TCP Maimon Scan - (to-do)
+73. TCP Null Scan - (to-do)
+74. TCP FIN Scan - (to-do)
+75. TCP XMAS Scan - (to-do)
+76. TCP ACK Scan - (to-do)
+77. TCP Maimon Scan - (to-do)
+78. TCP Null Scan - (to-do)
+79. TCP FIN Scan - (to-do)
+80. TCP XMAS Scan - (to-do)
+81. TCP ACK Scan - (to-do)
+82. TCP Maimon Scan - (to-do)
+83. TCP Null Scan - (to-do)
+84. TCP FIN Scan - (to-do)
+85. TCP XMAS Scan - (to-do)
+86. TCP ACK Scan - (to-do)
+87. TCP Maimon Scan - (to-do)
+88. TCP Null Scan - (to-do)
+89. TCP FIN Scan - (to-do)
+90. TCP XMAS Scan - (to-do)
+91. TCP ACK Scan - (to-do)
+92. TCP Maimon Scan - (to-do)
+93. TCP Null Scan - (to-do)
+94. TCP FIN Scan - (to-do)
+95. TCP XMAS Scan - (to-do)
+96. TCP ACK Scan - (to-do)
+97. TCP Maimon Scan - (to-do)
+98. TCP Null Scan - (to-do)
+99. TCP FIN Scan - (to-do)
+100. TCP XMAS Scan - (to-do)
+101. TCP ACK Scan - (to-do)
+102. TCP Maimon Scan - (to-do)
+103. TCP Null Scan - (to-do)
+104. TCP FIN Scan - (to-do)
+105. TCP XMAS Scan - (to-do)
+106. TCP ACK Scan - (to-do)
+107. TCP Maimon Scan - (to-do)
+108. TCP Null Scan - (to-do)
+109. TCP FIN Scan - (to-do)
+1. Aggressive Scan (OS detection, version detection, script scanning, and traceroute)
+2. OS Detection
+3. Skip Host Discovery
+4. TCP SYN Scan
+5. TCP Connect Scan
+6. UDP Scan
+7. TCP NULL Scan
+8. TCP FIN Scan
+9. TCP XMAS Scan
+10. TCP ACK Scan
+11. TCP Maimon Scan
+12. TCP Null Scan
+13. TCP FIN Scan
+14. TCP XMAS Scan
+15. TCP ACK Scan
+16. TCP Maimon Scan
+17. TCP Null Scan
+18. TCP FIN Scan
+19. TCP XMAS Scan
+20. TCP ACK Scan
+21. TCP Maimon Scan
+22. TCP Null Scan
+23. TCP FIN Scan
+24. TCP XMAS Scan
+25. TCP ACK Scan
+26. TCP Maimon Scan
+27. TCP Null Scan
+28. TCP FIN Scan
+29. TCP XMAS Scan
+30. TCP ACK Scan
+31. TCP Maimon Scan
+32. TCP Null Scan
+33. TCP FIN Scan
+34. TCP XMAS Scan
+35. TCP ACK Scan
+36. TCP Maimon Scan
+37. TCP Null Scan
+38. TCP FIN Scan
+39. TCP XMAS Scan
+40. TCP ACK Scan
+41. TCP Maimon Scan
+42. TCP Null Scan
+43. TCP FIN Scan
+44. TCP XMAS Scan
+45. TCP ACK Scan
+46. TCP Maimon Scan
+47. TCP Null Scan
+48. TCP FIN Scan
+49. TCP XMAS Scan
+50. TCP ACK Scan
+51. TCP Maimon Scan
+52. TCP Null Scan
+53. TCP FIN Scan
+54. TCP XMAS Scan
+55. TCP ACK Scan
+56. TCP Maimon Scan
+57. TCP Null Scan
+58. TCP FIN Scan
+59. TCP XMAS Scan
+60. TCP ACK Scan
+61. TCP Maimon Scan
+62. TCP Null Scan
+63. TCP FIN Scan
+64. TCP XMAS Scan
+65. TCP ACK Scan
+66. TCP Maimon Scan
+67. TCP Null Scan
+68. TCP FIN Scan
+69. TCP XMAS Scan
+70. TCP ACK Scan
+71. TCP Maimon Scan
+72. TCP Null Scan
+73. TCP FIN Scan
+74. TCP XMAS Scan
+75. TCP ACK Scan
+76. TCP Maimon Scan
+77. TCP Null Scan
+78. TCP FIN Scan
+79. TCP XMAS Scan
+80. TCP ACK Scan
+81. TCP Maimon Scan
+82. TCP Null Scan
+83. TCP FIN Scan
+84. TCP XMAS Scan
+85. TCP ACK Scan
+86. TCP Maimon Scan
+87. TCP Null Scan
+88. TCP FIN Scan
+89. TCP XMAS Scan
+90. TCP ACK Scan
+91. TCP Maimon Scan
+92. TCP Null Scan
+93. TCP FIN Scan
+94. TCP XMAS Scan
+95. TCP ACK Scan
+96. TCP Maimon Scan
+97. TCP Null Scan
+98. TCP FIN Scan
+99. TCP XMAS Scan
+100. TCP ACK Scan
+101. TCP Maimon Scan
+102. TCP Null Scan
+103. TCP FIN Scan
+104. TCP XMAS Scan
+105. TCP ACK Scan
+106. TCP Maimon Scan
+107. TCP Null Scan
+108. TCP FIN Scan
+109. TCP XMAS Scan
+110. TCP ACK Scan
+111. TCP Maimon Scan
+112. TCP Null Scan
+113. TCP FIN Scan
+114. TCP XMAS Scan
+115. TCP ACK Scan
+116. TCP Maimon Scan
+117. TCP Null Scan
+118. TCP FIN Scan
+119. TCP XMAS Scan
+120. TCP ACK Scan
+121. TCP Maimon Scan
+122. TCP Null Scan
+123. TCP FIN Scan
+124. TCP XMAS Scan
+125. TCP ACK Scan
+126. TCP Maimon Scan
+127. TCP Null Scan
+128. TCP FIN Scan
+129. TCP XMAS Scan
+130. TCP ACK Scan
+131. TCP Maimon Scan
+132. TCP Null Scan
+133. TCP FIN Scan
+134. TCP XMAS Scan
+135. TCP ACK Scan
+136. TCP Maimon Scan
+137. TCP Null Scan
+138. TCP FIN Scan
+139. TCP XMAS Scan
+140. TCP ACK Scan
+141. TCP Maimon Scan
+142. TCP Null Scan
+143. TCP FIN Scan
+144. TCP XMAS Scan
+145. TCP ACK Scan
+146. TCP Maimon Scan
+147. TCP Null Scan
+148. TCP FIN Scan
+149. TCP XMAS Scan
+150. TCP ACK Scan
+151. TCP Maimon Scan
+152. TCP Null Scan
+153. TCP FIN Scan
+154. TCP XMAS Scan
+155. TCP ACK Scan
+156. TCP Maimon Scan
+157. TCP Null Scan
+158. TCP FIN Scan
+159. TCP XMAS Scan
+160. TCP ACK Scan
+161. TCP Maimon Scan
+162. TCP Null Scan
+163. TCP FIN Scan
+164. TCP XMAS Scan
+165. TCP ACK Scan
+166. TCP Maimon Scan
+167. TCP Null Scan
+168. TCP FIN Scan
+169. TCP XMAS Scan
+170. TCP ACK Scan
+171. TCP Maimon Scan
+172. TCP Null Scan
+173. TCP FIN Scan
+174. TCP XMAS Scan
+175. TCP ACK Scan
+176. TCP Maimon Scan
+177. TCP Null Scan
+178. TCP FIN Scan
+179. TCP XMAS Scan
+180. TCP ACK Scan
+181. TCP Maimon Scan
+182. TCP Null Scan
+183. TCP FIN Scan
+184. TCP XMAS Scan
+185. TCP ACK Scan
+186. TCP Maimon Scan
+187. TCP Null Scan
+188. TCP FIN Scan
+189. TCP XMAS Scan
+190. TCP ACK Scan
+191. TCP Maimon Scan
+192. TCP Null Scan
+193. TCP FIN Scan
+194. TCP XMAS Scan
+195. TCP ACK Scan
+196. TCP Maimon Scan
+197. TCP Null Scan
+198. TCP FIN Scan
+199. TCP XMAS Scan
+200. TCP ACK Scan
+201. TCP Maimon Scan
+202. TCP Null Scan
+203. TCP FIN Scan
+204. TCP XMAS Scan
+205. TCP ACK Scan
+206. TCP Maimon Scan
+207. TCP Null Scan
+208. TCP FIN Scan
+209. TCP XMAS Scan
+210. TCP ACK Scan
+211. | rag-data: # nmap
+Nmap is a free and open source utility for network discovery and security auditing.
+
+1. **Aggressive Scan (OS detection, version detection, script scanning, and traceroute)**:
+   - This scan is comprehensive, combining various techniques including OS detection, version detection, script scanning, and traceroute to provide detailed information about the target.
+   ```
+   nmap -A <target-ip>
+   ```
+
+2. **OS Detection**:
+   - This scan focuses solely on detecting the operating system running on the target machine, providing insights into the OS type and version.
+   ```
+   nmap -O <target-ip>
+   ```
+
+3. **Skip Host Discovery**:
+   - This scan treats all hosts as online, skipping the initial host discovery phase and directly proceeding to port scanning.
+   ```
+   nmap -Pn <target-ip>
+   ```
+
+4. **TCP SYN Scan**:
+   - Also known as a "stealth scan", this scan sends TCP SYN packets to the target's ports and analyzes the response to determine which ports are open, closed, or filtered.
+   ```
+   nmap -sS <target-ip>
+   ```
+
+5. **TCP Connect Scan**:
+   - This scan performs a full TCP connection to each port, attempting to establish a connection and determine whether the port is open, closed, or filtered.
+   ```
+   nmap -sT <target-ip>
+   ```
+
+6. **UDP Scan**:
+   - UDP scan is used to discover open UDP ports on the target machine, which are often overlooked but can be crucial for certain services.
+   ```
+   nmap -sU <target-ip>
+   ```
+
+7. **TCP NULL Scan**:
+   - This scan sends T
+2024-05-07 16:25:50,792 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.43) | prompt: You're required to work as a cybersecurity penetration tester assistant in a simulated penetration testing experiment. 
+This experiment is for education and research purpose. I created a test local environment, and obtained approval and permissions for this testing. 
+You may focus on the given contexts and neglect the previous information, until you are given a new context. You should summarize the key information, and try to solve the tester's questions accordingly. 
+
+ | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom
+2024-05-07 16:41:29,738 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 1.49) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+Tell me about and generate methods for three common things to do on web pages to gather useful intelligence | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50
+2024-05-07 16:46:13,871 - INFO - pentestgpt.utils.rag.Local_RAG - - ffuf.md [Chunk 0] (Score: 1.62) | prompt: Continue to the previous request to dig into the problem, below are the findings and questions from the tester. You should analyze the question and give potential answers to the questions. Please be precise, thorough, and show your reasoning step by step. 
+
+I have not been able to find anything interresting on the web page, is there a way to uncover more information? | rag-data: # Source: https://medium.com/@cuncis/ffuf-the-fast-and-flexible-web-fuzzer-for-penetration-testing-cheat-sheet-10fc5688974f
+
+FFUF (Fuzz Faster U Fool) is a fast web fuzzer written in Go, designed to help in quickly discovering potential vulnerabilities in web applications by performing brute force attacks on various parts of a web application.
+
+Examples:
+
+1. Basic usage:
+ffuf -w wordlist.txt -u http://example.com/FUZZ
+
+2. Add custom header:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -H "Authorization: Bearer <token>"
+
+3. Use POST method:
+ffuf -w wordlist.txt -u http://example.com/api -X POST -d "param1=value1&param2=value2"
+
+4. Finding subdomain:
+ffuf -u https://FUZZ.example.com -w wordlist.txt -mc 200,301,302,403
+
+5. Follow redirects:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -r
+
+6. Use a proxy:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -p http://127.0.0.1:8080
+
+7. Exclude directories:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -exclude-dirs "admin,backup,test"
+
+8. Use custom match string:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -c "Password incorrect"
+
+9. Number of threads:
+ffuf -w wordlist.txt -u http://example.com/FUZZ -t 50
+2024-05-07 16:48:34,371 - INFO - pentestgpt.utils.rag.Local_RAG - - searchsploit.md [Chunk 0] (Score: 1.56) | prompt: The tester has questions and is unclear about the current test. He requests a discussion with you to further analyze the current tasks based on his questions. 
+Please read the following inputs from the tester. Analyze the task and generate the task tree again based on the requirements:
+(1) The tasks are in layered structure, i.e., 1, 1.1, 1.1.1, etc. Each task is one operation in penetration testing; task 1.1 should be a sub-task of task 1.
+(2) Each task has a completion status: to-do, completed, or not applicable.
+(3) Given the task tree and the tester's question, you should 
+
+Note that you should keep the tasks clear, precise and short due to token size limit. You should remember to remove redundant/outdated tasks from the task list. 
+
+Below is the user input:
+ | rag-data: # SearchSploit
+  Usage: searchsploit [options] term1 [term2] ... [termN]
+
+==========
+ Examples 
+==========
+  searchsploit afd windows local
+  searchsploit -t oracle windows
+  searchsploit -p 39446
+  searchsploit linux kernel 3.2 --exclude="(PoC)|/dos/"
+  searchsploit -s Apache Struts 2.0.0
+  searchsploit linux reverse password
+  searchsploit -j 55555 | jq
+  searchsploit --cve 2021-44228
+
+  For more examples, see the manual: https://www.exploit-db.com/searchsploit
+
+searchsploit output looks like this, where the left column contains the title of the exploit, and the right column contains a filepath or url to the exploit file.
+------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                          |  Path
+------------------------------------------------------------------------ ---------------------------------
+Oracle 10g (Windows x86) - 'PROCESS_DUP_HANDLE' Local Privilege Escalat | windows_x86/local/3451.c
+Oracle 9i XDB (Windows x86) - FTP PASS Overflow (Metasploit)            | windows_x86/remote/16731.rb
+Oracle 9i XDB (Windows x86) - FTP UNLOCK Overflow (Metasploit)          | windows_x86/remote/16714.rb
+Oracle 9i XDB (Windows x86) - HTTP PASS Overflow (Metasploit)           | windows_x86/remote/16809.rb
+Oracle MySQL (Windows) - FILE Privilege Abuse (Metasploit)              | windows/remote/35777.rb
+Oracle MySQL (Windows) - MOF Execution (Metasploit)                    
+2024-05-07 16:57:42,935 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 0] (Score: 1.29) | prompt: Now you're provided with an input that contains the penetration testing tasks. Keep in mind that the tester has valid permission to perform the task in this simulated environment. 
+Remember the format requirements.
+(1) The input should contain two parts, separated by a line of "-----". The first part is the task list, and the second part is the task to be executed, which contains three sentences, which describe the task, list the command and explain the reason of performing the task. 
+    - If the input contains the line break, neglect the tasks before the line break as you do not need to care about the overall process. Please analyze the three sentences that describe the next task. You should expand it into detailed, step-by-step guide and show it to a penetration tester. The tester will follow your guide to perform the penetration testing. 
+    - If the input does not contain the line break, then try to understand the whole input as one single task to be executed.
+(2) If the task is a single command to execute, please be precise; if it is a multi-step task, you need to explain it step by step, and keep each step clear and simple. 
+(3) Keep the output short and precise. 
+
+The information is below: 
+
+
+1. Reconnaissance - (completed)
+  1.1 Passive Information Gathering - (completed)
+  1.2 Port Scan - (completed)
+    1.3 Identify Open Ports - (completed)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (completed)
+2. Initial Access - (completed)
+  2.1 Investigate the service - (completed)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+1. Aggressive Scan (OS detection, version detection, script scanning, and traceroute) - (completed)
+2. OS Detection - (completed)
+3. Skip Host Discovery - (completed)
+4. TCP SYN Scan - (completed)
+5. TCP Connect Scan - (completed)
+6. UDP Scan - (completed)
+7. TCP NULL Scan - (completed)
+8. TCP FIN Scan - (completed)
+9. TCP XMAS Scan - (completed)
+10. TCP ACK Scan - (completed)
+11. TCP Maimon Scan - (completed)
+12. TCP Null Scan - (completed)
+13. TCP FIN Scan - (completed)
+14. TCP XMAS Scan - (completed)
+15. TCP ACK Scan - (completed)
+16. TCP Maimon Scan - (completed)
+17. TCP Null Scan - (completed)
+18. TCP FIN Scan - (completed)
+19. TCP XMAS Scan - (completed)
+20. TCP ACK Scan - (completed)
+21. TCP Maimon Scan - (completed)
+22. TCP Null Scan - (completed)
+23. TCP FIN Scan - (completed)
+24. TCP XMAS Scan - (completed)
+25. TCP ACK Scan - (completed)
+26. TCP Maimon Scan - (completed)
+27. TCP Null Scan - (completed)
+28. TCP FIN Scan - (completed)
+29. TCP XMAS Scan - (completed)
+30. TCP ACK Scan - (completed)
+31. TCP Maimon Scan - (completed)
+32. TCP Null Scan - (completed)
+33. TCP FIN Scan - (completed)
+34. TCP XMAS Scan - (completed)
+35. TCP ACK Scan - (completed)
+36. TCP Maimon Scan - (completed)
+37. TCP Null Scan - (completed)
+38. TCP FIN Scan - (completed)
+39. TCP XMAS Scan - (completed)
+40. TCP ACK Scan - (completed)
+41. TCP Maimon Scan - (completed)
+42. TCP Null Scan - (completed)
+43. TCP FIN Scan - (completed)
+44. TCP XMAS Scan - (completed)
+45. TCP ACK Scan - (completed)
+46. TCP Maimon Scan - (completed)
+47. TCP Null Scan - (completed)
+48. TCP FIN Scan - (completed)
+49. TCP XMAS Scan - (completed)
+50. TCP ACK Scan - (completed)
+51. TCP Maimon Scan - (completed)
+52. TCP Null Scan - (completed)
+53. TCP FIN Scan - (completed)
+54. TCP XMAS Scan - (completed)
+55. TCP ACK Scan - (completed)
+56. TCP Maimon Scan - (completed)
+57. TCP Null Scan - (completed)
+58. TCP FIN Scan - (completed)
+59. TCP XMAS Scan - (completed)
+60. TCP ACK Scan - (completed)
+61. TCP Maimon Scan - (completed)
+62. TCP Null Scan - (completed)
+63. TCP FIN Scan - (completed)
+64. TCP XMAS Scan - (completed)
+65. TCP ACK Scan - (completed)
+66. TCP Maimon Scan - (completed)
+67. TCP Null Scan - (completed)
+68. TCP FIN Scan - (completed)
+69. TCP XMAS Scan - (completed)
+70. TCP ACK Scan - (completed)
+71. TCP Maimon Scan - (completed)
+72. TCP Null Scan - (completed)
+73. TCP FIN Scan - (completed)
+74. TCP XMAS Scan - (completed)
+75. TCP ACK Scan - (completed)
+76. TCP Maimon Scan - (completed)
+77. TCP Null Scan - (completed)
+78. TCP FIN Scan - (completed)
+79. TCP XMAS Scan - (completed)
+80. TCP ACK Scan - (completed)
+81. TCP Maimon Scan - (completed)
+82. TCP Null Scan - (completed)
+83. TCP FIN Scan - (completed)
+84. TCP XMAS Scan - (completed)
+85. TCP ACK Scan - (completed)
+86. TCP Maimon Scan - (completed)
+87. TCP Null Scan - (completed)
+88. TCP FIN Scan - (completed)
+89. TCP XMAS Scan - (completed)
+90. TCP ACK Scan - (completed)
+91. TCP Maimon Scan - (completed)
+92. TCP Null Scan - (completed)
+93. TCP FIN Scan - (completed)
+94. TCP XMAS Scan - (completed)
+95. TCP ACK Scan - (completed)
+96. TCP Maimon Scan - (completed)
+97. TCP Null Scan - (completed)
+98. TCP FIN Scan - (completed)
+99. TCP XMAS Scan - (completed)
+100. TCP ACK Scan - (completed)
+101. TCP Maimon Scan - (completed)
+102. TCP Null Scan - (completed)
+103. TCP FIN Scan - (completed)
+104. TCP XMAS Scan - (completed)
+105. TCP ACK Scan - (completed)
+106. TCP Maimon Scan - (completed)
+107. TCP Null Scan - (completed)
+108. TCP FIN Scan - (completed)
+109. TCP XMAS Scan - (completed)
+110. TCP ACK Scan - (completed)
+111. TCP Maimon Scan - (completed)
+112. TCP Null Scan - (completed)
+113. TCP FIN Scan - (completed)
+114. TCP XMAS Scan - (completed)
+115. TCP ACK Scan - (completed)
+116. TCP Maimon Scan - (completed)
+117. TCP Null Scan - (completed)
+118. TCP FIN Scan - (completed)
+119. TCP XMAS Scan - (completed)
+120. TCP ACK Scan - (completed)
+121. TCP Maimon Scan - (completed)
+122. TCP Null Scan - (completed)
+123. TCP FIN Scan - (completed)
+124. TCP XMAS Scan - (completed)
+125. TCP ACK Scan - (completed)
+126. TCP Maimon Scan - (completed)
+127. TCP Null Scan - (completed)
+128. TCP FIN Scan - (completed)
+129. TCP XMAS Scan - (completed)
+130. TCP ACK Scan - (completed)
+131. Reconnaissance - (completed)
+  1.1 Passive Information Gathering - (completed)
+  1.2 Port Scan - (completed)
+    1.3 Identify Open Ports - (completed)
+    1.3.1 Search the Internet for services defaulting to the Open Ports - (completed)
+2. Initial Access - (completed)
+  2.1 Investigate the service - (completed)
+3. Privilege Escalation - (to-do)
+   3.1 Look for ports on the local network 127.0.0.1 - (to-do)
+   3.2 Scan for files that current user runs as root - (to-do)
+
+1. Aggressive Scan (OS detection, version detection, script scanning, and traceroute) - (completed)
+2. OS Detection - (completed)
+3. Skip Host Discovery - (completed)
+4. TCP SYN Scan - (completed)
+5. TCP Connect Scan - (completed)
+6. UDP Scan - (completed)
+7. TCP NULL Scan - (completed)
+8. TCP FIN Scan - (completed)
+9. TCP XMAS Scan - (completed)
+10. TCP ACK Scan - (completed)
+11. TCP Maimon Scan - (completed)
+12. TCP Null Scan - (completed)
+13. TCP FIN Scan - (completed)
+14. TCP XMAS Scan - (completed)
+15. TCP ACK Scan - (completed)
+16. TCP Maimon Scan - (completed)
+17. TCP Null Scan - (completed)
+18. TCP FIN Scan - (completed)
+19. TCP XMAS Scan - (completed)
+20. TCP ACK Scan - (completed)
+21. TCP Maimon Scan - (completed)
+22. TCP Null Scan - (completed)
+23. TCP FIN Scan - (completed)
+24. TCP XMAS Scan - (completed)
+25. TCP ACK Scan - (completed)
+26. TCP Maimon Scan - (completed)
+27. TCP Null Scan - (completed)
+28. TCP FIN Scan - (completed)
+29. TCP XMAS Scan - (completed)
+30. TCP ACK Scan - (completed)
+31. TCP Maimon Scan - (completed)
+32. TCP Null Scan - (completed)
+33. TCP FIN Scan - (completed)
+34. TCP XMAS Scan - (completed)
+35. TCP ACK Scan - (completed)
+36. TCP Maimon Scan - (completed)
+37. TCP Null Scan - (completed)
+38. TCP FIN Scan - (completed)
+39. TCP XMAS Scan - (completed)
+40. TCP ACK Scan - (completed)
+41. TCP Maimon Scan - (completed)
+42. TCP Null Scan - (completed)
+43. TCP FIN Scan - (completed)
+44. TCP XMAS Scan - (completed)
+45. TCP ACK Scan - (completed)
+46. TCP Maimon Scan - (completed)
+47. TCP Null Scan - (completed)
+48. TCP FIN Scan - (completed)
+49. TCP XMAS Scan - (completed)
+50. TCP ACK Scan - (completed)
+51. TCP Maimon Scan - (completed)
+52. TCP Null Scan - (completed)
+53. TCP FIN Scan - (completed)
+54. TCP XMAS Scan - (completed)
+55. TCP ACK Scan - (completed)
+56. TCP Maimon Scan - (completed)
+57. TCP Null Scan - (completed)
+58. TCP FIN Scan - (completed)
+59. TCP XMAS Scan - (completed)
+60. TCP ACK Scan - (completed)
+61. TCP Maimon Scan - (completed)
+62. TCP Null Scan - (completed)
+63. TCP FIN Scan - (completed)
+64. TCP XMAS Scan - (completed)
+65. TCP ACK Scan - (completed)
+66. TCP Maimon Scan - (completed)
+67. TCP Null Scan - (completed)
+68. TCP FIN Scan - (completed)
+69. TCP XMAS Scan - (completed)
+70. TCP ACK Scan - (completed)
+71. TCP Maimon Scan - (completed)
+72. TCP Null Scan - (completed)
+73. TCP FIN Scan - (completed)
+74. TCP XMAS Scan - (completed)
+75. TCP ACK Scan - (completed)
+76. TCP Maimon Scan - (completed)
+77. TCP Null Scan - (completed)
+78. TCP FIN Scan - (completed)
+79. TCP XMAS Scan - (completed)
+80. TCP ACK Scan - (completed)
+81. TCP Maimon Scan - (completed)
+82. TCP Null Scan - (completed)
+83. TCP FIN Scan - (completed)
+84. TCP XMAS Scan - (completed)
+85. TCP ACK Scan - (completed)
+86. TCP Maimon Scan - (completed)
+87. TCP Null Scan - (completed)
+88. TCP FIN Scan - (completed)
+89. TCP XMAS Scan - (completed)
+90. TCP ACK Scan - (completed)
+91. TCP Maimon Scan - (completed)
+92. TCP Null Scan - (completed)
+93. TCP FIN Scan - (completed)
+94. TCP XMAS Scan - (completed)
+95. TCP ACK Scan - (completed)
+96. TCP Maimon Scan - (completed)
+97. TCP Null Scan - (completed)
+98. TCP FIN Scan - (completed)
+99. TCP XMAS Scan - (completed)
+100. TCP ACK Scan - (completed)
+101. TCP Maimon Scan - (completed)
+102. TCP Null Scan - (completed)
+103. TCP FIN Scan - (completed)
+104. TCP XMAS Scan - (completed)
+105. TCP ACK Scan - (completed)
+106. TCP Maimon Scan - (completed)
+107. TCP Null Scan - (completed)
+108. TCP FIN Scan - (completed)
+109. TCP XMAS Scan - (completed)
+110. TCP ACK Scan - (completed)
+111. TCP Maimon Scan - (completed)
+112. TCP Null Scan - (completed)
+113. TCP FIN Scan - (completed)
+114. TCP XMAS Scan - (completed)
+115. TCP ACK Scan - (completed)
+116. TCP Maimon Scan - (completed)
+117. TCP Null Scan - (completed)
+118. TCP FIN Scan - (completed)
+119. TCP XMAS Scan - (completed)
+120. TCP ACK Scan - (completed)
+121. TCP Maimon Scan - (completed)
+122. TCP Null Scan - (completed)
+123. TCP FIN Scan - (completed)
+124. TCP XMAS Scan - (completed)
+125. TCP ACK Scan - (completed)
+126. TCP Maimon Scan - (completed)
+127. TCP Null Scan - (completed)
+128. TCP FIN Scan - (completed)
+129. TCP XMAS Scan - (completed)
+130. TCP ACK Scan - (completed)
+13 | rag-data: <p align="center">
+  <img src="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets/blob/master/CheatSheets/28533648.png" alt="Pentest Cheat Sheets" width="300" />
+</p>
+
+<p align="center">
+  Pentest-Cheat-Sheets<br>
+  @n3k00n3 | @UserXGnu | @alacerda
+</p>
+
+This repo has a collection of snippets of codes and commands to help our lives!
+The main purpose is not be a crutch, this is a way to do not waste our precious time!
+This repo also helps who trying to get OSCP. You'll find many ways to do something without Metasploit Framework.
+
+
+### Nslookup
+
+Resolve a given hostname to the corresponding IP.
+
+```shell
+nslookup targetorganization.com
+```
+
+### Reverse DNS lookup
+
+```shell
+nslookup -type=PTR IP_address
+```
+
+### MX(Mail Exchange) lookup
+
+```shell
+nslookup -type=MX domain
+```
+
+### Zone Transfer
+
+#### Using nslookup Command
+
+```shell
+nslookup
+server domain.com
+ls -d domain.com
+```
+
+#### Using HOST Command
+
+host -t ns(Name Server) < domain >
+
+```shell
+host -t ns domain.com
+```
+
+after that test nameservers
+
+host -l < domain > < nameserver >
+
+```shell
+host -l domain.com ns2.domain.com
+```
+
+### Nmap Dns Enumaration
+
+```
+nmap -F --dns-server <dns server ip> <target ip range>
+```
+
+### Auto tools
+
+#### DNSenum
+
+```
+dnsenum targetdomain.com
+```
+
+```
+dnsenum --target_domain_subs.txt -v -f dns.txt -u a -r targetdomain.com
+```
+
+#### DNSmap
+
+```bash
+targetdomain.com
+```
+
+```bash
+dnsmap targetdomain.com -w <Wordlst file.txt>
+```
+
+Brute Force, the file is saved in /tmp
+
+```bash
+dnsmap targetdom

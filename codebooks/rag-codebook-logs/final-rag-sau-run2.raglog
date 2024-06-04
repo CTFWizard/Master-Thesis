@@ -1,0 +1,281 @@
+2024-04-25 17:13:21,615 - INFO - pentestgpt.utils.rag.Local_RAG - Created FAISS index
+2024-04-25 17:13:21,615 - INFO - pentestgpt.utils.rag.Local_RAG - Initialized Local_RAG
+2024-04-25 17:14:40,074 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 1.06) | prompt: I have a hack the box machine called "sau". This is a Linux machine. The target ip is 10.10.11.224 | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 17:15:40,920 - INFO - pentestgpt.utils.rag.Local_RAG - - pentest_cheatsheet.md [Chunk 3] (Score: 0.76) | prompt: 1. SSH service is open on port 22, with OpenSSH 8.2p1 Ubuntu 4ubuntu0.7.
+2. HTTP service is filtered on port 80.
+3. An unrecognized service is open on port 55555. The service returns data but remains unrecognized.
+4. The nmap scan detected 997 closed TCP ports (conn-refused).
+5. The operating system is likely Linux, as indicated by the CPE value.
+6. The scan took 98.11 seconds to complete. | rag-data: .100`
+`export netw=192.168.1.0/24`
+
+### Detecting Live Hosts
+
+Only Ip's
+
+```shell
+nmap -sn -n $netw | grep for | cut -d" " -f5
+```
+
+### Stealth Scan
+
+```shell
+nmap -sS $ip
+```
+
+Only Open Ports and Banner Grab
+
+```shell
+nmap -n -Pn -sS $ip --open -sV
+```
+
+Stealth scan using FIN Scan
+
+```shell
+nmap -sF $ip
+```
+
+### Agressive scan
+
+Without Ping scan, no dns resolution, show only open ports all and test All TCP Ports
+
+```shell
+nmap -n -Pn -sS -A $ip --open -p-
+```
+
+Nmap verbose scan, runs syn stealth, T4 timing, OS and service version info, traceroute and scripts against services
+
+```shell
+nmap –v –sS –A –T4 $ip
+```
+
+### OS FigerPrint
+
+```shell
+nmap -O $ip
+```
+
+### Quick Scan
+
+```shell
+nmap -T4 -F $netw
+```
+
+### Quick Scan Plus
+
+```shell
+nmap -sV -T4 -O -F --version-light $netw
+```
+
+### output to a file
+
+```shell
+nmap -oN nameFile -p 1-65535 -sV -sS -A -T4 $ip
+```
+
+### output to a file Plus
+
+```shell
+nmap -oA nameFile -p 1-65535 -sV -sS -A -T4 $netw
+```
+
+### Search NMAP scripts
+
+```shell
+ls /usr/share/nmap/scripts/ | grep ftp
+```
+
+- [Nmap Discovery](https://nmap.org/nsedoc/categories/discovery.html)
+
+##
+
+## NetCat
+
+### Port Scanner
+
+One port
+
+```shell
+nc -nvz 192.168.1.23 80
+```
+
+Port Range
+
+```shell
+nc -vnz 192.168.1.23 0-1000
+```
+
+### Send files
+
+- Server
+
+```shell
+nc -lvp 1234 > file_name_to_save
+```
+
+- Client
+
+```shell
+nc -vn 192.168.1.33 1234 < file_to_send
+```
+
+### Executing remote script
+
+- Server
+
+```shell
+nc -lvp 1234 -e ping.sh <IP>
+```
+
+- Client
+
+```shell
+nc -vn 192.16
+2024-04-25 17:16:53,208 - INFO - pentestgpt.utils.rag.Local_RAG - - ports_and_service.md [Chunk 28] (Score: 0.99) | prompt: The tester provides the following thoughts for your consideration. Please give your comments, and update the tasks if necessary.Task 1: Which is the highest open TCP port on the target machine? | rag-data: on
+Unofficial 				3CX Phone System Management Console/Web Client (HTTPS)
+5002 	Unofficial 				ASSA ARX access control system[235]
+5003 	Yes 	Assigned 			FileMaker – name binding and transport[11]
+5004 	Yes 		Yes 	Real-time Transport Protocol media data (RTP) (RFC 3551, RFC 4571)
+5005 	Yes 		Yes 	Real-time Transport Protocol control protocol (RTCP) (RFC 3551, RFC 4571)
+5007 	Unofficial 				Palo Alto Networks – User-ID agent
+5010 	Yes 			Registered to: TelePath (the IBM FlowMark workflow-management system messaging platform)[236]
+The TCP port is now used for: IBM WebSphere MQ Workflow
+5011 	Yes 			TelePath (the IBM FlowMark workflow-management system messaging platform)[236]
+5022 	Unofficial 				MSSQL Server Replication and Database mirroring endpoints[237]
+5025 	Yes 			scpi-raw Standard Commands for Programmable Instruments
+5029 		Unofficial 			Sonic Robo Blast 2 and Sonic Robo Blast 2 Kart servers
+5031 	Unofficial 			AVM CAPI-over-TCP (ISDN over Ethernet tunneling)[citation needed]
+5037 	Unofficial 				Android ADB server
+5044 	Yes 				Standard port in Filebeats/Logstash implementation of Lumberjack protocol.
+5048 	Yes 				Texai Message Service
+5050 	Unofficial 				Yahoo! Messenger
+5051 	Yes 				ita-agent Symantec Intruder Alert[238]
+5060 	Yes 			Session Initiation Protocol (SIP)[11]
+5061 	Yes[239] 				Session Initiation Protocol (SIP) over TLS
+5062 	Yes 			Localisation access
+5064 	Yes 			EPICS Channel Access server[240]
+5065 	Assigned 	Yes 			EPICS Channel Access repeater be
